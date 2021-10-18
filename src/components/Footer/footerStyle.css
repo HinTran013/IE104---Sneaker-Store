@@ -12,18 +12,23 @@ ul {
 a {
     color: whitesmoke;
     text-decoration: none;
+  
 }
 
 .guideLinks {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 .colUpper {
     padding: 0;
 }
 .colUpper ul {
-    padding: 0 1.25rem;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
     font-weight: bold;
+}
+.colUpper li {
+    margin-bottom: 0.3rem;
 }
 
 
@@ -35,7 +40,11 @@ a {
 .colInfo .row {
     margin: 0;
 }
-.colInfo .colHeader {
+.colInfo .row .col {
+    padding-left: 3rem;
+    font-weight: 300;
+}
+.colInfo .colHeader .col {
     font-weight: bold;
 }
 
@@ -58,6 +67,7 @@ a {
     margin-right: 1rem;
 }
 .trademarks .row:last-child {
+    font-weight: lighter;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
 }
