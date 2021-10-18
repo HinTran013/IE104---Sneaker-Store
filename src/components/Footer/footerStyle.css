@@ -1,11 +1,17 @@
 footer.container {
-    background-color: aliceblue;
+    background-image: url("./footer_bg_2.jpg");
+    color: whitesmoke;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 .guideLinks {
@@ -17,22 +23,41 @@ ul {
 }
 .colUpper ul {
     padding: 0 1.25rem;
+    font-weight: bold;
 }
 
 
 
-.colInfo, .colInfo .container {
+.colInfo {
     padding-left: 0;
     padding-right: 0;
 }
-.colInfo .container .row {
+.colInfo .row {
     margin: 0;
+}
+.colInfo .colHeader {
+    font-weight: bold;
 }
 
 
 .trademarks {
     margin-top: 1rem;
 }
-.trademarks .container .row {
+.trademarks .row {
     justify-content: center;
+    margin: 0;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+}
+.icon li {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.trademarks .row:last-child {
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
 }

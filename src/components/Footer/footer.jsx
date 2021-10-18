@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import "./footerStyle.css"
 
+import instagram from "../../images/instagram.png";
+import twitter from "../../images/twitter.png";
+import facebook from "../../images/facebook.png";
+
 export class Footer extends Component
 {
     render()
@@ -11,61 +15,70 @@ export class Footer extends Component
                 <div className="guideLinks row">
                     <div className="colUpper col-3">
                         <ul>
-                            <li>FIND A STORE</li>
-                            <li>BECOME A MEMEBER</li>
-                            <li>SIGNUP FOR EMAIL</li>
-                            <li>SEND US FEEDBACK</li>
+                            <li><a href="#">FIND A STORE</a></li>
+                            <li><a href="#">BECOME A MEMEBER</a></li>
+                            <li><a href="#">SIGNUP FOR EMAIL</a></li>
+                            <li><a href="#">SEND US FEEDBACK</a></li>
                         </ul>
                     </div>
                     <div className="colInfo col-9">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col">GET HELP</div>
-                                <div className="col">ABOUT US</div>
-                                <div className="col">POLICY</div>
+                        <div className="colHeader row">
+                            <div className="col">GET HELP</div>
+                            <div className="col">ABOUT US</div>
+                            <div className="col">POLICY</div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <ul>
+                                    <li><a href="#">Order status</a></li>
+                                    <li><a href="#">Delivery</a></li>
+                                    <li><a href="#">Return</a></li>
+                                    <li><a href="#">Payment options</a></li>
+                                    <li><a href="#">Contact us</a></li>
+                                </ul>
                             </div>
-                            <div className="row">
-                                <div className="col">
-                                    <ul>
-                                        <li>Order status</li>
-                                        <li>Delivery</li>
-                                        <li>Return</li>
-                                        <li>Payment options</li>
-                                        <li>Contact us</li>
-                                    </ul>
-                                </div>
-                                <div className="col">
-                                    <ul>
-                                        <li>News</li>
-                                        <li>Careers</li>
-                                        <li>Investors</li>
-                                        <li>Sustainability</li>
-                                    </ul>   
-                                </div>
-                                <div className="col">
-                                    <ul>
-                                        <li>Return policy</li>
-                                        <li>Check orders</li>
-                                        <li>Payment policy</li>
-                                        <li>Ordering guide</li>
-                                    </ul>
-                                </div>
+                            <div className="col">
+                                <ul>
+                                    <li><a href="#">News</a></li>
+                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#">Investors</a></li>
+                                    <li><a href="#">Sustainability</a></li>
+                                </ul>
+                            </div>
+                            <div className="col">
+                                <ul>
+                                    <li><a href="#">Return policy</a></li>
+                                    <li><a href="#">Check orders</a></li>
+                                    <li><a href="#">Payment policy</a></li>
+                                    <li><a href="#">Ordering guide</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="trademarks row">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col"></div>
-                            <div className="col"></div>
-                            <div className="col"></div>
-                            <div className="col"></div>
-                        </div>
-                        <div className="row">
-                            &copy; 2021 BRAND, Inc. All Rights Reserved
-                        </div>
+                    <div className="row">
+                        <ul className="icon">
+                            <li>
+                                <a href="#">
+                                    <img src={instagram} alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src={facebook} alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src={twitter} alt="" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="row">
+                        &copy; 2021 BRAND, Inc. All Rights Reserved
                     </div>
                 </div>
             </footer>
