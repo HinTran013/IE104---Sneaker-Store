@@ -2,10 +2,37 @@ footer.container {
     background-color: aliceblue;
 }
 
-.guideLinks {
-    
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
+
+.guideLinks {
+    padding-top: 1rem;
+}
+
+.colUpper {
+    padding: 0;
+}
+.colUpper ul {
+    padding: 0 1.25rem;
+}
+
+
+
+.colInfo, .colInfo .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+.colInfo .container .row {
+    margin: 0;
+}
+
 
 .trademarks {
     margin-top: 1rem;
+}
+.trademarks .container .row {
+    justify-content: center;
 }

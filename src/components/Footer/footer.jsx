@@ -9,15 +9,15 @@ export class Footer extends Component
         return (
             <footer className="container">
                 <div className="guideLinks row">
-                    <div className="col">
-                        <div className="container">
-                            <div className="row">FIND A STORE</div>
-                            <div className="row">BECOME A MEMEBER</div>
-                            <div className="row">SIGNUP FOR EMAIL</div>
-                            <div className="row">SEND US FEEDBACK</div>
-                        </div>
+                    <div className="colUpper col-3">
+                        <ul>
+                            <li>FIND A STORE</li>
+                            <li>BECOME A MEMEBER</li>
+                            <li>SIGNUP FOR EMAIL</li>
+                            <li>SEND US FEEDBACK</li>
+                        </ul>
                     </div>
-                    <div className="col">
+                    <div className="colInfo col-9">
                         <div className="container">
                             <div className="row">
                                 <div className="col">GET HELP</div>
@@ -26,23 +26,29 @@ export class Footer extends Component
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <div className="row">Order status</div>
-                                    <div className="row">Delivery</div>
-                                    <div className="row">Return</div>
-                                    <div className="row">Payment options</div>
-                                    <div className="row">Contact us</div>
+                                    <ul>
+                                        <li>Order status</li>
+                                        <li>Delivery</li>
+                                        <li>Return</li>
+                                        <li>Payment options</li>
+                                        <li>Contact us</li>
+                                    </ul>
                                 </div>
                                 <div className="col">
-                                    <div className="row">News</div>
-                                    <div className="row">Careers</div>
-                                    <div className="row">Investor</div>
-                                    <div className="row">Sustainability</div>    
+                                    <ul>
+                                        <li>News</li>
+                                        <li>Careers</li>
+                                        <li>Investors</li>
+                                        <li>Sustainability</li>
+                                    </ul>   
                                 </div>
                                 <div className="col">
-                                    <div className="row">Return policy</div>
-                                    <div className="row">Check orders</div>
-                                    <div className="row">Payment policy</div>
-                                    <div className="row">Ordering guide</div>
+                                    <ul>
+                                        <li>Return policy</li>
+                                        <li>Check orders</li>
+                                        <li>Payment policy</li>
+                                        <li>Ordering guide</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
