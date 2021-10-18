@@ -1,5 +1,12 @@
 import React from "react";
+import SliderHomepage from "../components/SliderHomePage/SliderHomepage";
 
-const HomePage = () => <h1>This is home page</h1>
+const HomePage = () => {
+     return (
+          <>
+               <SliderHomepage />
+          </>
+     )
+}
 
 export default HomePage
