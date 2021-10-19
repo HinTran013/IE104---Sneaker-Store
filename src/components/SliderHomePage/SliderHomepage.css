@@ -33,29 +33,24 @@
 }
 
 .content .textBox h2{
-    font-size: 4em;
-    line-height: 1.4em;
+    font-size: 8rem;
+    line-height: 1.4;
     font-weight: 700;
     font-family: inherit;
 }
 
 .content .textBox .above-heading-text{
-    font-size: 2em;
-}
-
-.content .textBox h2 span{
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 3rem;
 }
 
 .content .textBox .description{
-    font-size: 1.1em;
+    font-size: 1.8rem;
     line-height: 1.5;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.04rem;
 }
 
 .content .textBox a{
-    font-size: 1.1em;
+    font-size: 1.8rem;
     font-family: inherit;
     display: inline-block;
     margin-top: 30px;
