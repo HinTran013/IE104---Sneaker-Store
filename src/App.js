@@ -1,4 +1,5 @@
 import './styles/App.css';
+
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
@@ -18,6 +19,7 @@ function App() {
       </Switch>
     </Router>
   )
+
 }
 
 export default App;
