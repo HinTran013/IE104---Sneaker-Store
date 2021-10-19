@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 import "./footerStyle.css"
 
-import instagram from "../../images/instagram.png";
-import twitter from "../../images/twitter.png";
-import facebook from "../../images/facebook.png";
+import instagram from "./instagram.png";
+import twitter from "./twitter.png";
+import facebook from "./facebook.png";
 
 export class Footer extends Component
 {
