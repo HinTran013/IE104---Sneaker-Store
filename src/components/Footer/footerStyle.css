@@ -1,0 +1,104 @@
+footer.container {
+    color: whitesmoke;
+    position: relative;
+
+    background-image: url("./footer_bg_2.jpg");
+    background-size: cover;
+}
+footer.container::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+
+    background-color: rgb(255, 255, 255,0.05);
+}
+.guideLinks *, .trademarks * {
+    position: relative;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: rgb(231, 231, 231);
+    text-decoration: none;
+}
+a:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+
+.guideLinks {
+    padding-top: 2rem;
+}
+
+.colUpper {
+    padding: 0;
+}
+.colUpper ul {
+    padding-left: 2.75rem;
+    padding-right: 1rem;
+
+    font-size: 1.25rem;
+    font-weight: bold;
+    word-spacing: 0.07rem;
+    letter-spacing: 0.02rem;
+}
+.colUpper li {
+    margin-bottom: 0.3rem;
+}
+
+
+
+.colInfo {
+    padding-left: 0;
+    padding-right: 0;
+}
+.colInfo .row {
+    margin: 0;
+}
+.colInfo .row .col {
+    padding-left: 3rem;
+    font-weight: 300;
+    font-size: 1rem;
+}
+.colInfo .colHeader .col {
+    margin-bottom: 0.2rem;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.09rem;
+}
+
+
+.trademarks {
+    margin-top: 1rem;
+}
+.trademarks .row {
+    justify-content: center;
+    margin: 0;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+}
+.icon img {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 2.25rem;
+}
+.trademarks .row:last-child {
+    font-size: 0.8rem;
+    font-weight: 100;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+}
