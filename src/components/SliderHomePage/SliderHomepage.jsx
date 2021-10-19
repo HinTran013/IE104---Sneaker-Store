@@ -12,9 +12,7 @@ const SliderHomepage = () => {
       <div className="content">
         <div className="textBox">
           <p className="above-heading-text">Women's Originals</p>
-          <h2>
-            Falcon Sneaker
-          </h2>
+          <h2>Falcon Sneaker</h2>
           <p className="description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Non diam
@@ -22,6 +20,7 @@ const SliderHomepage = () => {
           </p>
           <a href="#">Shop Now</a>
         </div>
+
         <div className="imgBox">
           <img src={colorSneaker} alt="sneaker" className="sneakers" />
         </div>
