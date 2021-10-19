@@ -4,7 +4,7 @@ import Footer from "../src/components/Footer/footer.jsx"
 function App() {
   return (
     <div>
-      <Footer></Footer>
+     
     </div>
   );
 }
