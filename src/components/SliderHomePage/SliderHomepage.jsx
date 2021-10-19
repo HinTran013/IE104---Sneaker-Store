@@ -1,10 +1,10 @@
 import React from "react";
 import "./SliderHomepage.css";
-import colorSneaker from "../images/ColoredSneaker.png";
-import sliderThumb3 from "../images/sliderThumb3.png";
-import instagram from "../images/instagram.png";
-import twitter from "../images/twitter.png";
-import facebook from "../images/facebook.png";
+import colorSneaker from "../../assets/images/ColoredSneaker.png";
+import sliderThumb3 from "../../assets/images/sliderThumb3.png";
+import instagram from "../../assets/images/instagram.png";
+import twitter from "../../assets/images/twitter.png";
+import facebook from "../../assets/images/facebook.png";
 
 const SliderHomepage = () => {
   return (
