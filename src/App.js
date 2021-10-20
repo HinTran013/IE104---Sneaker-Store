@@ -7,17 +7,23 @@ import AboutUsPage from './pages/AboutUsPage'
 import BlogPage from './pages/BlogPage'
 import Navbar from './components/Navbar/Navbar';
 
+import Footer from "./components/Footer/footer"
+import React from 'react';
+
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route path='/' exact component={HomePage} />
-        <Route path='/product' component={ProductPage} />
-        <Route path='/about-us' component={AboutUsPage} />
-        <Route path='/blog' component={BlogPage} />
-      </Switch>
-    </Router>
+    <React.Fragment>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path='/' exact component={HomePage} />
+          <Route path='/product' component={ProductPage} />
+          <Route path='/about-us' component={AboutUsPage} />
+          <Route path='/blog' component={BlogPage} />
+        </Switch>
+      </Router>
+      <Footer></Footer>
+    </React.Fragment>
   )
 
 }
