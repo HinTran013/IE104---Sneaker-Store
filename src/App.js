@@ -21,7 +21,7 @@ function App() {
           <Route path="/blog" component={BlogPage} />
         </Switch>
       </Router>
-      <Footer></Footer>
+      <Footer />
     </React.Fragment>
   );
 }
