@@ -1,7 +1,9 @@
+
 import React, { Component } from 'react'
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 //import "./footerStyle.css"
 import footerCSS from "./footerStyle.module.css"
+
 
 import instagram from "../../assets/images/footerSrc/instagram.png";
 import twitter from "../../assets/images/footerSrc/twitter.png";
