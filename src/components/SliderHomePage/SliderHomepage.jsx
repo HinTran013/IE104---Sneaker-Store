@@ -1,29 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import SliderCSS from "./SliderHomepage.module.css";
-import colorSneaker from "../../assets/images/ColoredSneaker.png";
-import sliderThumb3 from "../../assets/images/sliderThumb3.png";
+import SliderData from "./SliderHomePageData";
 import instagram from "../../assets/images/instagram.png";
 import twitter from "../../assets/images/twitter.png";
 import facebook from "../../assets/images/facebook.png";
 
 const SliderHomepage = () => {
+  //set state for information of slider
+  const [sliderInfo, setSliderImage] = useState({
+    img: SliderData[0].image,
+    aboveText: SliderData[0].aboveHeadText,
+    heading: SliderData[0].heading,
+    description: SliderData[0].description,
+    btnText: SliderData[0].btnText,
+  });
+
+  // callback function when click the thumb and switch the slide
+  const switchSlide = (index) => {
+    setSliderImage({
+      img: SliderData[index].image,
+      aboveText: SliderData[index].aboveHeadText,
+      heading: SliderData[index].heading,
+      description: SliderData[index].description,
+      btnText: SliderData[index].btnText,
+    });
+  };
+
   return (
     <div className={SliderCSS.container}>
       <div className={SliderCSS.content}>
         <div className={SliderCSS.textBox}>
-          <p className={SliderCSS.aboveHeadingText}>Women's Originals</p>
-          <h2>Falcon Sneaker</h2>
-          <p className={SliderCSS.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Non diam
-            phasellus vestibulum lorem.
-          </p>
-          <a href="#">Shop Now</a>
+          <p className={SliderCSS.aboveHeadingText}>{sliderInfo.aboveText}</p>
+          <h2>{sliderInfo.heading}</h2>
+          <p className={SliderCSS.description}>{sliderInfo.description}</p>
+          <a href="#">{sliderInfo.btnText}</a>
         </div>
 
         <div className={SliderCSS.imgBox}>
           <img
-            src={colorSneaker}
+            src={sliderInfo.img}
             alt="sneaker"
             className={SliderCSS.sneakers}
           />
@@ -31,15 +46,18 @@ const SliderHomepage = () => {
       </div>
 
       <ul className={SliderCSS.thumb}>
-        <li>
-          <img src={sliderThumb3} alt="" />
-        </li>
-        <li>
-          <img src={sliderThumb3} alt="" />
-        </li>
-        <li>
-          <img src={sliderThumb3} alt="" />
-        </li>
+        {SliderData.map((currentItem, index) => {
+          return (
+            <li
+              key={index}
+              onClick={() => {
+                switchSlide(index);
+              }}
+            >
+              <img src={currentItem.image} alt="" />
+            </li>
+          );
+        })}
       </ul>
 
       <ul className={SliderCSS.sci}>
