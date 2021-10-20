@@ -1,5 +1,5 @@
 import React from "react";
-import "./SliderHomepage.css";
+import SliderCSS from "./SliderHomepage.module.css";
 import colorSneaker from "../../assets/images/ColoredSneaker.png";
 import sliderThumb3 from "../../assets/images/sliderThumb3.png";
 import instagram from "../../assets/images/instagram.png";
@@ -8,26 +8,29 @@ import facebook from "../../assets/images/facebook.png";
 
 const SliderHomepage = () => {
   return (
-    <div className="container">
-      <div className="content">
-        <div className="textBox">
-          <p className="above-heading-text">Women's Originals</p>
-          <h2>
-            Falcon Sneaker
-          </h2>
-          <p className="description">
+    <div className={SliderCSS.container}>
+      <div className={SliderCSS.content}>
+        <div className={SliderCSS.textBox}>
+          <p className={SliderCSS.aboveHeadingText}>Women's Originals</p>
+          <h2>Falcon Sneaker</h2>
+          <p className={SliderCSS.description}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Non diam
             phasellus vestibulum lorem.
           </p>
           <a href="#">Shop Now</a>
         </div>
-        <div className="imgBox">
-          <img src={colorSneaker} alt="sneaker" className="sneakers" />
+
+        <div className={SliderCSS.imgBox}>
+          <img
+            src={colorSneaker}
+            alt="sneaker"
+            className={SliderCSS.sneakers}
+          />
         </div>
       </div>
 
-      <ul className="thumb">
+      <ul className={SliderCSS.thumb}>
         <li>
           <img src={sliderThumb3} alt="" />
         </li>
@@ -39,7 +42,7 @@ const SliderHomepage = () => {
         </li>
       </ul>
 
-      <ul className="sci">
+      <ul className={SliderCSS.sci}>
         <li>
           <a href="#">
             <img src={instagram} alt="" />
