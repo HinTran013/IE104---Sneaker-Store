@@ -8,6 +8,7 @@ import facebook from "../../assets/images/facebook.png";
 const SliderHomepage = () => {
   //set state for information of slider
   const [sliderInfo, setSliderImage] = useState({
+    name: SliderData[0].name,
     img: SliderData[0].image,
     aboveText: SliderData[0].aboveHeadText,
     heading: SliderData[0].heading,
@@ -18,6 +19,7 @@ const SliderHomepage = () => {
   // callback function when click the thumb and switch the slide
   const switchSlide = (index) => {
     setSliderImage({
+      name: SliderData[index].name,
       img: SliderData[index].image,
       aboveText: SliderData[index].aboveHeadText,
       heading: SliderData[index].heading,
@@ -30,14 +32,21 @@ const SliderHomepage = () => {
     <div className={SliderCSS.container}>
       <div className={SliderCSS.content}>
         <div className={SliderCSS.textBox}>
-          <p className={SliderCSS.aboveHeadingText}>{sliderInfo.aboveText}</p>
-          <h2>{sliderInfo.heading}</h2>
-          <p className={SliderCSS.description}>{sliderInfo.description}</p>
-          <a href="#">{sliderInfo.btnText}</a>
+          <p key={Math.random()} className={SliderCSS.aboveHeadingText}>
+            {sliderInfo.aboveText}
+          </p>
+          <h2 key={Math.random()}>{sliderInfo.heading}</h2>
+          <p key={Math.random()} className={SliderCSS.description}>
+            {sliderInfo.description}
+          </p>
+          <a href="#" key={Math.random()}>
+            {sliderInfo.btnText}
+          </a>
         </div>
 
         <div className={SliderCSS.imgBox}>
           <img
+            key={sliderInfo.name}
             src={sliderInfo.img}
             alt="sneaker"
             className={SliderCSS.sneakers}
