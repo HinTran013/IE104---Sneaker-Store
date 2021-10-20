@@ -1,8 +1,9 @@
 footer.container {
     color: whitesmoke;
     position: relative;
+    
 
-    background-image: url("./footer_bg_2.jpg");
+    background-image: url("../../assets/images/footerSrc/footer_bg_2.jpg");
     background-size: cover;
 }
 footer.container::before {
@@ -15,7 +16,7 @@ footer.container::before {
 
     background-color: rgb(255, 255, 255,0.05);
 }
-.guideLinks *, .trademarks * {
+.colInfo *, .trademarks * {
     position: relative;
 }
 
@@ -35,55 +36,54 @@ a:hover {
 }
 
 
-.guideLinks {
+.colInfo {
+    width: 100%;
+
+    padding-left: 0;
+    padding-right: 0;
+    display: flex;
+
     padding-top: 2rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+}
+.colInfo div.col {
+    margin: 0 10rem;
 }
 
 .colUpper {
-    padding: 0;
+    display: flex;
 }
 .colUpper ul {
-    padding-left: 2.75rem;
-    padding-right: 1rem;
-
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     font-weight: bold;
     word-spacing: 0.07rem;
-    letter-spacing: 0.02rem;
+    letter-spacing: 0.08rem;
+
+    line-height: 2.75rem;
 }
-.colUpper li {
-    margin-bottom: 0.3rem;
+div.colUpper {
+    padding: 0 10rem;
+
+    border-right: 2px solid rgba(199, 199, 199, 0.849);
 }
 
 
-
-.colInfo {
-    padding-left: 0;
-    padding-right: 0;
-}
-.colInfo .row {
-    margin: 0;
-}
-.colInfo .row .col {
-    padding-left: 3rem;
+.colInfo .col {
+    font-size: 1.35rem;
     font-weight: 300;
-    font-size: 1rem;
-}
-.colInfo .colHeader .col {
-    margin-bottom: 0.2rem;
 
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 0.09rem;
+    line-height: 2rem;
 }
+.colInfo .col ul li:first-child {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
 
 
 .trademarks {
     margin-top: 1rem;
-}
-.trademarks .row {
-    justify-content: center;
-    margin: 0;
 }
 .icon {
     display: flex;
@@ -94,11 +94,14 @@ a:hover {
 .icon img {
     margin-left: 1rem;
     margin-right: 1rem;
-    width: 2.25rem;
+    width: 3rem;
+
 }
 .trademarks .row:last-child {
-    font-size: 0.8rem;
+    text-align: center;
+
+    font-size: 1.35rem;
     font-weight: 100;
-    margin-top: 0.2rem;
-    margin-bottom: 1rem;
+    padding-top: 0.3rem;
+    padding-bottom: 1.5rem;
 }
