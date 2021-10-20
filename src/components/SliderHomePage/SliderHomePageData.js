@@ -5,7 +5,7 @@ import slider3Image from "../../assets/images/runningBlueSneaker.png";
 const SliderData = [
   {
     name: "slider1",
-    aboveHeadText: "Women's Originals",
+    aboveHeadText: "Women's Originals 1",
     heading: "Fashion sneaker",
     description:
       "slider 1 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
@@ -14,7 +14,7 @@ const SliderData = [
   },
   {
     name: "slider2",
-    aboveHeadText: "Women's Originals",
+    aboveHeadText: "Women's Originals 2",
     heading: "Basketball sneaker",
     description:
       "slider 2 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
@@ -23,7 +23,7 @@ const SliderData = [
   },
   {
     name: "slider3",
-    aboveHeadText: "Women's Originals",
+    aboveHeadText: "Women's Originals 3",
     heading: "Running sneaker",
     description:
       "slider 3 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
