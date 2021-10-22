@@ -1,0 +1,20 @@
+
+
+h1.headerBlog {
+    text-align: center;
+}
+
+div.divContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5%;
+}
+
+div.divContainer div {
+    display: inline;
+    width: 30%;
+}
+
+div.divContainer div.cardBlog img {
+    max-width: 100%;
+}
