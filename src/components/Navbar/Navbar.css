@@ -133,6 +133,10 @@
      display: flex;
 }
 
+#navbar__product:hover .header__navbar-product-icon {
+     transform: rotate(-360deg);
+}
+
 /* the bridge */
 #navbar__product::before {
      content: "";
@@ -173,6 +177,7 @@
 .header__navbar-product-icon {
      width: 20px;
      height: 15px;
+     transition: transform 0.5s;
 }
 
 
