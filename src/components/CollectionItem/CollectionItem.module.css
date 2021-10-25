@@ -1,3 +1,7 @@
+.reverseLayout {
+     flex-direction: row-reverse;
+}
+
 .collectionContainer {
      display: flex;
      flex-wrap: wrap;
