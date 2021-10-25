@@ -1,20 +1,66 @@
+section.sectionContainer {
+    margin-top: 0.8rem;
+    margin-bottom: 1.7rem;
+}
 
-
-h1.headerBlog {
+section.sectionContainer .headerBlog {
     text-align: center;
 }
 
-div.divContainer {
+section.sectionContainer .divContainer {
     display: flex;
     justify-content: space-between;
-    margin: 0 5%;
+    margin: 0 2.5%;
 }
 
-div.divContainer div {
+.divContainer div {
     display: inline;
-    width: 30%;
+    width: 32%;
+
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 2px 7px rgba(0,0,0,.15)!important;
+
+    border-radius: 5px;
 }
 
-div.divContainer div.cardBlog img {
+.divContainer .cardBlog img {
+    padding: 0.5rem;
     max-width: 100%;
+}
+
+.cardBlog  p {
+    padding-top: 0.2rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+
+    line-height: 2rem;
+}
+ 
+.cardBlog time  {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cardBlog article a {
+    color: black;
+    text-decoration: none;
+
+    line-height: 2rem;
+
+    font-size: 3.5rem;
+    font-weight: bold;
+    padding-left: 1rem;
+}
+
+.cardBlog p:last-child {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    line-height: 2rem;
+
+    font-size: 2rem;
+    font-weight: 400;
 }

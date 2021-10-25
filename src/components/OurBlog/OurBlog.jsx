@@ -10,9 +10,9 @@ export class OurBlog extends Component {
                 <h1 className={ourBlogStyle.headerBlog}>Our Blog</h1>
                 <div className={ourBlogStyle.divContainer}>
                     <div className={ourBlogStyle.cardBlog}>
-                        <img src={blog1} alt="" />
-                        <p>on <time>May 5th 2020</time></p>
-                        <article>The Love At First Sight Boots</article>
+                        <a href=""><img src={blog1} alt="" /></a>
+                        <p><time>on May 5th 2020</time></p>
+                        <article><a href="">The Love At First Sight Boots</a></article>
                         <p>I knew I had to have these velvet Tibi boots
                             when I first saw them a few months back.</p>
                     </div>
