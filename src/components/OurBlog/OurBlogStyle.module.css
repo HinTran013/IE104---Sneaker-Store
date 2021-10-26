@@ -1,10 +1,6 @@
 section.sectionContainer {
-    margin-top: 0.8rem;
-    margin-bottom: 1.7rem;
-}
-
-section.sectionContainer .headerBlog {
-    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
 }
 
 section.sectionContainer .divContainer {
@@ -13,18 +9,69 @@ section.sectionContainer .divContainer {
     margin: 0 2.5%;
 }
 
-.divContainer div {
+section.sectionContainer .headerBlog {
+    margin-bottom: 3rem;
+    height: fit-content;
+}
+section.sectionContainer h1 {
+    text-align: center;
+
+    font-size: 5rem;
+}
+
+
+section.sectionContainer .separator {
+   text-align: center;
+   color: black;
+
+   line-height: 0.01;
+
+   margin-top: 5rem;
+   margin-bottom: 5rem;
+}
+.separator span {
+    display: inline-block;
+    position: relative;
+}
+.separator span b {
+    display: inline-block;
+    font-size: 2.2rem;
+    font-weight: 300;
+}
+.separator span::before {
+    content: "";
+    border-bottom: 1px solid black;
+
+    position: absolute;
+    width: 400px;
+    right: 50%;
+    top: 3px;
+    margin-right: 2rem;
+}
+.separator span::after {
+    content: "";
+    border-bottom: 1px solid black;
+
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    top: 3px;
+    margin-left: 2rem;
+}
+
+
+.divContainer .cardBlog {
     display: inline;
     width: 32%;
 
     background-color: rgb(252, 252, 252);
-    box-shadow: 0 2px 7px rgba(0,0,0,.15)!important;
+    box-shadow: 0 2px 7px rgba(0,0,0,.15);
 
     border-radius: 5px;
 }
 
 .divContainer .cardBlog img {
-    padding: 0.5rem;
+    width: 100%;
     max-width: 100%;
 }
 
@@ -48,7 +95,7 @@ section.sectionContainer .divContainer {
 
     line-height: 2rem;
 
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     font-weight: bold;
     padding-left: 1rem;
 }

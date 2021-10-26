@@ -1,23 +1,33 @@
 import React, { Component } from 'react'
 
 import ourBlogStyle from "./OurBlogStyle.module.css"
-import blog1 from "../../assets/images/ourBlogSrc/blog1.jpg"
+import { BlogInfo } from './OurBlogData'
 
 export class OurBlog extends Component {
     render() {
         return (
             <section className={ourBlogStyle.sectionContainer}>
-                <h1 className={ourBlogStyle.headerBlog}>Our Blog</h1>
+                <div className={ourBlogStyle.headerBlog}>
+                    <h1>Our Blog</h1>
+                </div>
+
+                <div className={ourBlogStyle.separator}>
+                    <span> <b>&#x02666;</b> </span>
+                </div>
+
                 <div className={ourBlogStyle.divContainer}>
-                    <div className={ourBlogStyle.cardBlog}>
-                        <a href=""><img src={blog1} alt="" /></a>
-                        <p><time>on May 5th 2020</time></p>
-                        <article><a href="">The Love At First Sight Boots</a></article>
-                        <p>I knew I had to have these velvet Tibi boots
-                            when I first saw them a few months back.</p>
-                    </div>
-                    <div>prototype</div>
-                    <div>prototype</div>
+
+                    {BlogInfo.map((item, index) => {
+                        return (
+                            <div className={ourBlogStyle.cardBlog}>
+                                <a href={item.path}><img src={item.thumbnail} alt="" /></a>
+                                <p><time>on {item.timePost}</time></p>
+                                <article><a href="">{ item.titlePost }</a></article>
+                                <p>{ item.description }</p>
+                            </div>
+                        );
+                    })}
+
                 </div>
             </section>
         )
