@@ -1,3 +1,125 @@
+/* Container */
+.dealContainer {
+  line-height: 1.6;
+  padding: 30px 100px;
+  height: 100vh;
+  position: relative;
+}
+
+/* Title */
 .titleContainer {
   text-align: center;
+}
+
+.dealContainer .titleContainer h2 {
+  font-size: 6rem;
+}
+
+/* Container which contains side text box and side image */
+.dealContentContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Text box on the left */
+.sideTextContainer {
+  width: 500px;
+}
+
+.sideAboveHeaderText {
+  font-size: 3rem;
+}
+
+.sideHeader {
+  font-size: 5rem;
+}
+
+/* Sale price and normal price */
+.priceContainer {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.salePrice {
+  font-size: 3rem;
+  font-size: 3rem;
+  color: #c50215;
+  font-weight: 700;
+}
+
+.normalPrice {
+  font-size: 3rem;
+  padding-left: 15px;
+  text-decoration: line-through;
+}
+
+/* Sold and available amount text */
+.soldAvailableContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -10px;
+}
+
+.dealContainer .soldText,
+.dealContainer .AvailableText {
+  color: #888;
+  font-size: 1.8rem;
+}
+
+/* Image */
+.sideImageContainer {
+  padding-right: 5rem;
+}
+
+.dealContainer .sideImageContainer img {
+  max-width: 600px;
+}
+
+/* Button to navigate */
+.dealBtn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 1.8rem;
+  background: #222;
+  color: #fff;
+  padding: 6px 40px;
+  border-radius: 50px;
+  text-transform: capitalize;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  transition: 0.3s;
+  margin-top: 30px;
+}
+
+.dealBtn:hover {
+  background: #c50215;
+}
+
+/* Thumb */
+.dealContainer .thumb {
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dealContainer .thumb li {
+  list-style: none;
+  display: inline-block;
+  margin: 20px 0px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.dealContainer .thumb li:hover {
+  transform: translateY(-15px);
+}
+
+.dealContainer .thumb li img {
+  max-width: 70px;
 }

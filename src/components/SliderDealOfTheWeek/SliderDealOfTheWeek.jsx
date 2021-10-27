@@ -1,45 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
+import ProgressBar from "./ProgressBar";
 import DealStyle from "./SliderDealOfTheWeek.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Data from "./SliderOfTheWeekData";
 
 const SliderDealOfTheWeek = () => {
+  const [contentState, setContentState] = useState({
+    name: Data[0].name,
+    img: Data[0].img,
+    nameOfShoes: Data[0].nameOfShoes,
+    normalPrice: Data[0].normalPrice,
+    salePrice: Data[0].salePrice,
+    btnText: Data[0].btnText,
+    saleAmount: Data[0].saleAmount,
+    alreadySold: Data[0].alreadySold,
+  });
+
+  const switchSlide = (index) => {
+    setContentState({
+      name: Data[index].name,
+      img: Data[index].img,
+      nameOfShoes: Data[index].nameOfShoes,
+      normalPrice: Data[index].normalPrice,
+      salePrice: Data[index].salePrice,
+      btnText: Data[index].btnText,
+      saleAmount: Data[index].saleAmount,
+      alreadySold: Data[index].alreadySold,
+    });
+  };
+
   return (
     <>
-      <div className={`container-fluid ${DealStyle.container}`}>
+      <div className={`${DealStyle.dealContainer}`}>
         <div className={`${DealStyle.titleContainer}`}>
           <h2>Deal Of The Week</h2>
         </div>
 
-        <div className={`row`}>
-          <div className={`col ${DealStyle.sideTextContainer}`}>
-            <p className={`${DealStyle.sideAboveHeaderText} row`}>
-              Hot Deal Week
-            </p>
-            <h3 className={`${DealStyle.sideHeader} row`}>
-              Crazy Byw Lvl X Pw
+        <div className={`${DealStyle.dealContentContainer}`}>
+          <div className={`${DealStyle.sideTextContainer}`}>
+            <p className={`${DealStyle.sideAboveHeaderText}`}>Hot Deal Week</p>
+            <h3 className={`${DealStyle.sideHeader}`}>
+              {contentState.nameOfShoes}
             </h3>
-            <div className={`${DealStyle.priceContainer} row`}>
-              <div className={`${DealStyle.oldPrice} col`}>$250</div>
-              <div className={`${DealStyle.newPrice} col`}>$200</div>
+            <div className={`${DealStyle.priceContainer}`}>
+              <p className={`${DealStyle.salePrice}`}>
+                {contentState.salePrice}$
+              </p>
+              <p className={`${DealStyle.normalPrice}`}>
+                {contentState.normalPrice}$
+              </p>
             </div>
-            <div className={`${DealStyle.soldAvailableContainer} row`}>
-              <div className={`${DealStyle.soldText} col`}>
-                Already sold: 19
-              </div>
-              <div className={`${DealStyle.AvailableText} col`}>
-                Available: 23
-              </div>
+            <div className={`${DealStyle.soldAvailableContainer}`}>
+              <p className={`${DealStyle.soldText}`}>
+                Already sold: {contentState.alreadySold}
+              </p>
+              <p className={`${DealStyle.AvailableText}`}>
+                Sale amount: {contentState.saleAmount}
+              </p>
             </div>
 
-            <progress value="19" max="42"></progress>
+            <ProgressBar
+              done={Math.floor(
+                (Number(contentState.saleAmount) /
+                  Number(contentState.alreadySold)) *
+                  100
+              )}
+              className={`${DealStyle.progress}`}
+            />
 
-            <p className={`${DealStyle.isExpireText}`}>Still Available</p>
+            {/* <p className={`${DealStyle.isExpireText}`}>Still Available</p> */}
 
-            <a className={`${DealStyle.DealBtn}`}>Shop now</a>
+            <a className={`${DealStyle.dealBtn}`}>Shop now</a>
           </div>
 
-          <div className={`col ${DealStyle.sideImageContainer}`}></div>
+          <div className={`col ${DealStyle.sideImageContainer}`}>
+            <img src={Data[0].img} alt="" />
+          </div>
         </div>
+
+        <ul className={DealStyle.thumb}>
+          {Data.map((currentItem, index) => {
+            return (
+              <li
+                key={index}
+                onClick={() => {
+                  switchSlide(index);
+                }}
+              >
+                <img src={currentItem.img} alt="" />
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </>
   );
