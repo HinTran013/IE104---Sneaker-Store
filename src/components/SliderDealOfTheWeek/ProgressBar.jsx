@@ -11,7 +11,7 @@ const Progress = ({ done }) => {
     };
 
     setStyle(newStyle);
-  }, 200);
+  }, 100);
 
   return (
     <div className={`${Style.progress}`}>

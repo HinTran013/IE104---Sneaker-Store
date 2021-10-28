@@ -1,12 +1,12 @@
 import sneaker1 from "../../assets/images/converse.png";
-import sneaker2 from "../../assets/images/converse.png";
-import sneaker3 from "../../assets/images/converse.png";
+import sneaker2 from "../../assets/images/sneaker-transparent/vans-1.png";
+import sneaker3 from "../../assets/images/sneaker-transparent/nike-7.png";
 
 const data = [
   {
-    name: "slider1",
+    name: 1,
     img: sneaker1,
-    nameOfShoes: "Converse 1",
+    nameOfShoes: "Converse High (Black)",
     normalPrice: "251",
     salePrice: "201",
     btnText: "Shop now 1",
@@ -14,9 +14,9 @@ const data = [
     alreadySold: 19,
   },
   {
-    name: "slider2",
+    name: 2,
     img: sneaker2,
-    nameOfShoes: "Converse 2",
+    nameOfShoes: "Vans Old Skool",
     normalPrice: "252",
     salePrice: "202",
     btnText: "Shop now 2",
@@ -24,9 +24,9 @@ const data = [
     alreadySold: 15,
   },
   {
-    name: "slider3",
+    name: 3,
     img: sneaker3,
-    nameOfShoes: "Converse 3",
+    nameOfShoes: "Nike Jordan 1 Bred",
     normalPrice: "253",
     salePrice: "203",
     btnText: "Shop now 3",

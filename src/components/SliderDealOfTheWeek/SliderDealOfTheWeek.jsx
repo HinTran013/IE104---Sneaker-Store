@@ -38,10 +38,10 @@ const SliderDealOfTheWeek = () => {
         <div className={`${DealStyle.dealContentContainer}`}>
           <div className={`${DealStyle.sideTextContainer}`}>
             <p className={`${DealStyle.sideAboveHeaderText}`}>Hot Deal Week</p>
-            <h3 className={`${DealStyle.sideHeader}`}>
+            <h3 className={`${DealStyle.sideHeader}`} key={Math.random()}>
               {contentState.nameOfShoes}
             </h3>
-            <div className={`${DealStyle.priceContainer}`}>
+            <div className={`${DealStyle.priceContainer}`} key={Math.random()}>
               <p className={`${DealStyle.salePrice}`}>
                 {contentState.salePrice}$
               </p>
@@ -60,20 +60,23 @@ const SliderDealOfTheWeek = () => {
 
             <ProgressBar
               done={Math.floor(
-                (Number(contentState.saleAmount) /
-                  Number(contentState.alreadySold)) *
+                (Number(contentState.alreadySold) /
+                  Number(contentState.saleAmount)) *
                   100
               )}
               className={`${DealStyle.progress}`}
+              key={contentState.name}
             />
 
             {/* <p className={`${DealStyle.isExpireText}`}>Still Available</p> */}
 
-            <a className={`${DealStyle.dealBtn}`}>Shop now</a>
+            <a className={`${DealStyle.dealBtn}`} key={Math.random()}>
+              Shop now
+            </a>
           </div>
 
-          <div className={`col ${DealStyle.sideImageContainer}`}>
-            <img src={Data[0].img} alt="" />
+          <div className={`${DealStyle.sideImageContainer}`}>
+            <img src={contentState.img} alt="" key={contentState.name} />
           </div>
         </div>
 
