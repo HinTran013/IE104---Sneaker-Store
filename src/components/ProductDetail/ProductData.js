@@ -6,6 +6,7 @@ import Nike4 from '../../assets/images/sneaker-transparent/nike-4.png'
 export const OneProduct = {
      id: 'abc123',
      name: 'Nike Shoes',
+     brand: 'Nike',
      description: 'POD-S3.1 Shoes High-tech shoes that mix modern materials for flexible support. The P.O.D. System is reborn from the archives with new levels of comfort, flexibility and design. These...',
      price: 100,
      rating: 4.5,

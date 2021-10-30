@@ -28,6 +28,7 @@ function DetailInfo() {
                     <div className={style.infoWrapper}>
                          <div className={style.info}>
                               <h2 className={style.name}>{OneProduct.name}</h2>
+                              <h4 className={style.brand}>{OneProduct.brand}</h4>
                               <h4 className={style.rating}>Rating: {OneProduct.rating}</h4>
                               <p className={style.price}>$ {OneProduct.price}</p>
                               <p className={style.description}>{OneProduct.description}</p>
@@ -57,7 +58,7 @@ function DetailInfo() {
                                                   className={index === size ? `${style.sizeItem} ${style.sizeActive}` : style.sizeItem}
                                                   key={index}
                                                   onClick={() =>
-                                                       setSize(index)
+                                                       changeSize(index)
                                                   }
                                              >
                                                   {item}
