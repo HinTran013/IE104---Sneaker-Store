@@ -6,6 +6,7 @@ import BannerFirst from "../assets/images/banner/banner-homepage-1.jpg";
 import BannerSecond from "../assets/images/banner/banner-homepage-2.jpg";
 import SneakerFirst from "../assets/images/banner/sneaker-homepage-1.jpg";
 import SneakerSecond from "../assets/images/banner/sneaker-homepage-2.jpg";
+import OurBlog from "../components/OurBlog/OurBlog";
 
 const HomePage = () => {
   return (
@@ -38,6 +39,8 @@ const HomePage = () => {
         bannerImg={BannerSecond}
         reverse={true}
       />
+
+      <OurBlog />
     </>
   );
 };

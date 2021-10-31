@@ -1,0 +1,24 @@
+.bgContainer {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  line-height: 1.6;
+}
+
+.bgContainer h2,
+.bgContainer p {
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
+  text-transform: capitalize;
+}
+
+.bgContainer h2 {
+  font-size: 5rem;
+}
+
+.bgContainer p {
+  font-size: 2rem;
+}
