@@ -1,39 +1,15 @@
 .sideBarContainer {
-  max-width: 25%;
+  width: 350px;
+  line-height: 1.6;
 }
 
-.sizeText {
-  font-size: 1.8rem;
-  line-height: 2rem;
-  margin-bottom: 8px;
+.sideBarContainer h2 {
+  font-size: 3rem;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
-.sizeContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.sizeItem {
-  width: 60px;
-  height: 60px;
-  margin-bottom: -1px;
-  margin-right: 0px;
-  border: 1px solid #f4f4f4;
-  color: #222;
-  font-size: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.sizeActive {
-  background: #c50215;
-  color: #fff;
-  cursor: pointer;
-}
-
-.sizeItem:hover {
-  background: #c50215;
-  color: #fff;
-  cursor: pointer;
+.sideBarContainer h3 {
+  font-size: 2rem;
+  padding-left: 20px;
 }

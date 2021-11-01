@@ -1,0 +1,12 @@
+.mainPartContainer {
+  padding: 50px 50px;
+  display: flex;
+}
+
+.sideBarContainer {
+}
+
+.productsGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
