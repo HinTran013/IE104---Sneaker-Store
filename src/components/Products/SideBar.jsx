@@ -1,38 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import Style from "./SideBar.module.css";
-import SideBarData from "./SideBarData";
 import ColorPallette from "./ColorPallette";
+import SizeGrid from "./SizeGrid";
+import SubMenu from "./SubMenu";
+import SideBarData from "./SideBarData";
+
 function SideBar() {
-  const [size, setSize] = useState();
-
-  const changeSize = (index) => {
-    setSize(index);
-  };
-
   return (
     <>
       <div className={`${Style.sideBarContainer}`}>
         <h2>Categories</h2>
+
+        {/* Brands */}
+        <SubMenu title="Brand" listChild={SideBarData.subMenu.brand} />
+
+        {/* Prices */}
+        <SubMenu title="Price" listChild={SideBarData.subMenu.price} />
+
+        {/* Color */}
         <h3>Color</h3>
-        <div className={`${Style.colorPalletteContainer}`}>
-          <ColorPallette />
-        </div>
+        <ColorPallette />
+
+        {/* Size */}
         <h3>Size</h3>
-        <div className={Style.sizeContainer}>
-          {SideBarData.size.map((item, index) => (
-            <div
-              className={
-                index === size
-                  ? `${Style.sizeItem} ${Style.sizeActive}`
-                  : Style.sizeItem
-              }
-              key={index}
-              onClick={() => changeSize(index)}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
+        <SizeGrid />
       </div>
     </>
   );
