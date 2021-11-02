@@ -1,7 +1,7 @@
 .PalletteContainer {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px 0 10px 20px;
+  padding: 0 0 0 20px;
 }
 .singleColor {
   cursor: pointer;

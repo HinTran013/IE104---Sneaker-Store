@@ -14,6 +14,7 @@ const SideBarData = {
       "Above 200$",
     ],
   },
+  tags: ["Best seller", "Black", "blue", "grey", "red", "Jordan"],
 };
 
 export default SideBarData;
