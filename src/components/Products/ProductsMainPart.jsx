@@ -3,6 +3,8 @@ import Style from "./ProductsMainPart.module.css";
 import SideBar from "./SideBar";
 import { OneProduct } from "../ProductDetail/ProductData";
 import ProductItem from "../ProductItem/ProductItem";
+import TopFilter from "./TopFilter";
+import Pagination from "./Pagination";
 
 function ProductsMainPart() {
   return (
@@ -16,7 +18,9 @@ function ProductsMainPart() {
         {/* Main part */}
         <div className={`${Style.productsShowContainer}`}>
           {/* Top filter */}
-          <div className={`${Style.topFilterContainer}`}></div>
+          <div className={`${Style.topFilterContainer}`}>
+            <TopFilter />
+          </div>
           {/* Product Grid */}
           <div className={`${Style.productsGrid}`}>
             <ProductItem data={OneProduct} />
@@ -28,10 +32,11 @@ function ProductsMainPart() {
             <ProductItem data={OneProduct} />
             <ProductItem data={OneProduct} />
             <ProductItem data={OneProduct} />
-            <ProductItem data={OneProduct} />
           </div>
           {/* Pagination */}
-          <div className={`${Style.paginationContainer}`}></div>
+          <div className={`${Style.paginationContainer}`}>
+            <Pagination />
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,27 @@
+.filterContainer {
+  padding: 12px 135px 20px 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.showingAmount {
+  font-size: 1.5rem;
+}
+
+.selection {
+  font-family: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 210px;
+  height: 40px;
+  line-height: 40px;
+  background: #f4f4f4;
+  padding: 0 10px 0 10px;
+  border: 1px #ccc solid;
+  border-radius: 2px;
+}
+
+.singleOption {
+  background-color: white;
+}
