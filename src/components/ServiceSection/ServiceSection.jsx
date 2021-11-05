@@ -1,30 +1,23 @@
 import React from "react";
 import serviceSect from "./ServiceSection.module.css"
+import { serviceInfo } from "./ServiceSectionData";
 
 const ServiceSection = () =>
 {
     return (
         <section className={serviceSect.sectionContainer}>
-            <div>
-                <img src="" alt="" />
-                <h2>This is a service</h2>
-                <h3>This is a description of the service</h3>
-            </div>
-            <div>
-                <img src="" alt="" />
-                <h2>This is a service</h2>
-                <h3>This is a description of the service</h3>
-            </div>
-            <div>
-                <img src="" alt="" />
-                <h2>This is a service</h2>
-                <h3>This is a description of the service</h3>
-            </div>
-            <div>
-                <img src="" alt="" />
-                <h2>This is a service</h2>
-                <h3>This is a description of the service</h3>
-            </div>
+
+            {serviceInfo.map((item) =>
+            {
+                return (
+                    <div className={serviceSect.serviceDiv}>
+                        <img src={item.img} alt="" />
+                        <h2>{item.serviceName}</h2>
+                        <h3>{item.serviceDescription}</h3>
+                    </div>
+                )
+            })}
+            
         </section>
     );
 }
