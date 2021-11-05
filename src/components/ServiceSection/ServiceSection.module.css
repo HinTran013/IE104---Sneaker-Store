@@ -1,0 +1,9 @@
+section.sectionContainer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    background-color: aquamarine;
+}
