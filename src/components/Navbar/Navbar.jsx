@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Brands } from './BrandData'
-import ArrowIcon from '../../assets/icons/arrow-down.svg'
 import './Navbar.css'
+import './NavbarResponsive.css'
 
 function Navbar() {
      const [navbar, setNavbar] = useState(false)
+     const [navbarMobile, setNavbarMobile] = useState(false)
 
      // change navbar background when scroll
      const changeNavbar = () => {
-          if (window.scrollY >= 80) {
+          if (window.scrollY >= 65) {
                setNavbar(true)
           }
           else {
@@ -22,9 +23,16 @@ function Navbar() {
      return (
           <>
                <div className={navbar ? 'header__container on-scroll' : 'header__container'}>
+                    <div
+                         className='mobile-menu-icon'
+                         onClick={() => setNavbarMobile(!navbarMobile)}
+                    >
+                         {navbarMobile ? (<i className="fas fa-times"></i>) : <i className="fas fa-bars"></i>}
+                    </div>
+
                     <h3 className='header__logo'>Logo</h3>
 
-                    <ul className='header__navbar'>
+                    <ul className={navbarMobile ? 'header__navbar-mobile' : 'header__navbar'}>
                          <li className='header__navbar-item'>
                               <Link to='/'>
                                    <p>Home</p>
@@ -32,12 +40,10 @@ function Navbar() {
                          </li>
 
                          <li className='header__navbar-item' id='navbar__product'>
-                              <div className='header__navbar-product-container'>
-                                   <Link to='/product'>
-                                        <p>Product</p>
-                                   </Link>
-                                   <img className='header__navbar-product-icon' src={ArrowIcon} />
-                              </div>
+                              <Link to='/product'>
+                                   <p>Product</p>
+                              </Link>
+                              <i className="fas fa-chevron-right navbar__product-icon"></i>
 
                               <div className='navbar__product-dropdown'>
                                    {Brands.map((item, index) => {
@@ -65,9 +71,14 @@ function Navbar() {
                               </Link>
                          </li>
                     </ul>
+
                     <div className='header__btn-container'>
-                         <button className='header__btn fill'>Login</button>
-                         <button className='header__btn border'>Sign up</button>
+                         <div className='header__search-container' >
+                              <input className='header__input-search' type='text' placeholder='Search something...' />
+                              <i className='far fa-search header__btn-search'></i>
+                         </div>
+                         <i className='far fa-shopping-cart'></i>
+                         <i className='far fa-user'></i>
                     </div>
                </div>
           </>
