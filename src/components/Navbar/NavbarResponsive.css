@@ -116,4 +116,8 @@
      .navbar__product-icon:hover {
           transform: rotate(90deg);
      }
+
+     .search-on-scroll {
+          display: none;
+     }
 }

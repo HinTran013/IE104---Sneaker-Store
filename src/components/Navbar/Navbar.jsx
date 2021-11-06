@@ -22,7 +22,7 @@ function Navbar() {
 
      return (
           <>
-               <div className={navbar ? 'header__container on-scroll' : 'header__container'}>
+               <div className={navbar ? 'header__container navbar-on-scroll' : 'header__container'}>
                     <div
                          className='mobile-menu-icon'
                          onClick={() => setNavbarMobile(!navbarMobile)}
@@ -73,7 +73,7 @@ function Navbar() {
                     </ul>
 
                     <div className='header__btn-container'>
-                         <div className='header__search-container' >
+                         <div className={navbar ? 'header__search-container search-on-scroll' : 'header__search-container'} >
                               <input className='header__input-search' type='text' placeholder='Search something...' />
                               <i className='far fa-search header__btn-search'></i>
                          </div>

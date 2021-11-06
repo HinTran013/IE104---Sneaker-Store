@@ -20,7 +20,7 @@
      animation: rotate 0.5s ease-in-out;
 }
 
-.on-scroll {
+.navbar-on-scroll {
      background-color: white;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
      animation: dropdown 0.5s ease-in-out;
