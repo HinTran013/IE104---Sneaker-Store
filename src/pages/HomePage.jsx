@@ -41,8 +41,8 @@ const HomePage = () => {
         bannerImg={BannerSecond}
         reverse={true}
       />
-      <ServiceSection />
       <OurBlog />
+      <ServiceSection />
     </>
   );
 };

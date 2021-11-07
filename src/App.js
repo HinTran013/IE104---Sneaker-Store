@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import BlogPage from "./pages/BlogPage";
+import CartPage from "./pages/CartPage";
+
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
 
@@ -20,6 +22,7 @@ function App() {
           <Route path="/product" component={ProductPage} />
           <Route path="/about-us" component={AboutUsPage} />
           <Route path="/blog" component={BlogPage} />
+          <Route path="/cart" component={CartPage }/>
         </Switch>
       </Router>
       <Footer />
