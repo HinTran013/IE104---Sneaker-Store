@@ -7,7 +7,6 @@ import AboutUsPage from "./pages/AboutUsPage";
 import BlogPage from "./pages/BlogPage";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
-import OurBlog from "./components/OurBlog/OurBlog";
 
 import React from "react";
 

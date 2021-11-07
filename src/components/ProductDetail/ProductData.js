@@ -7,6 +7,7 @@ export const OneProduct = {
      id: 'abc123',
      name: 'Nike Shoes',
      brand: 'Nike',
+     shortDescription: 'Hands-free, hads on music experience.',
      description: 'POD-S3.1 Shoes High-tech shoes that mix modern materials for flexible support. The P.O.D. System is reborn from the archives with new levels of comfort, flexibility and design. These...',
      price: 100,
      rating: 4.5,

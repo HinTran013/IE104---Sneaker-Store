@@ -112,3 +112,43 @@
 .bannerBtn:hover {
      background: #c50215;
 }
+
+
+/* Responsive */
+@media (min-width: 740px) and (max-width: 1023px) {
+     
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+     .itemSneaker {
+          display: none;
+     }
+
+     .itemBanner {
+          width: 100%;
+     }
+
+     .bannerText {
+          padding-left: 20px;
+     }
+
+     .bannerText h2 {
+          font-size: 2rem;
+          line-height: 2rem;
+          color: #fff;
+          margin-bottom: 8px;
+     }
+
+     .bannerText h5 {
+          color: #fff;
+          font-size: 1.4rem;
+          font-weight: 400;
+     }
+
+     .bannerBtn {
+          margin-top: 20px;
+          font-size: 1.4rem;
+          padding: 8px 12px;
+     }
+}

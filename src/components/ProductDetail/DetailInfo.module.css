@@ -59,7 +59,7 @@
 .rating {
      font-size: 2rem;
      line-height: 2rem;
-     margin-bottom: 8px;
+     margin-bottom: 16px;
 }
 
 .price {
@@ -71,7 +71,7 @@
 .description {
      font-size: 1.8rem;
      line-height: 1.8rem;
-     margin-bottom: 8px;
+     margin-bottom: 16px;
      margin-left: 4px;
 }
 
@@ -85,7 +85,7 @@
 .colorThumb {
      display: flex;
      flex-wrap: wrap;
-     margin-bottom: 8px;
+     margin-bottom: 16px;
 }
 
 .colorItem {
@@ -123,7 +123,7 @@
 }
 
 .sizeItem {
-     width: 116px;
+     width: 31%;
      height: 48px;
      margin: 4px;
      border: 1px solid #ccc;
@@ -175,4 +175,32 @@
 .btnFavourite:hover {
      cursor: pointer;
      opacity: 1;
+}
+
+
+/* Responsive */
+@media (min-width: 740px) and (max-width: 1023px) {
+     
+}
+
+/* Mobile */
+@media (max-width: 739px) {
+     .container {
+          margin-top: var(--navbar-height);
+     }
+
+     .infoContainer {
+          flex-direction: column;
+     }
+
+     .mainImg {
+          overflow: hidden;
+     }
+
+     .btnAddToCart {
+          position: sticky;
+          left: 0;
+          right: 0;
+          bottom: 0;
+     }
 }

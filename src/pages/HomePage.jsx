@@ -9,6 +9,7 @@ import SneakerSecond from "../assets/images/banner/sneaker-homepage-2.jpg";
 import OurBlog from "../components/OurBlog/OurBlog";
 import ServiceSection from "../components/ServiceSection/ServiceSection"
 
+
 const HomePage = () => {
   return (
     <>

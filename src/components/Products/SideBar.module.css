@@ -1,0 +1,15 @@
+.sideBarContainer {
+  width: 350px;
+  line-height: 1.6;
+}
+
+.sideBarContainer h2 {
+  font-size: 3rem;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.sideBarContainer h3 {
+  font-size: 2rem;
+  padding-left: 20px;
+}
