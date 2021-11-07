@@ -1,0 +1,45 @@
+section.sectionContainer {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+
+    margin-left: 6rem;
+    margin-right: 6rem;
+}
+
+.sectionContainer .serviceDiv {
+    width: 20%;
+
+    text-align: center;
+
+    border-right: black 2px solid;
+
+    padding-right: 10rem;
+}
+.sectionContainer .serviceDiv:last-child {   
+    border: none;
+    padding: none;
+}
+
+.serviceDiv img {
+    width: 80px;
+    margin-bottom: 0.5rem;
+}
+
+
+.serviceDiv h2 {
+    font-size: 2.5rem;
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+    
+    margin-bottom: 1rem;
+}
+
+.serviceDiv h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    margin-bottom: 1rem;
+}
