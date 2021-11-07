@@ -1,6 +1,7 @@
 import shipped from "../../assets/images/service/shipped.png"
 import returnmoney from "../../assets/images/service/returnmoney.png"
 import customersupport from "../../assets/images/service/customersupport.png"
+import qualityassurance from "../../assets/images/service/qualityassurance.png"
 
 export const serviceInfo =
 [
@@ -20,8 +21,8 @@ export const serviceInfo =
         serviceDescription: "We support online 24hrs"
     },
     {
-        img: shipped,
-        serviceName: "FREE SHIPPING",
-        serviceDescription: "Free ship on all orders"
+        img: qualityassurance,
+        serviceName: "HIGH QUALITY",
+        serviceDescription: "Genuine products from huge brands"
     }
 ]
