@@ -1,6 +1,6 @@
-import slider1Image from "../../assets/images/ColoredSneaker.png";
-import slider2Image from "../../assets/images/OrangeJordan.png";
-import slider3Image from "../../assets/images/runningBlueSneaker.png";
+import slider1Image from "../../assets/images/sneaker-transparent/nike-7-crop-right.png";
+import slider2Image from "../../assets/images/sneaker-transparent/vans-1.png";
+import slider3Image from "../../assets/images/runningBlueSneaker-crop-right.png";
 
 const SliderData = [
   {
