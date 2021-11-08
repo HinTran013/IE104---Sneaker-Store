@@ -15,7 +15,7 @@ const HomePage = () => {
       <SliderHomepage />
 
       {/* slider Best Seller Sneaker here */}
-      {/* <SliderDealOfTheWeek /> */}
+      <SliderDealOfTheWeek />
       {/* ... */}
 
       {/* the first collection item */}

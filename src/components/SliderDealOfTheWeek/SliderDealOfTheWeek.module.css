@@ -19,6 +19,7 @@
 .dealContentContainer {
   display: flex;
   justify-content: space-between;
+  padding-top: 50px;
 }
 
 /* Text box on the left */
@@ -43,7 +44,6 @@
 }
 
 .salePrice {
-  font-size: 3rem;
   font-size: 3rem;
   color: #c50215;
   font-weight: 700;
@@ -80,6 +80,7 @@
 
 /* Button to navigate */
 .dealBtn {
+  cursor: pointer;
   display: inline-block;
   text-decoration: none;
   font-size: 1.8rem;
@@ -174,5 +175,83 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+/* Responsive */
+
+/* tablet */
+@media (max-width: 1024px) {
+  .dealContainer {
+    padding: 40px 100px 40px;
+    height: auto;
+  }
+  .dealContentContainer {
+    padding-top: 0;
+  }
+  .sideTextContainer {
+    width: 320px;
+  }
+
+  .dealContainer .sideImageContainer {
+    padding-right: 0px;
+  }
+
+  .dealContainer .sideImageContainer img {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 960px) {
+  .dealContainer {
+    padding: 40px 30px 40px;
+    height: auto;
+  }
+
+  .dealContainer .titleContainer h2 {
+    font-size: 4rem;
+  }
+
+  .sideAboveHeaderText {
+    font-size: 1.8rem;
+  }
+
+  .sideHeader {
+    font-size: 3rem;
+  }
+
+  .salePrice,
+  .normalPrice {
+    font-size: 2.6rem;
+  }
+
+  .dealContainer .soldText,
+  .dealContainer .AvailableText {
+    font-size: 1.6rem;
+  }
+
+  .dealBtn {
+    margin-top: 15px;
+    padding: 4px 30px;
+    font-size: 1.6rem;
+  }
+
+  .dealContainer .sideImageContainer {
+    padding-right: 30px;
+  }
+
+  .dealContainer .sideImageContainer img {
+    max-width: 350px;
+  }
+
+  .dealContainer .thumb {
+    right: 5px;
+  }
+
+  .dealContainer .thumb li {
+    margin: 10px 0px;
+  }
+
+  .dealContainer .thumb li img {
+    max-width: 50px;
   }
 }
