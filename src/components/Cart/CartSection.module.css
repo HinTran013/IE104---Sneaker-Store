@@ -1,0 +1,15 @@
+.cartContainer {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.cartSection {
+    display: grid;
+    width: 60%;
+
+    grid-template-columns: 2fr 1fr;
+}
+
+

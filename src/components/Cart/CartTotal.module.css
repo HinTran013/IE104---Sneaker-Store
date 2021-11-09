@@ -1,0 +1,76 @@
+.titleTotal {
+    font-size: 2rem;
+
+    padding: 2rem 2rem;
+    padding-bottom: 2.5rem;
+    text-align: center;
+}
+
+.divTotal {
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.totals {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 2rem;
+    font-weight: 400;
+
+    padding-top: 1rem;
+    padding-bottom: 1.2rem;
+
+    margin-bottom: 10px;
+
+    border-bottom: solid gray 2px;
+}
+.totals:first-child {
+    margin-bottom: 28px;
+}
+
+.checked {
+    display: flex;
+
+    padding-top: 1rem;
+    padding-bottom: 1.2rem;
+    padding-left: 1rem;
+}
+.checked p {
+    font-size: 1.3rem;
+    font-weight: 400;
+
+    padding-left: 1rem;
+    align-content: center;
+}
+.checked img {
+    width: 20px;
+}
+
+.divBtn {
+    display: flex;
+
+    justify-content: center;
+}
+.divBtn a {
+    height: 100%;
+    text-decoration: none;
+    font-size: 1.8rem;
+
+    background: #222;
+    color: #fff;
+
+    padding: 15px 50px;
+    margin-top: 1rem;
+    border-radius: 50px;
+
+    position: relative;
+    transition: .3s;
+}
+.divBtn a:hover {
+    background: #c50215;
+}
