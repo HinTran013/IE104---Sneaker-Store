@@ -28,6 +28,20 @@ const SliderDealOfTheWeek = () => {
     });
   };
 
+  const turnLeft = (index) => {
+    if (index === 0) {
+      switchSlide(2);
+    } else {
+      switchSlide(index - 1);
+    }
+  };
+  const turnRight = (index) => {
+    if (index === 2) {
+      switchSlide(0);
+    } else {
+      switchSlide(index + 1);
+    }
+  };
   return (
     <>
       <div className={`${DealStyle.dealContainer}`}>
@@ -78,6 +92,21 @@ const SliderDealOfTheWeek = () => {
           <div className={`${DealStyle.sideImageContainer}`}>
             <img src={contentState.img} alt="" key={contentState.name} />
           </div>
+
+          <ul className={`${DealStyle.mobileArrowContainer}`}>
+            <li
+              className={`fas fa-chevron-left ${DealStyle.arrowLeft}`}
+              onClick={() => {
+                turnLeft(contentState.name);
+              }}
+            ></li>
+            <li
+              className={`fas fa-chevron-right ${DealStyle.arrowRight}`}
+              onClick={() => {
+                turnRight(contentState.name);
+              }}
+            ></li>
+          </ul>
         </div>
 
         <ul className={DealStyle.thumb}>

@@ -4,7 +4,7 @@ import sneaker3 from "../../assets/images/sneaker-transparent/nike-7.png";
 
 const data = [
   {
-    name: 1,
+    name: 0,
     img: sneaker1,
     nameOfShoes: "Jordan 3S",
     normalPrice: "251",
@@ -14,7 +14,7 @@ const data = [
     alreadySold: 19,
   },
   {
-    name: 2,
+    name: 1,
     img: sneaker2,
     nameOfShoes: "Vans Oldskool",
     normalPrice: "252",
@@ -24,7 +24,7 @@ const data = [
     alreadySold: 15,
   },
   {
-    name: 3,
+    name: 2,
     img: sneaker3,
     nameOfShoes: "Jordan Bred",
     normalPrice: "253",

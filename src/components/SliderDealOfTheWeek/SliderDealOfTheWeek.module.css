@@ -19,7 +19,7 @@
 .dealContentContainer {
   display: flex;
   justify-content: space-between;
-  padding-top: 50px;
+  margin-top: 80px;
 }
 
 /* Text box on the left */
@@ -127,6 +127,11 @@
 
 .dealContainer .thumb li img {
   max-width: 70px;
+}
+
+/* Mobile Arrow */
+.mobileArrowContainer {
+  display: none;
 }
 
 /* Key frame */
@@ -253,5 +258,61 @@
 
   .dealContainer .thumb li img {
     max-width: 50px;
+  }
+}
+
+/* mobile */
+@media (max-width: 740px) {
+  .dealContainer .titleContainer h2 {
+    font-size: 3rem;
+  }
+
+  .dealContentContainer {
+    flex-direction: column-reverse;
+    position: relative;
+  }
+
+  .sideTextContainer {
+    width: 100%;
+  }
+
+  .sideAboveHeaderText {
+    margin-top: 10px;
+  }
+
+  .dealContainer .sideImageContainer {
+    padding-right: 0px;
+  }
+
+  .dealContainer .sideImageContainer img {
+    padding-right: 25px;
+  }
+
+  .dealContainer .thumb {
+    display: none;
+  }
+
+  .mobileArrowContainer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+  }
+
+  .arrowLeft,
+  .arrowRight {
+    font-size: 18px;
+    padding: 3px;
+  }
+}
+
+@media (max-width: 320px) {
+  .sideTextContainer {
+    width: 100%;
+  }
+
+  .dealContainer .sideImageContainer img {
+    padding-right: 90px;
   }
 }
