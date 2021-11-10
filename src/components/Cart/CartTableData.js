@@ -7,26 +7,26 @@ export const CartItem =
         name: "SneakerDemo",
         detailColor: "Red",
         detailSize: "XXL",
-        price: 244,
+        price: "244.000 VND",
         quantity: 244,
-        total: 244
+        total: "244.000 VND"
     },
     {
         thumbnail: sneaker,
         name: "SneakerDemo",
         detailColor: "Red",
         detailSize: "XXL",
-        price: 244,
+        price: "244.000 VND",
         quantity: 244,
-        total: 244
+        total: "244.000 VND"
     }, 
     {
         thumbnail: sneaker,
         name: "SneakerDemo",
         detailColor: "Red",
         detailSize: "XXL",
-        price: 244,
+        price: "244.000 VND",
         quantity: 244,
-        total: 244
+        total: "244.000 VND"
     },
 ]

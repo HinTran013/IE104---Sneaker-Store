@@ -1,15 +1,17 @@
-.cartContainer {
+.cartSection {
     display: flex;
 
     justify-content: center;
-    align-items: center;
 
     margin-top: 100px;
     margin-bottom: 100px;
 }
 
-.cartSection {
-    
+.cartTable {
+    margin-right: 30px;
 }
 
-
+.cartCalculate {
+    display: flex;
+    flex-direction: column;
+}

@@ -24,16 +24,16 @@ const CartTable = () =>
                         return (
                             <tr>
                                 <th>
-                                    <img src={sneaker} alt="" />
+                                    <img src={item.thumbnail} alt="" />
                                     <div className={style.nameProduct}>
-                                        <p>Sneaker</p>
-                                        <p>Detail</p>
-                                        <p>Detail</p>
+                                        <p>{item.name }</p>
+                                        <p>{item.detailColor }</p>
+                                        <p>{item.detailSize }</p>
                                     </div>
                                 </th>
-                                <th className={style.amount}>244</th>
-                                <th className={style.quantity}>244</th>
-                                <th className={style.amount}>244</th>
+                                <th className={style.amount}>{item.price }</th>
+                                <th className={style.quantity}>{item.quantity }</th>
+                                <th className={style.amount}>{item.total }</th>
                             </tr>
                         );
                     })}

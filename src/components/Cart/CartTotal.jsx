@@ -23,7 +23,7 @@ const CartTotal = () =>
                     <p>Shipping and taxes calculated at checkout</p>
                 </div>
                 <div className={style.divBtn }>
-                    <a href="">Procced to checkout</a>
+                    <a href="">Procced to check out</a>
                 </div>
             </div>
         </div>

@@ -7,13 +7,15 @@ import CartShipping from './CartShipping';
 
 const CartSection = () => {
     return (
-        <div className={style.cartContainer }>
-            <section className={style.cartSection}>
+        <section className={style.cartSection}>
+            <div className={style.cartTable}>
                 <CartTable />
+            </div>
+            <div className={style.cartCalculate }>
                 <CartTotal />
                 <CartShipping />
-            </section>
-        </div>
+            </div>   
+        </section>
     )
 };
 

@@ -8,7 +8,7 @@ const CartBanner = () =>
     return (
         <div className={style.cartBanner}>
             <h1 className={style.cartTitle}>SHOPPING CART</h1>
-            <h2 className={style.cartPath}><a href="">DECOY</a></h2>
+            <h2 className={style.cartPath}><a href="">HOME/CART</a></h2>
         </div>
     );
 }
