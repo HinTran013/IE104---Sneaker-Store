@@ -7,6 +7,7 @@ import './NavbarResponsive.css'
 function Navbar() {
      const [navbar, setNavbar] = useState(false)
      const [navbarMobile, setNavbarMobile] = useState(false)
+     const [inputSearch, setInputSearch] = useState(false)
 
      // change navbar background when scroll
      const changeNavbar = () => {
@@ -74,8 +75,8 @@ function Navbar() {
 
                     <div className='header__btn-container'>
                          <div className={navbar ? 'header__search-container search-on-scroll' : 'header__search-container'} >
-                              <input className='header__input-search' type='text' placeholder='Search something...' />
-                              <i className='far fa-search header__btn-search'></i>
+                              <i className='far fa-search header__btn-search' onClick={() => { setInputSearch(!inputSearch) }}></i>
+                              <input className={inputSearch ? 'header__input-search appear' : 'header__input-search'} type='text' placeholder='Search something...' />
                          </div>
                          <i className='far fa-shopping-cart'></i>
                          <i className='far fa-user'></i>
