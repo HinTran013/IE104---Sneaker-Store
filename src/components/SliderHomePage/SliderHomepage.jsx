@@ -39,7 +39,7 @@ const SliderHomepage = () => {
           <p key={Math.random()} className={SliderCSS.description}>
             {sliderInfo.description}
           </p>
-          <a href="#" key={Math.random()}>
+          <a className={SliderCSS.navigateBtn} href="#" key={Math.random()}>
             {sliderInfo.btnText}
           </a>
         </div>

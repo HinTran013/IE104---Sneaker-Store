@@ -51,7 +51,7 @@
   text-align: justify;
 }
 
-.content .textBox a {
+.navigateBtn {
   font-size: 1.8rem;
   font-family: inherit;
   display: inline-block;
@@ -64,6 +64,11 @@
   letter-spacing: 1px;
   text-decoration: none;
   animation: small-to-big 1s ease-in-out;
+}
+
+.navigateBtn:hover {
+  background: #c50215;
+  transition: 0.4s;
 }
 
 .content .imgBox {
@@ -251,7 +256,7 @@
     font-size: 1.5rem;
   }
 
-  .content .textBox a {
+  .navigateBtn {
     font-size: 1.5rem;
   }
 }
@@ -341,7 +346,7 @@
     font-size: 4rem;
   }
 
-  .content .textBox a {
+  .navigateBtn {
     padding: 10px 30px;
   }
 
