@@ -3,11 +3,11 @@ section.sectionContainer {
     margin-bottom: 5rem;
 }
 
-section.sectionContainer .divContainer {
+/* section.sectionContainer .divContainer {
     display: flex;
     justify-content: space-between;
     margin: 0 2.5%;
-}
+} */
 
 section.sectionContainer .headerBlog {
     margin-bottom: 3rem;
@@ -60,7 +60,7 @@ section.sectionContainer .separator {
 }
 
 
-.divContainer .cardBlog {
+/* .divContainer .cardBlog {
     display: inline;
     width: 32%;
 
@@ -109,4 +109,4 @@ section.sectionContainer .separator {
 
     font-size: 1.8rem;
     font-weight: 400;
-}
+} */
