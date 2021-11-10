@@ -19,10 +19,28 @@ function DetailInfo() {
                <h4 className={style.path}>Product/Nike Shoes</h4>
 
                <div className={style.infoContainer}>
-                    <div className={style.mainImg}>
-                         <img src={OneProduct.src[color].img} />
-                    </div>
+                    <div className={style.imgWrapper}>
+                         <div className={style.mainImg}>
+                              <img src={OneProduct.src[color].img} />
+                         </div>
 
+                         <div className={style.colorThumb}>
+                              {
+                                   OneProduct.src.map((item, index) => (
+                                        <div
+                                             className={index === color ? `${style.colorItem} ${style.colorActive}` : style.colorItem}
+                                             key={index}
+                                             onClick={() =>
+                                                  changeColor(index)
+                                             }
+                                        >
+                                             <img src={item.img} />
+                                        </div>
+                                   ))
+                              }
+                         </div>
+                    </div>
+               
                     <div className={style.divide}></div>
 
                     <div className={style.infoWrapper}>
@@ -33,23 +51,7 @@ function DetailInfo() {
                               <p className={style.price}>$ {OneProduct.price}</p>
                               <p className={style.description}>{OneProduct.description}</p>
 
-                              <h4 className={style.colorText}>Color</h4>
-                              <div className={style.colorThumb}>
-                                   {
-                                        OneProduct.src.map((item, index) => (
-                                             <div 
-                                                  className={index === color ? `${style.colorItem} ${style.colorActive}` : style.colorItem}
-                                                  key={index}
-                                                  onClick={() =>
-                                                       changeColor(index)
-                                                  }
-                                             >
-                                                  <img src={item.img} />
-                                             </div>
-                                        ))
-                                   }
-                              </div>
-
+                              
                               <h4 className={style.sizeText}>Size</h4>
                               <div className={style.sizeContainer}>
                                    {
