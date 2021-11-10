@@ -6,7 +6,7 @@ import checked from "../../assets/icons/checked.png"
 const CartTotal = () =>
 {
     return (
-        <div>
+        <div className={style.cartTotalDiv }>
             <h1 className={style.titleTotal}>Cart Totals</h1>
 
             <div className={style.divTotal}>
@@ -23,7 +23,7 @@ const CartTotal = () =>
                     <p>Shipping and taxes calculated at checkout</p>
                 </div>
                 <div className={style.divBtn }>
-                    <a>Procced to checkout</a>
+                    <a href="">Procced to checkout</a>
                 </div>
             </div>
         </div>
