@@ -1,0 +1,56 @@
+.divContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2.5%;
+}
+
+.divContainer .cardBlog {
+    display: inline;
+    width: 32%;
+
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 2px 7px rgba(0,0,0,.15);
+
+    border-radius: 5px;
+}
+
+.divContainer .cardBlog img {
+    width: 100%;
+    max-width: 100%;
+}
+
+.cardBlog  p {
+    padding-top: 0.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+
+    line-height: 2rem;
+}
+.cardBlog time  {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cardBlog article a {
+    color: black;
+    text-decoration: none;
+
+    line-height: 2rem;
+
+    font-size: 3rem;
+    font-weight: bold;
+    padding-left: 2rem;
+}
+
+.cardBlog p:last-child {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+
+    line-height: 2rem;
+
+    font-size: 1.8rem;
+    font-weight: 400;
+}

@@ -1,16 +1,17 @@
 import React from 'react'
 
-import { BlogInfo } from '../OurBlog/OurBlogData'
-import ourBlogStyle from "../OurBlog/OurBlogStyle.module.css"
+import { BlogInfo } from './OurBlogData'
+import cardBlogStyle from "./CardBlog.module.css"
+//import ourBlogStyle from "../OurBlog/OurBlogStyle.module.css"
 
 const CardBlog = () =>
 {
     return (
-        <div className={ourBlogStyle.divContainer}>
+        <div className={cardBlogStyle.divContainer}>
 
         {BlogInfo.map((item) => {
             return (
-                <div className={ourBlogStyle.cardBlog}>
+                <div className={cardBlogStyle.cardBlog}>
                     <a href={item.path}><img src={item.thumbnail} alt="" /></a>
                     <p><time>on {item.timePost}</time></p>
                     <article><a href="">{item.titlePost}</a></article>
