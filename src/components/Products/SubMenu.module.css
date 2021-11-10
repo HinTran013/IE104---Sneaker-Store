@@ -54,3 +54,10 @@
     transform: scaleY(0);
   }
 } */
+
+/* responsive */
+@media (max-width: 1250px) {
+  .arrow {
+    margin-right: 50px;
+  }
+}

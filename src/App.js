@@ -22,10 +22,10 @@ function App() {
           <Route path="/product" component={ProductPage} />
           <Route path="/about-us" component={AboutUsPage} />
           <Route path="/blog" component={BlogPage} />
-          <Route path="/cart" component={CartPage }/>
+          <Route path="/cart" component={CartPage} />
         </Switch>
       </Router>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 }

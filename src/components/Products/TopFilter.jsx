@@ -6,7 +6,7 @@ function TopFilter() {
     <>
       <div className={`${Style.filterContainer}`}>
         <div className={`${Style.showingAmount}`}>
-          Showing 1 - 9 of 20 results
+          Showing 1 - 12 of 20 results
         </div>
         <select name="" id="" className={`${Style.selection}`}>
           <option value="" className={`${Style.singleOption}`}>
