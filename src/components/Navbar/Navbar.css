@@ -93,6 +93,13 @@
      opacity: 0.6;
 }
 
+.header__search-container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: row-reverse;
+}
+
 .header__input-search {
      outline: none;
      background-color: transparent;
@@ -100,15 +107,17 @@
      border-radius: 25px;
      border: 1px solid rgba(0, 0, 0, 0.2);
      font-style: italic;
-     display: none;
+     transform: scale(0);
+     transition: width 0.3s, transform 0.3s ease 0.2s, opacity 0.3s ease 0.2s,
+          visibility 0.3s ease 0.2s, color 0.3s linear, background 0.3s linear;
 }
 
 .header__input-search:focus {
      border: 1px solid rgba(0, 0, 0, 0.6);
 }
 
-.header__btn-search:hover .header__input-search {
-     display: block;
+.appear {
+     transform: scale(1);
 }
 
 /* Dropdown menu at Product */
