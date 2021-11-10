@@ -16,7 +16,8 @@ footer.container::before {
 
     background-color: rgb(255, 255, 255,0.05);
 }
-.colInfo *, .trademarks * {
+.colInfo > *, 
+.trademarks * {
     position: relative;
 }
 
@@ -25,7 +26,6 @@ footer.container ul {
     padding: 0;
     margin: 0;
 }
-
 footer.container a {
     color: rgb(231, 231, 231);
     text-decoration: none;
@@ -35,26 +35,37 @@ footer.container a:hover {
     text-decoration: none;
 }
 
+.colInfo .colUpper,
+.colInfo .col {
+    width: 15%;
+}
 
 .colInfo {
     width: 100%;
 
-    padding-left: 0;
-    padding-right: 0;
     display: flex;
+    justify-content: center;
 
     padding-top: 2rem;
     padding-bottom: 1rem;
-    justify-content: center;
-}
-.colInfo div.col {
-    margin: 0 10rem;
 }
 
+
 .colUpper {
-    display: flex;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    margin-left: 20px;
+    margin-right: 20px;
+
+    border-right: 2px solid rgba(199, 199, 199, 0.849);
 }
 .colUpper ul {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
     font-size: 1.6rem;
     font-weight: bold;
     word-spacing: 0.07rem;
@@ -62,34 +73,43 @@ footer.container a:hover {
 
     line-height: 2.75rem;
 }
-div.colUpper {
-    padding: 0 10rem;
-
-    border-right: 2px solid rgba(199, 199, 199, 0.849);
+.colUpper ul li {
+    padding-left: 50px;
 }
 
-
 .colInfo .col {
-    font-size: 1.35rem;
+    display: flex;
+    justify-content: center;
+
+    font-size: 1.5rem;
     font-weight: 300;
 
     line-height: 2rem;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .colInfo .col ul li:first-child {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 600;
+
+    padding-bottom: 3px;
 }
 
 
 
 .trademarks {
-    margin-top: 1rem;
+    margin-top: 25px;
 }
 .icon {
     display: flex;
     justify-content: center;
-    margin-top: 0.2rem;
-    margin-bottom: 1rem;
+}
+.row {
+    margin-top: 5px;
 }
 .icon img {
     margin-left: 1rem;
@@ -102,6 +122,6 @@ div.colUpper {
 
     font-size: 1.35rem;
     font-weight: 100;
-    padding-top: 0.3rem;
+
     padding-bottom: 1.5rem;
 }

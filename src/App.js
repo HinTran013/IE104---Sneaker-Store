@@ -25,7 +25,7 @@ function App() {
           <Route path="/cart" component={CartPage} />
         </Switch>
       </Router>
-      {/* <Footer /> */}
+      <Footer />
     </React.Fragment>
   );
 }

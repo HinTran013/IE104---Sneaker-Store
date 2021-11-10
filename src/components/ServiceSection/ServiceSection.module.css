@@ -2,10 +2,9 @@ section.sectionContainer {
     display: flex;
     justify-content: center;
 
-    margin-top: 8rem;
-    margin-bottom: 6rem;
+    margin-top: 70px;
+    margin-bottom: 50px;
 
-    
 }
 
 .sectionContainer .serviceDiv {
@@ -17,6 +16,9 @@ section.sectionContainer {
 
     padding-left: 15px;
     padding-right: 15px;
+
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .sectionContainer .serviceDiv:last-child {   
     border: none;
@@ -30,7 +32,7 @@ section.sectionContainer {
 
 
 .serviceDiv h2 {
-    font-size: 2.0rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 2.5rem;
     
@@ -38,8 +40,8 @@ section.sectionContainer {
 }
 
 .serviceDiv h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 400;
 
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
