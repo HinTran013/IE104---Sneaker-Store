@@ -12,8 +12,8 @@ const CartSection = () => {
                 <CartTable />
             </div>
             <div className={style.cartCalculate }>
-                <CartTotal />
                 <CartShipping />
+                <CartTotal />
             </div>   
         </section>
     )
