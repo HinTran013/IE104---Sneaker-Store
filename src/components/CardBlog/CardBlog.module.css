@@ -22,7 +22,7 @@
 .cardBlog  p {
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
-    padding-left: 2rem;
+    padding-left: 10px;
 
     line-height: 2rem;
 }
@@ -32,6 +32,10 @@
     font-style: italic;
 }
 
+.cardBlog article {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .cardBlog article a {
     color: black;
     text-decoration: none;
@@ -40,17 +44,25 @@
 
     font-size: 3rem;
     font-weight: bold;
-    padding-left: 2rem;
 }
 
 .cardBlog p:last-child {
-    padding-top: 1.5rem;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
-    padding-right: 1rem;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 
     line-height: 2rem;
 
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: 400;
+}
+
+@media (max-width: 739px) {
+    .cardBlog article a {
+        font-size: 2rem;
+    }
+    .cardBlog p:last-child {
+        font-size: 1.5rem;
+    }
 }

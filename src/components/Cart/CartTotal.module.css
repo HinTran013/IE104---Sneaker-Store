@@ -86,3 +86,17 @@
 .divBtn a:hover {
     background: #1dbd67;
 }
+
+
+
+@media (max-width: 1226px) {
+    .divTotal {
+       width: 500px;
+    }
+}
+
+@media (max-width: 739px) {
+    .divTotal {
+        width: 450px;
+     }
+}
