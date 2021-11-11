@@ -6,13 +6,16 @@ import ProductItem from "../ProductItem/ProductItem";
 import TopFilter from "./TopFilter";
 import Pagination from "./Pagination";
 
-function ProductsMainPart() {
+function ProductsMainPart(props) {
   return (
     <>
       <div className={Style.mainPartContainer}>
         {/* side bar */}
         <aside className={`${Style.sideBarContainer}`}>
-          <SideBar />
+          <SideBar
+            showMobileSideBar={props.showMobileSideBar}
+            toggleMobileSideBar={props.toggleMobileSideBar}
+          />
         </aside>
 
         {/* Main part */}

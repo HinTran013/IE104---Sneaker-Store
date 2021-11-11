@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import Style from "./FloatingFilter.module.css";
 
-function FloatingFilter() {
-  const [isFilterClicked, setIsFilterClicked] = useState(false);
-
-  function toggleFilter() {
-    return setIsFilterClicked(!isFilterClicked);
-  }
-
+function FloatingFilter(props) {
   return (
     <>
-      <div onClick={toggleFilter} className={`${Style.floatingContainer}`}>
+      <div
+        onClick={() => {
+          props.click();
+        }}
+        className={`${Style.floatingContainer}`}
+      >
         <i
           class={
-            isFilterClicked
+            props.isShow
               ? `fas fa-times ${Style.floatingIcon}`
               : `fas fa-filter ${Style.floatingIcon}`
           }

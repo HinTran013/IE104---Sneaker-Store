@@ -45,3 +45,21 @@
   background-color: #c50215;
   transition: 0.3s;
 }
+
+@media (max-width: 376px) {
+  .paginationContainer {
+    margin-top: 10px;
+  }
+
+  .currentPageContainer {
+    padding: 15px 20px;
+  }
+
+  .paginationMainPart {
+    margin-left: 15px;
+  }
+
+  .arrowRight {
+    margin-left: 15px;
+  }
+}
