@@ -40,6 +40,8 @@ function ProductsMainPart() {
           <div className={`${Style.paginationContainer}`}>
             <Pagination />
           </div>
+
+          <div className={`${Style.paginationContainer}`}></div>
         </div>
       </div>
     </>
