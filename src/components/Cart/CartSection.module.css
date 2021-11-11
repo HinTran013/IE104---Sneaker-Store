@@ -1,0 +1,17 @@
+.cartSection {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.cartTable {
+    margin-right: 30px;
+}
+
+.cartCalculate {
+    display: flex;
+    flex-direction: column;
+}

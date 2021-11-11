@@ -1,0 +1,72 @@
+.cartTable {
+    letter-spacing: 1px;
+    font-size: 2rem;
+    border-spacing: 0px;
+
+    margin-bottom: 3rem;
+}
+
+.trHead th {
+    color: #1D3178;
+    
+    padding: 2rem 2rem;
+    padding-bottom: 2.5rem;
+}
+.trHead th:first-child {
+    text-align: left;
+}
+
+.trProduct {
+    color: #15245E;
+}
+
+.trProduct th:first-child {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+
+    color: #1D3178;
+}
+.trProduct th {
+    margin-left: 1.5rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    border-bottom: rgba(68, 66, 66, 0.4) solid 2px;
+}
+
+.trProduct img {
+    width: 120px;
+    
+    padding: 1rem;
+
+    box-shadow: 0 2px 7px rgba(0,0,0,.15);
+}
+
+.nameProduct p {
+    padding-left: 2rem;
+    padding-bottom: 0.8rem;
+
+    color: #A1A8C1;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    text-align: left;
+}
+.nameProduct p:first-child {
+    color: black;
+    font-size: 2.1rem;
+    font-weight: 600;
+
+    padding-bottom: 1.3rem;
+}
+
+.trProduct .amount,
+.trProduct .quantity {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.trProduct .quantity {
+    font-weight: 600;
+    color: gray;
+}
+

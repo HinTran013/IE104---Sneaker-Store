@@ -1,22 +1,22 @@
 section.sectionContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 
     margin-top: 8rem;
     margin-bottom: 6rem;
 
-    margin-left: 6rem;
-    margin-right: 6rem;
+    
 }
 
 .sectionContainer .serviceDiv {
-    width: 20%;
+    width: 15%;
 
     text-align: center;
 
     border-right: black 2px solid;
 
-    padding-right: 10rem;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .sectionContainer .serviceDiv:last-child {   
     border: none;
@@ -24,22 +24,22 @@ section.sectionContainer {
 }
 
 .serviceDiv img {
-    width: 80px;
-    margin-bottom: 0.5rem;
+    width: 60px;
+    margin-bottom: 15px;
 }
 
 
 .serviceDiv h2 {
-    font-size: 2.5rem;
-    letter-spacing: 0.1rem;
+    font-size: 2.0rem;
     font-weight: 600;
+    line-height: 2.5rem;
     
-    margin-bottom: 1rem;
+    margin-bottom: 5px;
 }
 
 .serviceDiv h3 {
     font-size: 1.5rem;
     font-weight: 400;
 
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
 }

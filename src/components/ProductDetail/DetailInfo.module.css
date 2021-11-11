@@ -20,8 +20,16 @@
      justify-content: space-around;
 }
 
-.mainImg {
+.imgWrapper {
      flex: 2;
+     /* overflow: hidden; */
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.mainImg {
      /* overflow: hidden; */
      display: flex;
      justify-content: center;
@@ -84,6 +92,7 @@
 
 .colorThumb {
      display: flex;
+     justify-content: center;
      flex-wrap: wrap;
      margin-bottom: 16px;
 }

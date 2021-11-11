@@ -32,6 +32,7 @@
           display: inline-block;
           border: none;
           width: 100%;
+          transform: scale(1);
      }
 
      .header__input-search:focus {
