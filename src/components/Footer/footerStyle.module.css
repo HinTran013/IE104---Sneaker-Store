@@ -38,6 +38,12 @@ footer.container a:hover {
 .colInfo .colUpper,
 .colInfo .col {
     width: 15%;
+
+    padding-left: 15px;
+    padding-right: 15px;
+
+    /* margin-left: 0px;
+    margin-right: 20px; */
 }
 
 .colInfo {
@@ -52,12 +58,7 @@ footer.container a:hover {
 
 
 .colUpper {
-    padding-left: 15px;
-    padding-right: 15px;
-
-    margin-left: 20px;
-    margin-right: 20px;
-
+  
     border-right: 2px solid rgba(199, 199, 199, 0.849);
 }
 .colUpper ul {
@@ -86,11 +87,7 @@ footer.container a:hover {
 
     line-height: 2rem;
 
-    padding-left: 15px;
-    padding-right: 15px;
-
-    margin-left: 20px;
-    margin-right: 20px;
+    line-height: 1.7;
 }
 .colInfo .col ul li:first-child {
     font-size: 1.7rem;
@@ -124,4 +121,83 @@ footer.container a:hover {
     font-weight: 100;
 
     padding-bottom: 1.5rem;
+}
+
+
+@media (max-width: 1365px) {
+    .colInfo .colUpper,
+    .colInfo .col {
+    width: 20%;
+
+    padding-left: 5px;
+    padding-right: 5px;
+
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+
+    .colUpper ul li {
+        padding-left: 35px;
+
+        font-size: 1.4rem;
+    }
+
+    .colInfo .col ul li:first-child {
+        font-size: 1.5rem;
+        
+        padding-bottom: 4px;
+    }
+    .colInfo .col {
+        font-size: 1.4rem;
+
+        line-height: 1.6;
+    }
+}
+
+
+@media (max-width: 1039px) {
+    .colInfo .colUpper,
+    .colInfo .col {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .colUpper ul li {
+        padding-left: 25px;
+
+    }
+}
+
+@media (max-width: 902px) {
+    .colUpper ul li {
+        padding-left: 10px;
+
+        font-size: 1.3rem;
+    }
+
+    .colInfo .col ul li:first-child {
+        font-size: 1.4rem;
+       
+    }
+    .colInfo .col {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 739px) {
+    .colInfo .colUpper,
+    .colInfo .col {
+        margin-left: 5px;
+        margin-right: 5px;
+
+        padding-left: 10px;
+        padding-right: 15px;
+    }
+
+    .colUpper ul li {
+        padding-left: 0px;
+        margin-left: -5px;
+
+        font-size: 1.2rem;
+    }
 }

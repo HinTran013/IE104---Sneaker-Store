@@ -22,7 +22,7 @@
 .cardBlog  p {
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
-    padding-left: 2rem;
+    padding-left: 10px;
 
     line-height: 2rem;
 }
@@ -33,7 +33,7 @@
 }
 
 .cardBlog article {
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 10px;
 }
 .cardBlog article a {
@@ -49,7 +49,7 @@
 .cardBlog p:last-child {
     padding-top: 15px;
     padding-bottom: 20px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-right: 10px;
 
     line-height: 2rem;

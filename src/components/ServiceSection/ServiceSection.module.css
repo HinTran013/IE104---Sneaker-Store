@@ -17,8 +17,6 @@ section.sectionContainer {
     padding-left: 15px;
     padding-right: 15px;
 
-    margin-left: 20px;
-    margin-right: 20px;
 }
 .sectionContainer .serviceDiv:last-child {   
     border: none;
@@ -44,4 +42,36 @@ section.sectionContainer {
     font-weight: 400;
 
     margin-bottom: 5px;
+}
+
+
+
+@media (max-width: 1365px) {
+    .sectionContainer .serviceDiv {
+        width: 20%;
+    }
+
+    .serviceDiv h2 {
+        font-size: 1.7rem;
+    }
+    .serviceDiv h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1039px) {
+    .sectionContainer .serviceDiv {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 739px) {
+    .sectionContainer .serviceDiv {
+        margin-left: 5px;
+        margin-right: 5px;
+
+        padding-left: 10px;
+        padding-right: 15px;
+    }
 }
