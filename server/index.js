@@ -7,11 +7,11 @@ const productRoutes = require('./routes/product.route.js');
 
 const app = express();
 
-app.use('/product', productRoutes);
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+app.use('/product', productRoutes);
 
 const CONNECT_URL = 'mongodb+srv://johnnyluu:johnnyluu123@cluster0.29gji.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 3001;
