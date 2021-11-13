@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
-import { OneProduct } from './ProductData'
+import React, { useState, useEffect } from 'react'
+import { OneProduct } from './ProductData'        //temp imgs
 import style from './DetailInfo.module.css'
+import { getOneProduct } from '../../api/productAPI'
 
-function DetailInfo() {
+function DetailInfo({ id }) {
      const [color, setColor] = useState(0)
      const [size, setSize] = useState()
+     const [product, setProduct] = useState({ size: [] })
 
      const changeColor = (index) => {
           setColor(index)
@@ -13,6 +15,14 @@ function DetailInfo() {
      const changeSize = (index) => {
           setSize(index)
      }
+
+     useEffect(() => {
+          getOneProduct(id)
+               .then(res => {
+                    setProduct(res)
+                    console.log(res)
+               })
+     }, [])
 
      return (
           <div className={style.container}>
@@ -45,17 +55,17 @@ function DetailInfo() {
 
                     <div className={style.infoWrapper}>
                          <div className={style.info}>
-                              <h2 className={style.name}>{OneProduct.name}</h2>
-                              <h4 className={style.brand}>{OneProduct.brand}</h4>
-                              <h4 className={style.rating}>Rating: {OneProduct.rating}</h4>
-                              <p className={style.price}>$ {OneProduct.price}</p>
-                              <p className={style.description}>{OneProduct.description}</p>
+                              <h2 className={style.name}>{product.name}</h2>
+                              <h4 className={style.brand}>{product.brand}</h4>
+                              <h4 className={style.rating}>Rating: {product.rating}</h4>
+                              <p className={style.price}>$ {product.price}</p>
+                              <p className={style.description}>{product.description}</p>
 
                               
                               <h4 className={style.sizeText}>Size</h4>
                               <div className={style.sizeContainer}>
                                    {
-                                        OneProduct.size.map((item, index) => (
+                                        product.size.map((item, index) => (
                                              <div 
                                                   className={index === size ? `${style.sizeItem} ${style.sizeActive}` : style.sizeItem}
                                                   key={index}

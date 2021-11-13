@@ -4,12 +4,15 @@ import DetailInfo from '../components/ProductDetail/DetailInfo'
 import SuggestProducts from '../components/ProductDetail/SuggestProducts'
 
 
-function ProductDetail() {
+function ProductDetail(props) {
+
+     const id = props.match.params.id;
+
      return (
           <>
                <BackGroundImg />
 
-               <DetailInfo />
+               <DetailInfo id={id}/>
 
                <SuggestProducts />
           </>
