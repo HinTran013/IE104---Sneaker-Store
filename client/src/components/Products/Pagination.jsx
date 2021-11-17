@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Style from "./Pagination.module.css";
 
-const Pagination = () => {
-  const maxPage = 3;
-
+const Pagination = ({ totalPage }) => {
   const [page, setPageState] = useState(1);
-
+  console.log(totalPage);
   const setPreviousPage = () => {
     if (page > 1) {
       setPageState(page - 1);
@@ -13,7 +11,7 @@ const Pagination = () => {
   };
 
   const setNextPage = () => {
-    if (page < maxPage) {
+    if (page < totalPage) {
       setPageState(page + 1);
     }
   };
@@ -33,7 +31,7 @@ const Pagination = () => {
         <div className={`${Style.paginationMainPart}`}>
           <div className={`${Style.currentPageContainer}`}>Page {page}</div>
           <div className={`${Style.totalPageContainer}`}>
-            <span>of {maxPage}</span>
+            <span>of {totalPage}</span>
           </div>
         </div>
         <div
