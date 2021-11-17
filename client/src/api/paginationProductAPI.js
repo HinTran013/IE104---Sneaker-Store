@@ -1,7 +1,5 @@
 import Axios from "axios";
 
-const GET_URL = "http://localhost:3001/productPage";
-
-export const getAllProduct = () => {
+export const getAllProduct = (GET_URL) => {
   return Axios.get(GET_URL).then((res) => res.data);
 };

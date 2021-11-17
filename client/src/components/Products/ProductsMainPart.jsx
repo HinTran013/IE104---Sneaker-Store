@@ -9,14 +9,64 @@ import { getAllProduct } from "../../api/paginationProductAPI";
 function ProductsMainPart(props) {
   const [pageNumber, setPageNumber] = React.useState(0);
   const [totalPage, setTotalPage] = React.useState(0);
+  const [totalProduct, setTotalProduct] = React.useState(0);
   const [productList, setProductList] = React.useState([]);
+  const [showingAmount, setShowingAmount] = React.useState({
+    startProduct: 1,
+    endProduct: 12,
+  });
 
   useEffect(() => {
-    getAllProduct().then((res) => {
-      setProductList(res.products);
-      setTotalPage(res.totalPage);
-    });
-  }, []);
+    getAllProduct(`http://localhost:3001/productPage?page=${pageNumber}`).then(
+      (res) => {
+        setProductList(res.products);
+
+        setTotalPage(res.totalPage);
+        setTotalProduct(res.totalProducts);
+        console.log(res);
+      }
+    );
+  }, [pageNumber]);
+
+  function changePage(number) {
+    setPageNumber(number);
+  }
+
+  function setPrevShowingAmount() {
+    if (showingAmount.startProduct !== 1) {
+      setShowingAmount((prev) => {
+        if (prev.startProduct + 12 > totalProduct) {
+          return {
+            startProduct: prev.startProduct - 12,
+            endProduct: prev.startProduct - 1,
+          };
+        }
+
+        return {
+          startProduct: prev.startProduct - 12,
+          endProduct: prev.endProduct - 12,
+        };
+      });
+    }
+  }
+
+  function setNextShowingAmount() {
+    if (showingAmount.endProduct < totalProduct) {
+      setShowingAmount((prev) => {
+        if (prev.endProduct + 12 >= totalProduct) {
+          return {
+            startProduct: prev.startProduct + 12,
+            endProduct: totalProduct,
+          };
+        }
+
+        return {
+          startProduct: prev.startProduct + 12,
+          endProduct: prev.endProduct + 12,
+        };
+      });
+    }
+  }
 
   return (
     <>
@@ -33,7 +83,7 @@ function ProductsMainPart(props) {
         <div className={`${Style.productsShowContainer}`}>
           {/* Top filter */}
           <div className={`${Style.topFilterContainer}`}>
-            <TopFilter />
+            <TopFilter total={totalProduct} showingAmount={showingAmount} />
           </div>
           {/* Product Grid */}
           <div className={`${Style.productsGrid}`}>
@@ -43,7 +93,13 @@ function ProductsMainPart(props) {
           </div>
           {/* Pagination */}
           <div className={`${Style.paginationContainer}`}>
-            <Pagination total={totalPage} />
+            <Pagination
+              total={totalPage}
+              pageNumber={pageNumber}
+              changePage={changePage}
+              setPrevShowingAmount={setPrevShowingAmount}
+              setNextShowingAmount={setNextShowingAmount}
+            />
           </div>
 
           <div className={`${Style.paginationContainer}`}></div>

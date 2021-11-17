@@ -1,12 +1,13 @@
 import React from "react";
 import Style from "./TopFilter.module.css";
 
-function TopFilter() {
+function TopFilter({ total, showingAmount }) {
   return (
     <>
       <div className={`${Style.filterContainer}`}>
         <div className={`${Style.showingAmount}`}>
-          Showing 1 - 12 of 20 results
+          Showing {showingAmount.startProduct} - {showingAmount.endProduct} of{" "}
+          {total} results
         </div>
         <select name="" id="" className={`${Style.selection}`}>
           <option value="" className={`${Style.singleOption}`}>
