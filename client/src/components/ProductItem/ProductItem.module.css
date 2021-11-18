@@ -139,14 +139,14 @@
 @media (max-width: 740px) and (min-width: 700px) {
   .card {
     width: 80%;
-    height: 500px;
+    height: 400px;
   }
 }
 
 @media (max-width: 699px) and (min-width: 575px) {
   .card {
     width: 80%;
-    height: 450px;
+    height: 420px;
   }
 }
 

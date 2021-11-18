@@ -26,7 +26,7 @@ function DetailInfo({ id }) {
 
      return (
           <div className={style.container}>
-               <h4 className={style.path}>Product/Nike Shoes</h4>
+               <h4 className={style.path}>Product / {product.name}</h4>
 
                <div className={style.infoContainer}>
                     <div className={style.imgWrapper}>
