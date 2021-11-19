@@ -1,11 +1,18 @@
-import React, { Component } from 'react'
-
+import React, { useState, useEffect } from 'react'
 import style from "./CartTable.module.css"
-import sneaker from "../../assets/images/ColoredSneaker.png"
+import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
 import { CartItem } from "./CartTableData.js"
 
-const CartTable = () =>
-{
+const CartTable = () => {
+    const [cartList, setCartList] = useState([]);
+
+    useEffect(() => {
+        // get cart list from session storage
+        const sessionStorage = window.sessionStorage;
+        const cart = JSON.parse(sessionStorage.getItem('cart'));
+        setCartList(cart);
+    }, []);
+
     return (
         <div>
             <table className={style.cartTable}>
@@ -20,15 +27,15 @@ const CartTable = () =>
 
                 <tbody className={style.trProduct}>
 
-                    {CartItem.map((item) => {
+                    {cartList.map((item) => {
                         return (
                             <tr>
                                 <th>
-                                    <img src={item.thumbnail} alt="" />
+                                    <img src={sneaker} alt="" />
                                     <div className={style.nameProduct}>
                                         <p>{item.name }</p>
-                                        <p>{item.detailColor }</p>
-                                        <p>{item.detailSize }</p>
+                                        <p>{item.color }</p>
+                                        <p>{item.size }</p>
                                     </div>
                                 </th>
                                 <th className={style.amount}>{item.price }</th>

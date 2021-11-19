@@ -52,6 +52,7 @@
   justify-content: center;
   align-items: center;
   color: #333;
+  z-index: 2;
 }
 
 .btn {
@@ -90,7 +91,7 @@
 
 .content {
   text-align: center;
-  transform: translateY(-20px);
+  /* transform: translateY(-20px); */
 }
 
 .name {
@@ -107,6 +108,27 @@
 .rating i {
   margin: 0 1px;
   color: #ffab04;
+}
+
+.sizeContainer {
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #333;
+  margin-top: 8px;
+}
+
+.sizeItem {
+  margin-right: 6px;
+}
+
+.sizeItem:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.sizeChoose {
+  color: red
 }
 
 .shortDesc {
