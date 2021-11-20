@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from "react-router-dom";
 import style from './ProductItem.module.css'
 import Nike1 from '../../assets/images/sneaker-transparent/nike-1.png'     //temp image
 import { selectCustomer } from '../../features/customerSlice'
@@ -68,7 +69,7 @@ function ProductItem({ data }) {
 
 
      return (
-          <a href={`/product/${data._id}`} className={style.card} >
+          <Link to={`/product/${data._id}`} className={style.card} >
                <div className={style.imgBox}>
                     <img src={Nike1} />
                </div>
@@ -117,7 +118,7 @@ function ProductItem({ data }) {
                     </div>
                     <h2 className={style.price}>{`$${data.price}`}</h2>
                </div>
-          </a>
+          </Link>
      )
 }
 
