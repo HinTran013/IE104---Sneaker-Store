@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./UserForm.css";
 import sneaker from "../../assets/icons/sneaker.png";
 import recover from "../../assets/icons/recover.png";
 import register from "../../assets/icons/register.jpg";
 import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../../api/customerAPI";
+import { login } from "../../features/customerSlice";
 
 function UserForm() {
   const [loginDisplay, setLoginDisplay] = useState("block");
@@ -16,11 +18,31 @@ function UserForm() {
   const [emailSignup, setEmailSignup] = useState('');
   const [passwordSignup, setPasswordSignup] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    
+
     getCustomerLogin(emailLogin, passwordLogin).then(customer => {
-      console.log(customer);
+      if (customer) {
+
+        // Dispatch customer's data to redux
+        dispatch(login({
+          id: customer._id,
+          email: customer.email,
+          name: customer.name,
+          gender: customer.gender,
+          phone: customer.phone,
+          address: customer.address
+        }));
+
+        // TODO: HANDLE UI UPDATE WHEN LOGIN SUCCESS HERE
+        
+      }
+      else {
+        // TODO: HANDLE LOGIN FAIL HERE
+
+      }
     });
   }
 
