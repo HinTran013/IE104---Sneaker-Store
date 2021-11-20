@@ -7,7 +7,7 @@ import { createCart, addToCart } from '../../api/cartAPI'
 
 function ProductItem({ data }) {
 
-     const customer = useSelector(selectCustomer)
+     const customer = useSelector(selectCustomer)      //get current logged in customer
 
      const [sizeChoose , setSizeChoose] = useState('');
 
@@ -68,7 +68,7 @@ function ProductItem({ data }) {
 
 
      return (
-          <a href={`/product/${data._id}`} className={style.card}>
+          <a href={`/product/${data._id}`} className={style.card} >
                <div className={style.imgBox}>
                     <img src={Nike1} />
                </div>

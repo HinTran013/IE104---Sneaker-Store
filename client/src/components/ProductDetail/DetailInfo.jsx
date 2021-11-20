@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { OneProduct } from './ProductData'        //temp imgs
 import style from './DetailInfo.module.css'
 import { getOneProduct } from '../../api/productAPI'
+import { selectCustomer } from '../../features/customerSlice'
+import { createCart, addToCart } from '../../api/cartAPI'
 
 function DetailInfo({ id }) {
+
+     const customer = useSelector(selectCustomer)      //get current logged in customer
+
      const [color, setColor] = useState(0)
      const [sizeChoose, setSizeChoose] = useState('')
      const [product, setProduct] = useState({ size: [] })
@@ -22,7 +28,15 @@ function DetailInfo({ id }) {
                return;
           }
 
-          // store data to localStorage
+          if (customer) {
+               addToCartDatabase()
+          }
+          else {
+               addToCartLocal()
+          }
+     }
+
+     const addToCartLocal = () => {
           const sessionStorage = window.sessionStorage
           const cart = JSON.parse(sessionStorage.getItem('cart')) || []
           sessionStorage.setItem('cart', JSON.stringify([...cart, {
@@ -34,8 +48,30 @@ function DetailInfo({ id }) {
                price: product.price
           }
           ]))
+     }
 
-          alert('Added to cart successfully!')
+     const addToCartDatabase = () => {
+          addToCart(
+               customer.id,
+               product._id,
+               product.name,
+               product.brand,
+               product.price,
+               product.size[sizeChoose],
+               product.color
+          )
+          .then(res => {
+               console.log(res)
+               // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
+               alert('Added to cart successfully!')
+
+          })
+          .catch(err => {
+               console.log(err)
+               // TODO: HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
+               alert('Add to cart fail!')
+
+          })
      }
 
      useEffect(() => {
