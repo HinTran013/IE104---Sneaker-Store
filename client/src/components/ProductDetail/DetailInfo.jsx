@@ -5,7 +5,7 @@ import { getOneProduct } from '../../api/productAPI'
 
 function DetailInfo({ id }) {
      const [color, setColor] = useState(0)
-     const [size, setSize] = useState()
+     const [sizeChoose, setSizeChoose] = useState('')
      const [product, setProduct] = useState({ size: [] })
 
      const changeColor = (index) => {
@@ -13,7 +13,29 @@ function DetailInfo({ id }) {
      }
 
      const changeSize = (index) => {
-          setSize(index)
+          setSizeChoose(index)
+     }
+
+     const handleAddToCart = () => {
+          if (sizeChoose === '') {
+               alert('Please choose size');
+               return;
+          }
+
+          // store data to localStorage
+          const sessionStorage = window.sessionStorage
+          const cart = JSON.parse(sessionStorage.getItem('cart')) || []
+          sessionStorage.setItem('cart', JSON.stringify([...cart, {
+               id: product._id,
+               size: product.size[sizeChoose],
+               name: product.name,
+               brand: product.brand,
+               color: product.color,
+               price: product.price
+          }
+          ]))
+
+          alert('Added to cart successfully!')
      }
 
      useEffect(() => {
@@ -67,7 +89,7 @@ function DetailInfo({ id }) {
                                    {
                                         product.size.map((item, index) => (
                                              <div 
-                                                  className={index === size ? `${style.sizeItem} ${style.sizeActive}` : style.sizeItem}
+                                                  className={index === sizeChoose ? `${style.sizeItem} ${style.sizeActive}` : style.sizeItem}
                                                   key={index}
                                                   onClick={() =>
                                                        changeSize(index)
@@ -79,7 +101,7 @@ function DetailInfo({ id }) {
                                    }
                               </div>
 
-                              <button className={style.btnAddToCart}>Add to cart</button>
+                              <button className={style.btnAddToCart} onClick={handleAddToCart}>Add to cart</button>
                               <button className={style.btnFavourite}>Favourite</button>
                          </div>
                     </div>
