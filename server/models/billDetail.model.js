@@ -12,6 +12,6 @@ const billDetailSchema = mongoose.Schema({
   quantity: Number,
 });
 
-const BillDetail = mongoose.model("bill_detail", billDetailSchema);
+const BillDetail = mongoose.model("BillDetail", billDetailSchema);
 
 module.exports = BillDetail;

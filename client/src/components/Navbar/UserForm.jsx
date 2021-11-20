@@ -3,11 +3,46 @@ import "./UserForm.css";
 import sneaker from "../../assets/icons/sneaker.png";
 import recover from "../../assets/icons/recover.png";
 import register from "../../assets/icons/register.jpg";
+import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../../api/customerAPI";
 
 function UserForm() {
   const [loginDisplay, setLoginDisplay] = useState("block");
   const [registerDisplay, setRegisterDisplay] = useState("none");
   const [recoverDisplay, setRecoverDisplay] = useState("none");
+
+  const [emailLogin, setEmailLogin] = useState('');
+  const [passwordLogin, setPasswordLogin] = useState('');
+  
+  const [emailSignup, setEmailSignup] = useState('');
+  const [passwordSignup, setPasswordSignup] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    getCustomerLogin(emailLogin, passwordLogin).then(customer => {
+      console.log(customer);
+    });
+  }
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+
+    getCustomerByEmail(emailSignup)
+      .then(customer => {
+        if (customer) {
+          console.log('Customer already exists');
+        } 
+        else {
+          createCustomerAccount(emailSignup, passwordSignup)
+            .then(res => {
+              console.log(res)
+          });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   function SetFormDisplay(form) {
     setLoginDisplay("none");
@@ -44,6 +79,8 @@ function UserForm() {
               id="Email_Address"
               placeholder="Email Address"
               required
+              value={emailLogin}
+              onChange={(e) => setEmailLogin(e.target.value)}
             ></input>
             <input
               type="password"
@@ -51,6 +88,8 @@ function UserForm() {
               id="Password"
               placeholder="Password"
               required
+              value={passwordLogin}
+              onChange={(e) => setPasswordLogin(e.target.value)}
             ></input>
             <a
               className="recover_form_change"
@@ -59,7 +98,7 @@ function UserForm() {
             >
               Forget your password?{" "}
             </a>
-            <input type="submit" className="btn" value="SIGN UP"></input>
+            <input type="submit" className="btn" value="SIGN UP" onClick={(e) => handleLogin(e)}></input>
             <div className="register_form_change">
               <span>Don't have an account? </span>
               <a
@@ -89,6 +128,8 @@ function UserForm() {
               id="Email_Address"
               placeholder="Email Address"
               required
+              value={emailSignup}
+              onChange={(e) => setEmailSignup(e.target.value)}
             ></input>
             <input
               type="password"
@@ -96,8 +137,10 @@ function UserForm() {
               id="Password"
               placeholder="Password"
               required
+              value={passwordSignup}
+              onChange={(e) => setPasswordSignup(e.target.value)}
             ></input>
-            <input type="submit" className="btn" value="REGISTER"></input>
+            <input type="submit" className="btn" value="REGISTER" onClick={(e) => handleSignup(e)}></input>
             <div className="sign_up_form_change">
               <a
                 href="javascript:void(0)"

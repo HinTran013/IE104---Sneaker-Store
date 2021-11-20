@@ -11,6 +11,7 @@ function ProductItem({ data }) {
                return;
           }
 
+          // store data to localStorage
           const sessionStorage = window.sessionStorage
           const cart = JSON.parse(sessionStorage.getItem('cart')) || []
           sessionStorage.setItem('cart', JSON.stringify([...cart, { 
