@@ -1,17 +1,35 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import style from './ProductItem.module.css'
 import Nike1 from '../../assets/images/sneaker-transparent/nike-1.png'     //temp image
+import { selectCustomer } from '../../features/customerSlice'
+import { createCart, addToCart } from '../../api/cartAPI'
 
 function ProductItem({ data }) {
+
+     const customer = useSelector(selectCustomer)
+
      const [sizeChoose , setSizeChoose] = useState('');
 
-     const addToCart = () => {
+     const handleSizeChange = (size) => {
+          setSizeChoose(size)
+     }
+     
+     const handleAddToCart = () => {
           if (sizeChoose === '') {
                alert('Please choose size');
                return;
           }
 
-          // store data to localStorage
+          if (customer) {
+               addToCartDatabase()
+          }
+          else {
+               addToCartLocal()
+          }
+     }
+
+     const addToCartLocal = () => {
           const sessionStorage = window.sessionStorage
           const cart = JSON.parse(sessionStorage.getItem('cart')) || []
           sessionStorage.setItem('cart', JSON.stringify([...cart, { 
@@ -22,13 +40,32 @@ function ProductItem({ data }) {
                color: data.color,
                price: data.price }
           ]))
-
-          alert('Added to cart successfully!')
      }
 
-     const handleSizeChange = (size) => {
-          setSizeChoose(size)
+     const addToCartDatabase = () => {
+          addToCart(
+               customer.id,
+               data._id,
+               data.name,
+               data.brand,
+               data.price,
+               sizeChoose,
+               data.color
+          )
+          .then(res => {
+               console.log(res)
+               // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
+               alert('Added to cart successfully!')
+
+          })
+          .catch(err => {
+               console.log(err)
+               // TODO: HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
+               alert('Add to cart fail!')
+
+          })
      }
+
 
      return (
           <a href={`/product/${data._id}`} className={style.card}>
@@ -43,7 +80,7 @@ function ProductItem({ data }) {
                     <div className={`${style.btn} ${style.btn2}`} onClick={ e => {
                          e.preventDefault()
                          e.stopPropagation()
-                         addToCart()
+                         handleAddToCart()
                     }}>
                          <i className="fal fa-shopping-cart"></i>
                     </div>
