@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import style from './ProductItem.module.css'
 import Nike1 from '../../assets/images/sneaker-transparent/nike-1.png'     //temp image
 import { selectCustomer } from '../../features/customerSlice'
-import { createCart, addToCart } from '../../api/cartAPI'
+import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
 
 function ProductItem({ data }) {
 
@@ -23,7 +23,23 @@ function ProductItem({ data }) {
           }
 
           if (customer) {
-               addToCartDatabase()
+               getCurrent(customer.id)
+                    .then(res => {
+                         // exist current cart in database
+                         if (res) {
+                              addToCartDatabase()
+                         }
+                         else {
+                              createCart(customer.id).then(res => {
+                                   addToCartDatabase()
+                              })
+                         }
+                    })
+                    .catch(err => {
+                         // TODO: HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+                         console.log(err)
+
+                    })
           }
           else {
                addToCartLocal()
@@ -54,7 +70,6 @@ function ProductItem({ data }) {
                data.color
           )
           .then(res => {
-               console.log(res)
                // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
                alert('Added to cart successfully!')
 

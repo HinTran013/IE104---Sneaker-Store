@@ -19,7 +19,15 @@ const CartTable = () => {
 
     const getCartListDatabase = () => {
         getCurrent(customer.id).then(res => {
-            setCartList(res.products);
+            // exist current cart in database
+            if (res) {
+                setCartList(res.products);
+            }
+            else {
+                // TODO: HANDLE GET CART LIST EMPTY HERE
+                console.log('Empty cart!')
+
+            }
         })
     }
 
