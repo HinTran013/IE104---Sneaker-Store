@@ -4,7 +4,7 @@ import { OneProduct } from './ProductData'        //temp imgs
 import style from './DetailInfo.module.css'
 import { getOneProduct } from '../../api/productAPI'
 import { selectCustomer } from '../../features/customerSlice'
-import { createCart, addToCart } from '../../api/cartAPI'
+import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
 
 function DetailInfo({ id }) {
 
@@ -29,7 +29,23 @@ function DetailInfo({ id }) {
           }
 
           if (customer) {
-               addToCartDatabase()
+               getCurrent(customer.id)
+                    .then(res => {
+                         // exist current cart in database
+                         if (res) {
+                              addToCartDatabase()
+                         }
+                         else {
+                              createCart(customer.id).then(res => {
+                                   addToCartDatabase()
+                              })
+                         }
+                    })
+                    .catch(err => {
+                         // TODO: HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+                         console.log(err)
+
+                    })
           }
           else {
                addToCartLocal()
@@ -61,7 +77,6 @@ function DetailInfo({ id }) {
                product.color
           )
           .then(res => {
-               console.log(res)
                // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
                alert('Added to cart successfully!')
 
@@ -78,7 +93,6 @@ function DetailInfo({ id }) {
           getOneProduct(id)
                .then(res => {
                     setProduct(res)
-                    console.log(res)
                })
      }, [])
 
