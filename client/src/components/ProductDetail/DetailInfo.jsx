@@ -5,6 +5,7 @@ import style from './DetailInfo.module.css'
 import { getOneProduct } from '../../api/productAPI'
 import { selectCustomer } from '../../features/customerSlice'
 import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
+import { getFavourites, createFavouriteList, addFavourite } from '../../api/favouriteAPI'
 
 function DetailInfo({ id }) {
 
@@ -89,6 +90,33 @@ function DetailInfo({ id }) {
           })
      }
 
+     const handleAddToFavorite = () => {
+          if (customer) {
+               getFavourites(customer.id)
+                    .then(res => {
+                         // exist current favourite list in database
+                         if (res.length > 0) {
+                              addFavourite(customer.id, product._id).then(res => {
+                                   // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+
+                              })
+                         }
+                         else {
+                              createFavouriteList(customer.id)
+                                   .then(res => {
+                                        addFavourite(customer.id, product._id)
+                                        // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+
+                                   })
+                         }
+                    })
+          }
+          else {
+               // TODO: HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
+               console.log('Please login to use this feature')
+          }
+     }
+
      useEffect(() => {
           getOneProduct(id)
                .then(res => {
@@ -152,7 +180,7 @@ function DetailInfo({ id }) {
                               </div>
 
                               <button className={style.btnAddToCart} onClick={handleAddToCart}>Add to cart</button>
-                              <button className={style.btnFavourite}>Favourite</button>
+                              <button className={style.btnFavourite} onClick={handleAddToFavorite}>Favourite</button>
                          </div>
                     </div>
                </div>

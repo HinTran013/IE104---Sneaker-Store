@@ -5,6 +5,7 @@ import style from './ProductItem.module.css'
 import Nike1 from '../../assets/images/sneaker-transparent/nike-1.png'     //temp image
 import { selectCustomer } from '../../features/customerSlice'
 import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
+import { getFavourites, createFavouriteList, addFavourite } from '../../api/favouriteAPI'
 
 function ProductItem({ data }) {
 
@@ -82,6 +83,33 @@ function ProductItem({ data }) {
           })
      }
 
+     const handleAddToFavorite = () => {
+          if (customer) {
+               getFavourites(customer.id)
+                    .then(res => {
+                         // exist current favourite list in database
+                         if (res.length > 0) {
+                              addFavourite(customer.id, data._id).then(res => {
+                                   // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+
+                              })
+                         }
+                         else {
+                              createFavouriteList(customer.id)
+                                   .then(res => {
+                                        addFavourite(customer.id, data._id)
+                                        // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+
+                                   })
+                         }
+                    })
+          }
+          else {
+               // TODO: HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
+               console.log('Please login to use this feature')
+          }
+     }
+
 
      return (
           <Link to={`/product/${data._id}`} className={style.card} >
@@ -100,7 +128,11 @@ function ProductItem({ data }) {
                     }}>
                          <i className="fal fa-shopping-cart"></i>
                     </div>
-                    <div className={`${style.btn} ${style.btn3}`}>
+                    <div className={`${style.btn} ${style.btn3}`} onClick={e => {
+                         e.preventDefault()
+                         e.stopPropagation()
+                         handleAddToFavorite()
+                    }}>
                          <i className="far fa-heart"></i>
                     </div>
                </div>
