@@ -60,7 +60,14 @@ section.sectionContainer .separator {
 
     .separator span::before,
     .separator span::after {
-        width: 300px;
+        width: 280px;
+    }
+}
+
+@media (max-width: 839px) {
+    .separator span::before,
+    .separator span::after {
+        width: 220px;
     }
 }
 
@@ -72,5 +79,23 @@ section.sectionContainer .separator {
     .separator span::before,
     .separator span::after {
         width: 200px;
+    }
+}
+
+@media (max-width: 639px) {
+    .separator span::before,
+    .separator span::after {
+        width: 150px;
+    }
+}
+
+@media (max-width: 540px) {
+
+    .headerBlog h1 {
+        margin-bottom: 30px;
+    }
+
+    .separator {
+        display: none;
     }
 }
