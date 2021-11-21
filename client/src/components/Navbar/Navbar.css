@@ -181,6 +181,10 @@
   height: 20px;
 }
 
+.cart-btn {
+  color: black;
+}
+
 /* Modal */
 
 .ModalReact__Overlay {

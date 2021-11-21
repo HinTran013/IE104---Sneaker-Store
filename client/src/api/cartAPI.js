@@ -2,6 +2,15 @@ import Axios from 'axios';
 
 const API_URL = 'http://localhost:3001/cart';
 
+export const getCurrent = async (customerID) => {
+     const res = await Axios.get(API_URL + '/getcurrent', {
+          params: {
+               customerID: customerID
+          }
+     });
+     return res.data;
+};
+
 export const createCart = async (customerID) => {
      await Axios.post(API_URL + '/createcart', { customerID: customerID })
      .then(res => {

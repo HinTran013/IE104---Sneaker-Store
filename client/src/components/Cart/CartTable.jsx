@@ -1,16 +1,35 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { selectCustomer } from '../../features/customerSlice'
 import style from "./CartTable.module.css"
 import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
 import { CartItem } from "./CartTableData.js"
+import { getCurrent } from '../../api/cartAPI'
 
 const CartTable = () => {
+    const customer = useSelector(selectCustomer)      //get current logged in customer
+
     const [cartList, setCartList] = useState([]);
 
-    useEffect(() => {
-        // get cart list from session storage
+    const getCartListLocal = () => {
         const sessionStorage = window.sessionStorage;
         const cart = JSON.parse(sessionStorage.getItem('cart'));
         setCartList(cart);
+    }
+
+    const getCartListDatabase = () => {
+        getCurrent(customer.id).then(res => {
+            setCartList(res.products);
+        })
+    }
+
+    useEffect(() => {
+        if (customer) {
+            getCartListDatabase();
+        }
+        else {
+            getCartListLocal();
+        }
     }, []);
 
     return (

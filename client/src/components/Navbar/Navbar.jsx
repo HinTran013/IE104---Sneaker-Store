@@ -114,7 +114,9 @@ function Navbar() {
               placeholder="Search something..."
             />
           </div>
-          <i className="far fa-shopping-cart"></i>
+          <Link to="/cart">
+            <i className="far fa-shopping-cart cart-btn" ></i>
+          </Link>
           <div className="header__btn-login">
             <i className="far fa-user" onClick={() => setModalIsOpen(true)} />
             <Modal

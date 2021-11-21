@@ -1,5 +1,17 @@
 const Cart = require('../models/cart.model.js');
 
+exports.getCurrent = async (req, res) => {
+     const customerID = req.query.customerID;
+     
+     try {
+          const customer = await Cart.findOne({ customerID: customerID, status: 'pending' });
+          res.status(200).json(customer);
+     }
+     catch (err) {
+          res.status(404).json({ message: err.message });
+     }
+};
+
 exports.createCart = async (req, res) => {
      const customerID = req.body.customerID;
 
