@@ -44,3 +44,19 @@ exports.addFavourite = async (req, res) => {
           res.status(404).json({ message: err.message });
      }
 };
+
+exports.removeFavourite = async (req, res) => {
+     const customerID = req.body.customerID;
+     const productID = req.body.productID;
+
+     try {
+          await Favourite.updateOne(
+               { customerID: customerID },
+               { $pull: { 'productIDs': productID } },
+          )
+          res.send("Removed favourite successfully!");
+     }
+     catch (err) {
+          res.status(404).json({ message: err.message });
+     }
+};

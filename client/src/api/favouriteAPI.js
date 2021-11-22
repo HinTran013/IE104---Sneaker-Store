@@ -31,3 +31,15 @@ export const addFavourite = async (customerID, productID) => {
                console.log(err)
           });
 };
+
+export const removeFavourite = async (customerID, productID) => {
+     await Axios.post(API_URL + '/removefavourite', {
+          customerID: customerID,
+          productID: productID
+     })
+          .then(res => {
+               console.log(res.data)
+          }).catch(err => {
+               console.log(err)
+          });
+};

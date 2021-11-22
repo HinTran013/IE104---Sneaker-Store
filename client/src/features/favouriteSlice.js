@@ -6,12 +6,20 @@ export const favouriteSlice = createSlice({
           favouriteList: null
      },
      reducers: {
-          addFavouriteList: (state, action) => {
+          initFavouriteList: (state, action) => {
                state.favouriteList = action.payload;
+          },
+
+          addFavouriteToRedux: (state, action) => {
+               state.favouriteList = [...state.favouriteList, action.payload];
+          },
+
+          removeFavouriteFromRedux: (state, action) => {
+               state.favouriteList = state.favouriteList.filter(item => item !== action.payload);
           }
      }
 });
 
-export const { addFavouriteList } = favouriteSlice.actions;
+export const { initFavouriteList, addFavouriteToRedux, removeFavouriteFromRedux } = favouriteSlice.actions;
 export const selectFavouriteList = state => state.favouriteList.favouriteList;
 export default favouriteSlice.reducer;

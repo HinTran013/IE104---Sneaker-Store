@@ -7,7 +7,7 @@ import register from "../../assets/icons/register.jpg";
 import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../../api/customerAPI";
 import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
-import { addFavouriteList } from "../../features/favouriteSlice";
+import { initFavouriteList } from "../../features/favouriteSlice";
 
 function UserForm() {
   const [loginDisplay, setLoginDisplay] = useState("block");
@@ -74,7 +74,7 @@ function UserForm() {
   const dispatchFavouriteList = (customerID) => {
     getFavourites(customerID).then(res => {
       if (res) {
-        dispatch(addFavouriteList(res.productIDs));
+        dispatch(initFavouriteList(res.productIDs));
       }
     })
   }

@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 import style from './ProductItem.module.css'
 import Nike1 from '../../assets/images/sneaker-transparent/nike-1.png'     //temp image
 import { selectCustomer } from '../../features/customerSlice'
 import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
-import { getFavourites, createFavouriteList, addFavourite } from '../../api/favouriteAPI'
+import { getFavourites, createFavouriteList, addFavourite, removeFavourite } from '../../api/favouriteAPI'
+import { selectFavouriteList, addFavouriteToRedux, removeFavouriteFromRedux } from '../../features/favouriteSlice'
 
 function ProductItem({ data }) {
 
-     const customer = useSelector(selectCustomer)      //get current logged in customer
+     const customer = useSelector(selectCustomer)                       //get current logged in customer
+     const favouriteList = useSelector(selectFavouriteList) || []       //get current favourite list
+
+     const dispatch = useDispatch()
 
      const [sizeChoose , setSizeChoose] = useState('');
 
@@ -85,29 +89,43 @@ function ProductItem({ data }) {
 
      const handleAddToFavorite = () => {
           if (customer) {
-               getFavourites(customer.id)
-                    .then(res => {
-                         // exist current favourite list in database
-                         if (res.length > 0) {
-                              addFavourite(customer.id, data._id).then(res => {
-                                   // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+               if (favouriteList.length > 0) {
+                    addFavourite(customer.id, data._id).then(res => {
+                         dispatch(addFavouriteToRedux(data._id))
+                         // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
 
-                              })
-                         }
-                         else {
-                              createFavouriteList(customer.id)
-                                   .then(res => {
-                                        addFavourite(customer.id, data._id)
-                                        // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-
-                                   })
-                         }
                     })
+               }
+               else {
+                    createFavouriteList(customer.id)
+                         .then(res => {
+                              // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+                              addFavourite(customer.id, data._id)
+
+                         })
+               }
           }
           else {
                // TODO: HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
                console.log('Please login to use this feature')
           }
+     }
+
+     const hanleRemoveFromFavorite = () => {
+          if (customer) {
+               removeFavourite(customer.id, data._id)
+                    .then(res => {
+                         // TODO: HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
+                         dispatch(removeFavouriteFromRedux(data._id))
+                    })
+          }
+     }
+
+     const isFavourite = () => {
+          if (favouriteList.includes(data._id)) {
+               return true
+          }
+          return false
      }
 
 
@@ -121,6 +139,7 @@ function ProductItem({ data }) {
                     <div className={`${style.btn} ${style.btn1}`}>
                          <i className="fas fa-ellipsis-h"></i>
                     </div>
+
                     <div className={`${style.btn} ${style.btn2}`} onClick={ e => {
                          e.preventDefault()
                          e.stopPropagation()
@@ -128,12 +147,20 @@ function ProductItem({ data }) {
                     }}>
                          <i className="fal fa-shopping-cart"></i>
                     </div>
+
                     <div className={`${style.btn} ${style.btn3}`} onClick={e => {
                          e.preventDefault()
                          e.stopPropagation()
-                         handleAddToFavorite()
+
+                         // add if not favourite, remove if favourite
+                         if (isFavourite()) {
+                              hanleRemoveFromFavorite()
+                         }
+                         else {
+                              handleAddToFavorite()
+                         }
                     }}>
-                         <i className="far fa-heart"></i>
+                         {isFavourite() ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i> }
                     </div>
                </div>
 
