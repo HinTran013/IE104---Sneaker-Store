@@ -4,7 +4,7 @@ exports.getFavourites = async (req, res) => {
      const customerID = req.query.customerID;
 
      try {
-          const favourites = await Favourite.find({ customerID: customerID });
+          const favourites = await Favourite.findOne({ customerID: customerID });
           res.status(200).json(favourites);
      }
      catch (err) {

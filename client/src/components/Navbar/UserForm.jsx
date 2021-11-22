@@ -5,7 +5,9 @@ import sneaker from "../../assets/icons/sneaker.png";
 import recover from "../../assets/icons/recover.png";
 import register from "../../assets/icons/register.jpg";
 import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../../api/customerAPI";
+import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
+import { addFavouriteList } from "../../features/favouriteSlice";
 
 function UserForm() {
   const [loginDisplay, setLoginDisplay] = useState("block");
@@ -38,6 +40,9 @@ function UserForm() {
 
         // TODO: HANDLE UI UPDATE WHEN LOGIN SUCCESS HERE
         
+
+        // get favourite list of logged in user and dispatch to redux
+        dispatchFavouriteList(customer._id);
       }
       else {
         // TODO: HANDLE LOGIN FAIL HERE
@@ -64,6 +69,14 @@ function UserForm() {
       .catch(err => {
         console.log(err);
       });
+  }
+
+  const dispatchFavouriteList = (customerID) => {
+    getFavourites(customerID).then(res => {
+      if (res) {
+        dispatch(addFavouriteList(res.productIDs));
+      }
+    })
   }
 
   function SetFormDisplay(form) {
