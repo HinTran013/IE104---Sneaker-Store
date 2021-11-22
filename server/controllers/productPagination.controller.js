@@ -1,21 +1,9 @@
 const Product = require("../models/product.model");
 
-// class APIfeatures {
-//   constructor(query, queryString) {
-//     this.query = query;
-//     this.queryString = queryString;
-//   }
-
-//   filtering(){
-//     const queryObj = {...this.queryString};
-//     console.log(queryObj);
-//     const excludedFields = ['page', 'sort', 'limit']
-//   }
-// }
-
 exports.getProducts = async (req, res) => {
-  //get query filtering
   let query;
+
+  //get query filtering
   const reqQuery = { ...req.query };
 
   //field to be removed from reqQuery to not be recognized as a param
@@ -29,25 +17,35 @@ exports.getProducts = async (req, res) => {
     (match) => `$${match}`
   );
 
-  console.log(JSON.parse(queryStr));
+  //sorting
+  query = Product.find(JSON.parse(queryStr));
+
+  if (req.query.sort) {
+    const sortByArray = req.query.sort.split(",");
+
+    const sortByStr = sortByArray.join(" ");
+
+    query = query.sort(sortByStr);
+  }
 
   //pagination variable
   const PAGE_SIZE = 12;
   const page = parseInt(req.query.page || "0");
 
   console.log(reqQuery);
+  console.log(JSON.parse(queryStr));
 
   //get the number of products
   const totalProducts = await Product.countDocuments({});
 
   //skip and limit to get pagination
-  const products = await Product.find(JSON.parse(queryStr))
-    .limit(PAGE_SIZE)
-    .skip(PAGE_SIZE * page);
+  const products = await query.limit(PAGE_SIZE).skip(PAGE_SIZE * page);
+
+  //console.log(res);
 
   res.json({
-    totalProducts,
+    totalProducts: totalProducts,
     totalPage: Math.ceil(totalProducts / PAGE_SIZE),
-    products,
+    products: products,
   });
 };
