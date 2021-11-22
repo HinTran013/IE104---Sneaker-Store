@@ -32,9 +32,6 @@ exports.getProducts = async (req, res) => {
   const PAGE_SIZE = 12;
   const page = parseInt(req.query.page || "0");
 
-  console.log(reqQuery);
-  console.log(JSON.parse(queryStr));
-
   //get the number of products
   const totalProducts = await Product.countDocuments({});
 
