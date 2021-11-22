@@ -198,7 +198,7 @@ footer.container a:hover {
     }
 }
 
-@media (max-width: 538px) {
+@media (max-width: 598px) {
     .colInfo {
         flex-direction: column;
 
@@ -232,11 +232,30 @@ footer.container a:hover {
 
     .colInfo .col {
         font-size: 1.8rem;
+        font-weight: 400;
 
         text-align: center;
     }
     .colInfo .col ul li:first-child {
         font-size: 2.1rem;
         font-weight: 700;
+    }
+}
+
+@media (max-width: 420px) {
+    .colUpper ul li {
+        font-size: 1.8rem;
+
+        line-height: 2.2rem;
+    }
+
+    .colInfo .col {
+        font-size: 1.7rem;
+
+        text-align: center;
+    }
+    .colInfo .col ul li:first-child {
+        font-size: 2.0rem;
+        font-weight: 600;
     }
 }

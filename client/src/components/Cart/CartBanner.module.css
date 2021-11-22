@@ -46,3 +46,18 @@
 
     text-decoration: none;
 }
+
+@media (max-width: 415px) {
+    .cartBanner h1 {
+        font-size: 4rem;
+    }
+    .cartBanner a {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 376px) {
+    .cartBanner h1 {
+        font-size: 3.5rem;
+    }
+}

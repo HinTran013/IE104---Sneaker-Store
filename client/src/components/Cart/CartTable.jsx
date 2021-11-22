@@ -7,39 +7,44 @@ import { CartItem } from "./CartTableData.js"
 const CartTable = () =>
 {
     return (
-        <div>
-            <table className={style.cartTable}>
-                <thead>
-                    <tr className={style.trHead}>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
+        <table className={style.cartTable}>
+            <thead>
+                <tr className={style.trHead}>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
 
-                <tbody className={style.trProduct}>
+            <tbody className={style.trProduct}>
 
-                    {CartItem.map((item) => {
-                        return (
-                            <tr>
-                                <th>
+                {CartItem.map((item) => {
+                    return (
+                        <tr>
+                            <th>
+                                <div className={style.mainInfo}>
                                     <img src={item.thumbnail} alt="" />
                                     <div className={style.nameProduct}>
-                                        <p>{item.name }</p>
-                                        <p>{item.detailColor }</p>
-                                        <p>{item.detailSize }</p>
+                                        <p>{item.name}</p>
+                                        <div className={style.propsProduct}>
+                                            <p>{item.detailColor}</p>
+                                            <p>{item.detailSize}</p>
+                                        </div>
+                                        <div className={style.propsProduct}>
+                                            <p className={style.newTotal}>Total ({item.quantity}): {item.total}</p>
+                                        </div>
                                     </div>
-                                </th>
-                                <th className={style.amount}>{item.price }</th>
-                                <th className={style.quantity}>{item.quantity }</th>
-                                <th className={style.amount}>{item.total }</th>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-        </div>
+                                </div>
+                            </th>
+                            <th className={style.amount}>{item.price}</th>
+                            <th className={style.quantity}>{item.quantity}</th>
+                            <th className={style.amount}>{item.total}</th>
+                        </tr>
+                    );
+                })}
+            </tbody>
+        </table>
     );
 }
 

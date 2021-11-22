@@ -1,8 +1,8 @@
-.titleShipping {
+.titleInfo {
     font-size: 2rem;
 
     padding: 2rem 2rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 2.0rem;
     text-align: center;
 }
 
@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
 
-    
+
     padding-top: 25px;
     padding-bottom: 30px;
     padding-left: 35px;
@@ -24,12 +24,16 @@
     flex-direction: column;
 }
 .divInput input {
+    width: 100%;
+
     background-color: transparent;
     border: none;
     border-bottom: 1px solid #C7CEE4;
 
     color: #555;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+
     box-sizing: border-box;
     height: 40px;
    
@@ -41,14 +45,10 @@
 .divInput input:focus {
     outline: none;
 }
-.divInput .divShipping input {
-    width: 100%;
 
-    font-size: 1.4rem;
-    font-weight: 500;
-}
 
-.divCalculate {
+
+/* .divCalculate {
     display: flex;
     flex-direction: column;
 }
@@ -92,4 +92,4 @@
 }
 .divTotalShip p:first-child {
     color: #15245E;
-}
+} */

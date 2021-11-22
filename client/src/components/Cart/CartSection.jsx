@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import style from "./CartSection.module.css"
 import CartTable from './CartTable';
 import CartTotal from './CartTotal';
-import CartShipping from './CartShipping';
+import CartCustomerInfo from './CartCustomerInfo';
 
 const CartSection = () => {
     return (
@@ -12,8 +12,8 @@ const CartSection = () => {
                 <CartTable />
             </div>
             <div className={style.cartCalculate }>
-                <CartShipping />
-                <CartTotal />
+                {/* <CartCustomerInfo />
+                <CartTotal /> */}
             </div>   
         </section>
     )
