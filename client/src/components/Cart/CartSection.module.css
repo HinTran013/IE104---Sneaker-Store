@@ -3,29 +3,39 @@
 
     justify-content: center;
 
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin: 85px 10px;
 }
 
 .cartTable {
-    margin-right: 45px;
+    margin-right: 35px;
 }
 
 .cartCalculate {
     display: flex;
     flex-direction: column;
+
 }
 
 
-@media (max-width: 1226px) {
+@media (max-width: 1380px) {
     .cartTable {
         margin-right: 0px;
     }
+
     .cartSection {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
-    
+
+    .cartCalculate {
+        width: 55%;
+    }
+}
+
+@media (max-width: 768px) {
+    .cartCalculate {
+        width: 70%;
+    }
 }
 
 @media (max-width: 600px) {
@@ -35,5 +45,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .cartSection {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .cartCalculate {
+        width: 95%;
     }
 }

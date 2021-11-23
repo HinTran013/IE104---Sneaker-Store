@@ -1,0 +1,28 @@
+.sectionContact {
+    display: flex;
+    flex-direction: row;
+
+    margin: 50px 70px;
+}
+.divContact {
+    width: 50%;
+    margin-right: 25px;
+
+}
+.divContact h1 {
+    font-size: 4rem;
+
+    margin-top: 10px;
+    margin-bottom: 35px
+}
+
+.divForm {
+    width: 50%;
+    margin-left: 10px;
+}
+.divForm h1 {
+    font-size: 4rem;
+
+    margin-top: 10px;
+    margin-bottom: 35px
+}

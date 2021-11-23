@@ -1,0 +1,75 @@
+.sectionForm {
+
+}
+
+.inputText {
+    flex: 1 0 40%;
+
+    margin-bottom: 10px;
+    padding: 15px 20px;
+
+    font-size: 2rem;
+    line-height: 2rem;
+
+    border: none;
+    border-radius: 20px;
+
+    background-color: #f4f4f4;
+}
+.inputText::placeholder {
+    color: #B0BEC5;
+}
+.inputText:focus {
+    outline: none;
+}
+  
+.sectionForm .inputInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.inputInfo input:first-child {
+    margin-right: 10px;
+}
+  
+.sectionForm .inputSubject {
+    display: flex;
+    flex-direction: column;
+}
+.inputSubject textarea {
+    font-family: "Barlow", sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: 400;
+    
+    resize: none;
+}
+.inputSubject textarea::placeholder {
+    color: #B0BEC5;
+}
+
+
+.divBtn {
+    display: flex;
+    justify-content: flex-start;
+
+}
+.divBtn a {
+    width: 30%;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1.8rem;
+
+    background: #222;
+    color: #fff;
+
+    padding: 15px 50px;
+    margin-top: 5px;
+    border-radius: 5px;
+
+    position: relative;
+    transition: .3s;
+}
+.divBtn a:hover {
+    background: #c50215;
+}

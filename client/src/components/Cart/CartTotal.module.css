@@ -59,6 +59,8 @@
 }
 .checked img {
     width: 20px;
+
+    max-height: 20px;
 }
 
 .divBtn {
@@ -87,16 +89,12 @@
     background: #1dbd67;
 }
 
-
-
-@media (max-width: 1226px) {
-    .divTotal {
-       width: 500px;
+@media (max-width: 600px) {
+    .totals {
+        font-size: 1.7rem;
     }
-}
 
-@media (max-width: 739px) {
-    .divTotal {
-        width: 450px;
-     }
+    .checked p {
+        font-size: 1.25rem;
+    }
 }

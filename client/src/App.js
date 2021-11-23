@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import AboutUsPage from "./pages/AboutUsPage";
 import BlogPage from "./pages/BlogPage";
 import CartPage from "./pages/CartPage";
+import ContactUs from "./pages/ContactUs";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/about-us" component={AboutUsPage} />
           <Route path="/blog" component={BlogPage} />
           <Route path="/cart" component={CartPage} />
+          <Route path="/contact" component={ContactUs} />
         </Switch>
       </Router>
       <Footer />
