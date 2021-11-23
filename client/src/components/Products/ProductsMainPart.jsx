@@ -8,6 +8,12 @@ import { getAllProduct } from "../../api/paginationProductAPI";
 import { useSelector } from "react-redux";
 
 function ProductsMainPart(props) {
+  //get filter global state from redux
+  const brand = useSelector((state) => state.productArrange.value.brand);
+  const filterPath = useSelector(
+    (state) => state.productArrange.value.filterPath
+  );
+
   const [pageNumber, setPageNumber] = React.useState(0);
   const [totalPage, setTotalPage] = React.useState(0);
   const [totalProduct, setTotalProduct] = React.useState(0);
@@ -17,18 +23,23 @@ function ProductsMainPart(props) {
     endProduct: 12,
   });
 
-  const test = useSelector((state) => state.productArrange.value.pageNumber);
-  console.log(test);
+  useEffect(() => {
+    getAllProduct(`http://localhost:3001/productPage`).then((res) => {
+      setProductList(res.products);
+      setTotalPage(res.totalPage);
+      setTotalProduct(res.totalProducts);
+    });
+  }, []);
 
   useEffect(() => {
-    getAllProduct(`http://localhost:3001/productPage?page=${pageNumber}`).then(
-      (res) => {
-        setProductList(res.products);
-        setTotalPage(res.totalPage);
-        setTotalProduct(res.totalProducts);
-      }
-    );
-  }, [pageNumber]);
+    getAllProduct(
+      `http://localhost:3001/productPage?page=${pageNumber}${filterPath}`
+    ).then((res) => {
+      setProductList(res.products);
+      setTotalPage(res.totalPage);
+      setTotalProduct(res.totalProducts);
+    });
+  }, [pageNumber, filterPath]);
 
   function changePage(number) {
     setPageNumber(number);

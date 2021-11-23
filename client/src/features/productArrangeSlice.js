@@ -2,13 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // "http://localhost:3001/productPage?page=0";
 const initialStateValue = {
-  pageNumber: "0",
   brand: "",
   price: "",
   color: "",
   size: "",
   tags: "",
-  apiURL: `http://localhost:3001/productPage?`,
+  filterPath: ``,
 };
 
 export const ProductArrangeSlice = createSlice({
@@ -17,23 +16,22 @@ export const ProductArrangeSlice = createSlice({
   reducers: {
     addBrandFilter: (state, action) => {
       // state.productArrange += `&${action.payload}`;
-      state.value.apiURL += `&brand=${action.payload.brand}`;
+      state.value.brand = action.payload.brand;
+      state.value.filterPath += `&brand=${action.payload.brand}`;
     },
 
     deleteBrandFilter: (state, action) => {
-      state.value.apiURL = state.value.apiURL.replace(
-        `&brand=${state.value.brand}`,
-        ""
-      );
+      state.value.brand = "";
+      state.value.filterPath = "";
     },
 
     addPriceFilter: (state, action) => {
       // state.productArrange += `&${action.payload}`;
-      state.value.apiURL += `&price=${action.payload.price}`;
+      state.value.filterPath += `&price=${action.payload.price}`;
     },
 
     deletePriceFilter: (state, action) => {
-      state.value.apiURL = state.value.apiURL.replace(
+      state.value.filterPath = state.value.filterPath.replace(
         `&price=${state.value.price}`,
         ""
       );
@@ -42,11 +40,11 @@ export const ProductArrangeSlice = createSlice({
 
   addColorFilter: (state, action) => {
     // state.productArrange += `&${action.payload}`;
-    state.value.apiURL += `&color=${action.payload.color}`;
+    state.value.filterPath += `&color=${action.payload.color}`;
   },
 
   deleteColorFilter: (state, action) => {
-    state.value.apiURL = state.value.apiURL.replace(
+    state.value.filterPath = state.value.filterPath.replace(
       `&color=${state.value.color}`,
       ""
     );
@@ -54,11 +52,11 @@ export const ProductArrangeSlice = createSlice({
 
   addSizeFilter: (state, action) => {
     // state.productArrange += `&${action.payload}`;
-    state.value.apiURL += `&size=${action.payload.size}`;
+    state.value.filterPath += `&size=${action.payload.size}`;
   },
 
   deleteSizeFilter: (state, action) => {
-    state.value.apiURL = state.value.apiURL.replace(
+    state.value.filterPath = state.value.filterPath.replace(
       `&size=${state.value.size}`,
       ""
     );
@@ -66,11 +64,11 @@ export const ProductArrangeSlice = createSlice({
 
   addTagsFilter: (state, action) => {
     // state.productArrange += `&${action.payload}`;
-    state.value.apiURL += `&tags=${action.payload.tags}`;
+    state.value.filterPath += `&tags=${action.payload.tags}`;
   },
 
   deleteTagsFilter: (state, action) => {
-    state.value.apiURL = state.value.apiURL.replace(
+    state.value.filterPath = state.value.filterPath.replace(
       `&tags=${state.value.tags}`,
       ""
     );

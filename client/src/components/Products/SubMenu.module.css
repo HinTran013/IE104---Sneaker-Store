@@ -37,6 +37,10 @@
   cursor: pointer;
 }
 
+.childTextActive {
+  font-weight: 600;
+}
+
 @keyframes dropBoxScaleDown {
   from {
     transform: scaleY(0);
