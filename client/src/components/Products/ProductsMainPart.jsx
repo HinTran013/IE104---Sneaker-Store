@@ -6,13 +6,16 @@ import TopFilter from "./TopFilter";
 import Pagination from "./Pagination";
 import { getAllProduct } from "../../api/paginationProductAPI";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { resetBrandFilter } from "../../features/productArrangeSlice";
 
 function ProductsMainPart(props) {
   //get filter global state from redux
-  const brand = useSelector((state) => state.productArrange.value.brand);
   const filterPath = useSelector(
     (state) => state.productArrange.value.filterPath
   );
+
+  const dispatch = useDispatch();
 
   const [pageNumber, setPageNumber] = React.useState(0);
   const [totalPage, setTotalPage] = React.useState(0);
@@ -24,6 +27,8 @@ function ProductsMainPart(props) {
   });
 
   useEffect(() => {
+    dispatch(resetBrandFilter());
+
     getAllProduct(`http://localhost:3001/productPage`).then((res) => {
       setProductList(res.products);
       setTotalPage(res.totalPage);
