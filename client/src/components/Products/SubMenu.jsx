@@ -66,6 +66,7 @@ function SubMenu({ title, listChild }) {
     dispatch(deletePriceFilter());
   }
 
+  // on click handler
   function handleSelected(index, filterType) {
     switch (title) {
       case "Brand":
@@ -93,12 +94,14 @@ function SubMenu({ title, listChild }) {
   }
   const testBrand = useSelector((state) => state.productArrange.value.brand);
   const testPrice = useSelector((state) => state.productArrange.value.price);
+  // const testColor = useSelector((state) => state.productArrange.value.color);
   const testFilterPath = useSelector(
     (state) => state.productArrange.value.filterPath
   );
 
   console.log("brand: " + testBrand);
   console.log("price: " + testPrice);
+  // console.log("Color: " + testColor);
   console.log("filter path: " + testFilterPath);
 
   return (

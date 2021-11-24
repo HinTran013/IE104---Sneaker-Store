@@ -49,42 +49,43 @@ export const ProductArrangeSlice = createSlice({
       );
       state.value.price = "";
     },
-  },
 
-  addColorFilter: (state, action) => {
-    // state.productArrange += `&${action.payload}`;
-    state.value.filterPath += `&color=${action.payload.color}`;
-  },
+    addColorFilter: (state, action) => {
+      state.value.color = action.payload.color;
+      state.value.filterPath += `&color=${action.payload.color}`;
+    },
 
-  deleteColorFilter: (state, action) => {
-    state.value.filterPath = state.value.filterPath.replace(
-      `&color=${state.value.color}`,
-      ""
-    );
-  },
+    deleteColorFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&color=${state.value.color}`,
+        ""
+      );
+      state.value.brand = "";
+    },
 
-  addSizeFilter: (state, action) => {
-    // state.productArrange += `&${action.payload}`;
-    state.value.filterPath += `&size=${action.payload.size}`;
-  },
+    addSizeFilter: (state, action) => {
+      // state.productArrange += `&${action.payload}`;
+      state.value.filterPath += `&size=${action.payload.size}`;
+    },
 
-  deleteSizeFilter: (state, action) => {
-    state.value.filterPath = state.value.filterPath.replace(
-      `&size=${state.value.size}`,
-      ""
-    );
-  },
+    deleteSizeFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&size=${state.value.size}`,
+        ""
+      );
+    },
 
-  addTagsFilter: (state, action) => {
-    // state.productArrange += `&${action.payload}`;
-    state.value.filterPath += `&tags=${action.payload.tags}`;
-  },
+    addTagsFilter: (state, action) => {
+      // state.productArrange += `&${action.payload}`;
+      state.value.filterPath += `&tags=${action.payload.tags}`;
+    },
 
-  deleteTagsFilter: (state, action) => {
-    state.value.filterPath = state.value.filterPath.replace(
-      `&tags=${state.value.tags}`,
-      ""
-    );
+    deleteTagsFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&tags=${state.value.tags}`,
+        ""
+      );
+    },
   },
 });
 

@@ -28,6 +28,8 @@ exports.getProducts = async (req, res) => {
     query = query.sort(sortByStr);
   }
 
+  console.log(JSON.parse(queryStr));
+
   //pagination variable
   const PAGE_SIZE = 12;
   const page = parseInt(req.query.page || "0");
