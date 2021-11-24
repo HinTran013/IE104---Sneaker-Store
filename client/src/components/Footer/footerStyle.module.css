@@ -14,7 +14,7 @@ footer.container::before {
     left: 0px;
     right: 0px;
 
-    background-color: rgb(255, 255, 255,0.1);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .colInfo > *, 
 .trademarks * {

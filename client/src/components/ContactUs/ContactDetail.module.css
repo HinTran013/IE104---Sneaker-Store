@@ -7,7 +7,7 @@
     font-size: 2.6rem;
     line-height: 2.5rem;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 .divInfo div {
@@ -22,4 +22,18 @@
 }
 .divInfo p {
     font-size: 1.8rem;
+    line-height: 1.8rem;
+}
+
+@media (max-width: 450px) {
+    .sectionContact p:first-child {
+        font-size: 2.4rem;
+        line-height: 2.4rem;
+    
+    }
+    
+    .divInfo p {
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+    }
 }

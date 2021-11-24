@@ -18,8 +18,8 @@ const ContactForm = () =>
                         placeholder="Subject" />
                 
                 <textarea className={style.inputText}
-                        placeholder="Description"
-                        rows="10"/>
+                        placeholder="Some messages"
+                        rows="15"/>
             </div>
 
             <div className={style.divBtn }>
