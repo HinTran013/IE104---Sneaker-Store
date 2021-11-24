@@ -5,9 +5,9 @@ import { OneProduct } from './ProductData'
 
 function SuggestProducts() {
      return (
-          <>
+          <div className={style.container}>
                <h2 className={style.text}>Suggested Products</h2>
-               <div className={style.container}>
+               <div className={style.productContainer}>
                     <ProductItem
                          data={OneProduct}
                     />
@@ -30,7 +30,7 @@ function SuggestProducts() {
                          data={OneProduct}
                     />
                </div>
-          </>
+          </div>
      )
 }
 

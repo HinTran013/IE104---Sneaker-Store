@@ -1,11 +1,45 @@
-import React, { Component } from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { selectCustomer } from '../../features/customerSlice'
 import style from "./CartTable.module.css"
-import sneaker from "../../assets/images/ColoredSneaker.png"
+import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
 import { CartItem } from "./CartTableData.js"
+import { getCurrent } from '../../api/cartAPI'
 
-const CartTable = () =>
-{
+const CartTable = () => {
+    const customer = useSelector(selectCustomer)      //get current logged in customer
+
+    const [cartList, setCartList] = useState([]);
+
+    const getCartListLocal = () => {
+        const sessionStorage = window.sessionStorage;
+        const cart = JSON.parse(sessionStorage.getItem('cart'));
+        setCartList(cart);
+    }
+
+    const getCartListDatabase = () => {
+        getCurrent(customer.id).then(res => {
+            // exist current cart in database
+            if (res) {
+                setCartList(res.products);
+            }
+            else {
+                // TODO: HANDLE GET CART LIST EMPTY HERE
+                console.log('Empty cart!')
+
+            }
+        })
+    }
+
+    useEffect(() => {
+        if (customer) {
+            getCartListDatabase();
+        }
+        else {
+            getCartListLocal();
+        }
+    }, []);
+
     return (
         <table className={style.cartTable}>
             <thead>
@@ -18,6 +52,7 @@ const CartTable = () =>
             </thead>
 
             <tbody className={style.trProduct}>
+
 
                 {CartItem.map((item) => {
                     return (
@@ -34,6 +69,7 @@ const CartTable = () =>
                                         <div className={style.propsProduct}>
                                             <p className={style.newTotal}>Total ({item.quantity}): {item.total}</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </th>

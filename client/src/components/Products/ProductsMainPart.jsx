@@ -5,8 +5,20 @@ import ProductItem from "../ProductItem/ProductItem";
 import TopFilter from "./TopFilter";
 import Pagination from "./Pagination";
 import { getAllProduct } from "../../api/paginationProductAPI";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { resetFilter } from "../../features/productArrangeSlice";
 
 function ProductsMainPart(props) {
+  //get filter global state from redux
+  const filterPath = useSelector(
+    (state) => state.productArrange.value.filterPath
+  );
+
+  console.log(filterPath);
+
+  const dispatch = useDispatch();
+
   const [pageNumber, setPageNumber] = React.useState(0);
   const [totalPage, setTotalPage] = React.useState(0);
   const [totalProduct, setTotalProduct] = React.useState(0);
@@ -17,16 +29,24 @@ function ProductsMainPart(props) {
   });
 
   useEffect(() => {
-    getAllProduct(`http://localhost:3001/productPage?page=${pageNumber}`).then(
-      (res) => {
-        setProductList(res.products);
+    dispatch(resetFilter());
 
-        setTotalPage(res.totalPage);
-        setTotalProduct(res.totalProducts);
-        console.log(res);
-      }
-    );
-  }, [pageNumber]);
+    getAllProduct(`http://localhost:3001/productPage`).then((res) => {
+      setProductList(res.products);
+      setTotalPage(res.totalPage);
+      setTotalProduct(res.totalProducts);
+    });
+  }, []);
+
+  useEffect(() => {
+    getAllProduct(
+      `http://localhost:3001/productPage?page=${pageNumber}${filterPath}`
+    ).then((res) => {
+      setProductList(res.products);
+      setTotalPage(res.totalPage);
+      setTotalProduct(res.totalProducts);
+    });
+  }, [pageNumber, filterPath]);
 
   function changePage(number) {
     setPageNumber(number);

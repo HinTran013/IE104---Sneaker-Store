@@ -5,8 +5,10 @@ const cartSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  status: String,
+  products: [Object]
 });
 
-const Cart = mongoose.model("cart", cartSchema);
+const Cart = mongoose.model("Cart", cartSchema);
 
 module.exports = Cart;

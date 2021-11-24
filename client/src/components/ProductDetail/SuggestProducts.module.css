@@ -1,6 +1,13 @@
 .container {
+     width: 1200px;
+     max-width: 100%;
+     margin: 0 auto;
+     padding: 30px 10px;
+}
+
+.productContainer {
      height: 450px;
-     padding: 0 28px;
+     padding: 20px 0;
      margin: 28px 0;
      display: flex;
      gap: 28px;
@@ -10,16 +17,16 @@
      white-space: nowrap;
 }
 
-.container::-webkit-scrollbar {
+.productContainer::-webkit-scrollbar {
      height: 8px;
 }
  
-.container::-webkit-scrollbar-track {
+.productContainer::-webkit-scrollbar-track {
      background-color: #e4e4e4;
      border-radius: 100px;
 }
  
-.container::-webkit-scrollbar-thumb {
+.productContainer::-webkit-scrollbar-thumb {
      background-color: #8d8d8d;
      border-radius: 100px;
 }

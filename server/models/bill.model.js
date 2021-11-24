@@ -8,6 +8,6 @@ const billSchema = new mongoose.Schema({
   totalPrice: Number,
 });
 
-const Bill = mongoose.model("bill", billSchema);
+const Bill = mongoose.model("Bill", billSchema);
 
 module.exports = Bill;
