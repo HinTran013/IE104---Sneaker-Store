@@ -19,10 +19,9 @@
 .trProduct {
     color: #15245E;
 }
-
 .trProduct th:first-child {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 2fr;
 
     color: #1D3178;
 }
@@ -33,7 +32,6 @@
 
     border-bottom: rgba(68, 66, 66, 0.4) solid 2px;
 }
-
 .trProduct img {
     width: 120px;
     
@@ -42,9 +40,14 @@
     box-shadow: 0 2px 7px rgba(0,0,0,.15);
 }
 
+.mainInfo {
+    display:flex;
+    flex-direction: row;
+}
+
 .nameProduct p {
     padding-left: 2rem;
-    padding-bottom: 0.8rem;
+    padding-bottom: 10px;
 
     color: #A1A8C1;
     font-size: 1.5rem;
@@ -52,7 +55,11 @@
 
     text-align: left;
 }
-.nameProduct p:first-child {
+
+.nameProduct p.newTotal {
+    display: none;
+}
+.nameProduct > p:first-child {
     color: black;
     font-size: 2.1rem;
     font-weight: 600;
@@ -82,7 +89,7 @@
     .nameProduct p {
         font-size: 1.5rem;
     }
-    .nameProduct p:first-child {
+    .nameProduct > p:first-child {
         font-size: 2rem;
     }
 
@@ -98,10 +105,85 @@
         margin-right: 15px;
     }
 
-    .nameProduct p {
-        font-size: 1.4rem;
+    .trProduct img {
+        width: 100px;
     }
-    .nameProduct p:first-child {
+
+    .nameProduct p {
+        font-size: 1.6rem;
+    }
+    .nameProduct > p:first-child {
         font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 600px) {
+    /* .cartTable {
+        width: 450px;
+    } */
+    .trHead th:first-child {
+        text-align: center;
+    }
+    .trHead th:not(.trHead th:first-child) {
+        display: none;
+    }
+
+    .trProduct th:first-child {
+       grid-template-columns: 1fr;
+
+    }
+    .trProduct th {
+        margin-left: 0px;
+    }
+    .trProduct img {
+        width: 120px;
+    }
+    
+    .nameProduct p.newTotal {
+        display: block;
+        
+    }
+
+    .trProduct .amount,
+    .trProduct .quantity {
+        display: none;
+    }
+
+    .nameProduct p {
+        padding-left: 15px;
+        padding-bottom: 10px;
+
+        font-size: 1.8rem;
+    }
+    .nameProduct p.newTotal {
+        color: #15245E;
+    }
+    .nameProduct > p:first-child {
+        font-size: 2.2rem;
+        padding-bottom: 15px;
+    }
+
+    .propsProduct {
+        display: flex;
+    }
+    
+}
+
+@media (max-width: 414px) {
+    .trProduct img {
+        width: 100px;
+    }
+
+    .nameProduct p {
+        font-size: 1.6rem;
+    }
+    .nameProduct p.newTotal {
+        font-size: 1.35rem;
+        font-weight: 500;
+    }
+    .nameProduct > p:first-child {
+        font-size: 1.7rem;
+
+        padding-bottom: 10px;
     }
 }

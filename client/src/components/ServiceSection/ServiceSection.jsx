@@ -10,14 +10,16 @@ const ServiceSection = () =>
             {serviceInfo.map((item) =>
             {
                 return (
-                    <div className={serviceSect.serviceDiv}>
+                    <div className={serviceSect.serviceDiv} key={item.serviceName}>
                         <img src={item.img} alt="" />
-                        <h2>{item.serviceName}</h2>
-                        <h3>{item.serviceDescription}</h3>
+                        <div className={serviceSect.serviceInfo}>
+                            <h2>{item.serviceName}</h2>
+                            <h3>{item.serviceDescription}</h3>
+                        </div>
                     </div>
                 )
             })}
-            
+
         </section>
     );
 }
