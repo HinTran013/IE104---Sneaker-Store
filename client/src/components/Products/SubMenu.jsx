@@ -92,17 +92,6 @@ function SubMenu({ title, listChild }) {
       default:
     }
   }
-  const testBrand = useSelector((state) => state.productArrange.value.brand);
-  const testPrice = useSelector((state) => state.productArrange.value.price);
-  // const testColor = useSelector((state) => state.productArrange.value.color);
-  const testFilterPath = useSelector(
-    (state) => state.productArrange.value.filterPath
-  );
-
-  console.log("brand: " + testBrand);
-  console.log("price: " + testPrice);
-  // console.log("Color: " + testColor);
-  console.log("filter path: " + testFilterPath);
 
   return (
     <>

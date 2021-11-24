@@ -1,12 +1,40 @@
 import React, { useState } from "react";
 import SideBarData from "./SideBarData";
 import Style from "./SizeGrid.module.css";
+import { useDispatch } from "react-redux";
+import {
+  addSizeFilter,
+  deleteSizeFilter,
+} from "../../features/productArrangeSlice";
 
 function SizeGrid() {
+  const dispatch = useDispatch();
   const [size, setSize] = useState();
 
-  const changeSize = (index) => {
-    setSize(index);
+  function deleteSize(filterSize) {
+    dispatch(deleteSizeFilter());
+  }
+
+  function addSize(filterSize) {
+    dispatch(
+      addSizeFilter({
+        size: filterSize,
+      })
+    );
+  }
+
+  const changeSize = (index, filterSize) => {
+    filterSize = `&size[in]=${filterSize}`;
+
+    if (index === size) {
+      setSize(-1);
+      deleteSize(filterSize);
+    } else {
+      setSize(index);
+      deleteSize(filterSize);
+      addSize(filterSize);
+      console.log(filterSize);
+    }
   };
 
   return (
@@ -20,7 +48,7 @@ function SizeGrid() {
                 : Style.sizeItem
             }
             key={index}
-            onClick={() => changeSize(index)}
+            onClick={() => changeSize(index, item)}
           >
             {item}
           </div>

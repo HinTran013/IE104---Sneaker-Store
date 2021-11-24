@@ -64,15 +64,16 @@ export const ProductArrangeSlice = createSlice({
     },
 
     addSizeFilter: (state, action) => {
-      // state.productArrange += `&${action.payload}`;
-      state.value.filterPath += `&size=${action.payload.size}`;
+      state.value.size = action.payload.size;
+      state.value.filterPath += `${action.payload.size}`;
     },
 
     deleteSizeFilter: (state, action) => {
       state.value.filterPath = state.value.filterPath.replace(
-        `&size=${state.value.size}`,
+        `${state.value.size}`,
         ""
       );
+      state.value.size = "";
     },
 
     addTagsFilter: (state, action) => {

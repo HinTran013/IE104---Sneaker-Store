@@ -15,6 +15,8 @@ function ProductsMainPart(props) {
     (state) => state.productArrange.value.filterPath
   );
 
+  console.log(filterPath);
+
   const dispatch = useDispatch();
 
   const [pageNumber, setPageNumber] = React.useState(0);
