@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import {
   addBrandFilter,
   deleteBrandFilter,
+  addPriceFilter,
+  deletePriceFilter,
 } from "../../features/productArrangeSlice";
 import { useSelector } from "react-redux";
 
@@ -19,6 +21,7 @@ function SubMenu({ title, listChild }) {
     });
   }
 
+  // Brand handler
   function addBrand(filterBrand) {
     dispatch(
       addBrandFilter({
@@ -31,22 +34,71 @@ function SubMenu({ title, listChild }) {
     dispatch(deleteBrandFilter());
   }
 
-  function handleSelected(index, filterBrand) {
-    if (index === isSelected) {
-      setIsSelected(-1);
-      deleteBrand(filterBrand);
-    } else {
-      setIsSelected(index);
-      deleteBrand(filterBrand);
-      addBrand(filterBrand);
+  //Price handler
+  function addPrice(filterPrice) {
+    switch (filterPrice) {
+      case "Less than 50$":
+        filterPrice = "&price[lt]=50";
+        break;
+      case "50$-100$":
+        filterPrice = "&price[gte]=50&price[lte]=100";
+        break;
+      case "100$-150$":
+        filterPrice = "&price[gte]=100&price[lte]=150";
+        break;
+      case "150$-200$":
+        filterPrice = "&price[gte]=150&price[lte]=200";
+        break;
+      case "Above 200$":
+        filterPrice = "&price[gt]=200";
+        break;
+      default:
+    }
+
+    dispatch(
+      addPriceFilter({
+        price: filterPrice,
+      })
+    );
+  }
+
+  function deletePrice(filterPrice) {
+    dispatch(deletePriceFilter());
+  }
+
+  function handleSelected(index, filterType) {
+    switch (title) {
+      case "Brand":
+        if (index === isSelected) {
+          setIsSelected(-1);
+          deleteBrand(filterType);
+        } else {
+          setIsSelected(index);
+          deleteBrand(filterType);
+          addBrand(filterType);
+        }
+        break;
+      case "Price":
+        if (index === isSelected) {
+          setIsSelected(-1);
+          deletePrice(filterType);
+        } else {
+          setIsSelected(index);
+          deletePrice(filterType);
+          addPrice(filterType);
+        }
+        break;
+      default:
     }
   }
   const testBrand = useSelector((state) => state.productArrange.value.brand);
+  const testPrice = useSelector((state) => state.productArrange.value.price);
   const testFilterPath = useSelector(
     (state) => state.productArrange.value.filterPath
   );
 
   console.log("brand: " + testBrand);
+  console.log("price: " + testPrice);
   console.log("filter path: " + testFilterPath);
 
   return (

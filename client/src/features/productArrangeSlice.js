@@ -14,8 +14,12 @@ export const ProductArrangeSlice = createSlice({
   name: "productArrange",
   initialState: { value: initialStateValue },
   reducers: {
-    resetBrandFilter: (state, action) => {
+    resetFilter: (state, action) => {
       state.value.brand = "";
+      state.value.price = "";
+      state.value.color = "";
+      state.value.size = "";
+      state.value.tags = "";
       state.value.filterPath = "";
     },
 
@@ -34,15 +38,16 @@ export const ProductArrangeSlice = createSlice({
     },
 
     addPriceFilter: (state, action) => {
-      // state.productArrange += `&${action.payload}`;
-      state.value.filterPath += `&price=${action.payload.price}`;
+      state.value.price = action.payload.price;
+      state.value.filterPath += `${action.payload.price}`;
     },
 
     deletePriceFilter: (state, action) => {
       state.value.filterPath = state.value.filterPath.replace(
-        `&price=${state.value.price}`,
+        `${state.value.price}`,
         ""
       );
+      state.value.price = "";
     },
   },
 
@@ -84,7 +89,7 @@ export const ProductArrangeSlice = createSlice({
 });
 
 export const {
-  resetBrandFilter,
+  resetFilter,
   addBrandFilter,
   addPriceFilter,
   addColorFilter,

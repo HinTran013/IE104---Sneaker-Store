@@ -7,7 +7,7 @@ import Pagination from "./Pagination";
 import { getAllProduct } from "../../api/paginationProductAPI";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { resetBrandFilter } from "../../features/productArrangeSlice";
+import { resetFilter } from "../../features/productArrangeSlice";
 
 function ProductsMainPart(props) {
   //get filter global state from redux
@@ -27,7 +27,7 @@ function ProductsMainPart(props) {
   });
 
   useEffect(() => {
-    dispatch(resetBrandFilter());
+    dispatch(resetFilter());
 
     getAllProduct(`http://localhost:3001/productPage`).then((res) => {
       setProductList(res.products);
