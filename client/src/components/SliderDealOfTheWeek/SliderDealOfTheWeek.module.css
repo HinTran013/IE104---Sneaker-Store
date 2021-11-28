@@ -78,6 +78,12 @@
   animation: right-to-left 1.5s ease-in-out;
 }
 
+/* Description */
+.description {
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
 /* Button to navigate */
 .dealBtn {
   cursor: pointer;
@@ -230,7 +236,8 @@
   }
 
   .dealContainer .soldText,
-  .dealContainer .AvailableText {
+  .dealContainer .AvailableText,
+  .description {
     font-size: 1.6rem;
   }
 

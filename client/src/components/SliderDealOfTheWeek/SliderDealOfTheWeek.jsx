@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ProgressBar from "./ProgressBar";
 import DealStyle from "./SliderDealOfTheWeek.module.css";
 import Data from "./SliderOfTheWeekData";
 
@@ -13,6 +12,7 @@ const SliderDealOfTheWeek = () => {
     btnText: Data[0].btnText,
     saleAmount: Data[0].saleAmount,
     alreadySold: Data[0].alreadySold,
+    description: Data[0].description,
   });
 
   const switchSlide = (index) => {
@@ -25,6 +25,7 @@ const SliderDealOfTheWeek = () => {
       btnText: Data[index].btnText,
       saleAmount: Data[index].saleAmount,
       alreadySold: Data[index].alreadySold,
+      description: Data[index].description,
     });
   };
 
@@ -72,7 +73,7 @@ const SliderDealOfTheWeek = () => {
               </p>
             </div>
 
-            <ProgressBar
+            {/* <ProgressBar
               done={Math.floor(
                 (Number(contentState.alreadySold) /
                   Number(contentState.saleAmount)) *
@@ -80,9 +81,11 @@ const SliderDealOfTheWeek = () => {
               )}
               className={`${DealStyle.progress}`}
               key={contentState.name}
-            />
+            /> */}
 
-            {/* <p className={`${DealStyle.isExpireText}`}>Still Available</p> */}
+            <p className={`${DealStyle.description}`}>
+              {contentState.description}
+            </p>
 
             <a className={`${DealStyle.dealBtn}`} key={Math.random()}>
               Shop now
