@@ -6,7 +6,7 @@ const initialStateValue = {
   price: "",
   color: "",
   size: "",
-  tags: "",
+  tag: "",
   filterPath: ``,
 };
 
@@ -19,7 +19,7 @@ export const ProductArrangeSlice = createSlice({
       state.value.price = "";
       state.value.color = "";
       state.value.size = "";
-      state.value.tags = "";
+      state.value.tag = "";
       state.value.filterPath = "";
     },
 
@@ -76,16 +76,17 @@ export const ProductArrangeSlice = createSlice({
       state.value.size = "";
     },
 
-    addTagsFilter: (state, action) => {
-      // state.productArrange += `&${action.payload}`;
-      state.value.filterPath += `&tags=${action.payload.tags}`;
+    addTagFilter: (state, action) => {
+      state.value.tag = action.payload.tag;
+      state.value.filterPath += `${action.payload.tag}`;
     },
 
-    deleteTagsFilter: (state, action) => {
+    deleteTagFilter: (state, action) => {
       state.value.filterPath = state.value.filterPath.replace(
-        `&tags=${state.value.tags}`,
+        `${state.value.tag}`,
         ""
       );
+      state.value.tag = "";
     },
   },
 });
@@ -96,12 +97,12 @@ export const {
   addPriceFilter,
   addColorFilter,
   addSizeFilter,
-  addTagsFilter,
+  addTagFilter,
   deleteBrandFilter,
   deletePriceFilter,
   deleteColorFilter,
   deleteSizeFilter,
-  deleteTagsFilter,
+  deleteTagFilter,
 } = ProductArrangeSlice.actions;
 
 export default ProductArrangeSlice.reducer;
