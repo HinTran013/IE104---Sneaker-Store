@@ -15,6 +15,12 @@ const SideBarData = {
     ],
   },
   tags: ["Best seller", "Black", "Blue", "Grey", "Red", "Jordan"],
+  options: [
+    "Date, new to old",
+    "Date, old to new",
+    "Price, low to high",
+    "Price, high to low",
+  ],
 };
 
 export default SideBarData;

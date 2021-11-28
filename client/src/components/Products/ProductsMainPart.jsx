@@ -31,11 +31,13 @@ function ProductsMainPart(props) {
   useEffect(() => {
     dispatch(resetFilter());
 
-    getAllProduct(`http://localhost:3001/productPage`).then((res) => {
-      setProductList(res.products);
-      setTotalPage(res.totalPage);
-      setTotalProduct(res.totalProducts);
-    });
+    getAllProduct(`http://localhost:3001/productPage${filterPath}`).then(
+      (res) => {
+        setProductList(res.products);
+        setTotalPage(res.totalPage);
+        setTotalProduct(res.totalProducts);
+      }
+    );
   }, []);
 
   useEffect(() => {

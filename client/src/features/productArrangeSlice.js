@@ -2,12 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // "http://localhost:3001/productPage?page=0";
 const initialStateValue = {
+  sorting: "-_id",
   brand: "",
   price: "",
   color: "",
   size: "",
   tag: "",
-  filterPath: ``,
+  filterPath: `&sort=-_id`,
 };
 
 export const ProductArrangeSlice = createSlice({
@@ -20,7 +21,7 @@ export const ProductArrangeSlice = createSlice({
       state.value.color = "";
       state.value.size = "";
       state.value.tag = "";
-      state.value.filterPath = "";
+      state.value.filterPath = "&sort=-_id";
     },
 
     addBrandFilter: (state, action) => {
@@ -88,6 +89,19 @@ export const ProductArrangeSlice = createSlice({
       );
       state.value.tag = "";
     },
+
+    addSortingFilter: (state, action) => {
+      state.value.sorting = action.payload.sorting;
+      state.value.filterPath += `&sort=${action.payload.sorting}`;
+    },
+
+    deleteSortingFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&sort=${state.value.sorting}`,
+        ""
+      );
+      state.value.brand = "";
+    },
   },
 });
 
@@ -98,11 +112,13 @@ export const {
   addColorFilter,
   addSizeFilter,
   addTagFilter,
+  addSortingFilter,
   deleteBrandFilter,
   deletePriceFilter,
   deleteColorFilter,
   deleteSizeFilter,
   deleteTagFilter,
+  deleteSortingFilter,
 } = ProductArrangeSlice.actions;
 
 export default ProductArrangeSlice.reducer;
