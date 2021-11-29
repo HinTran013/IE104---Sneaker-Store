@@ -8,6 +8,7 @@ const initialStateValue = {
   color: "",
   size: "",
   tag: "",
+  navFind: "",
   filterPath: `&sort=-_id`,
 };
 
@@ -21,6 +22,7 @@ export const ProductArrangeSlice = createSlice({
       state.value.color = "";
       state.value.size = "";
       state.value.tag = "";
+      state.value.navFind = "";
       state.value.filterPath = "&sort=-_id";
     },
 
@@ -102,6 +104,19 @@ export const ProductArrangeSlice = createSlice({
       );
       state.value.brand = "";
     },
+
+    addNavFindFilter: (state, action) => {
+      state.value.navFind = action.payload.navFind;
+      state.value.filterPath += `&name[regex]=${action.payload.navFind}`;
+    },
+
+    deleteNavFindFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&name[regex]=${state.value.navFind}`,
+        ""
+      );
+      state.value.navFind = "";
+    },
   },
 });
 
@@ -113,12 +128,14 @@ export const {
   addSizeFilter,
   addTagFilter,
   addSortingFilter,
+  addNavFindFilter,
   deleteBrandFilter,
   deletePriceFilter,
   deleteColorFilter,
   deleteSizeFilter,
   deleteTagFilter,
   deleteSortingFilter,
+  deleteNavFindFilter,
 } = ProductArrangeSlice.actions;
 
 export default ProductArrangeSlice.reducer;

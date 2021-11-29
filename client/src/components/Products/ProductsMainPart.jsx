@@ -7,7 +7,10 @@ import Pagination from "./Pagination";
 import { getAllProduct } from "../../api/paginationProductAPI";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { resetFilter } from "../../features/productArrangeSlice";
+import {
+  resetFilter,
+  deleteNavFindFilter,
+} from "../../features/productArrangeSlice";
 
 function ProductsMainPart(props) {
   //get filter global state from redux
@@ -15,7 +18,9 @@ function ProductsMainPart(props) {
     (state) => state.productArrange.value.filterPath
   );
 
-  console.log(filterPath);
+  const navFindValue = useSelector(
+    (state) => state.productArrange.value.navFind
+  );
 
   const dispatch = useDispatch();
 
@@ -27,9 +32,13 @@ function ProductsMainPart(props) {
     startProduct: 1,
     endProduct: 12,
   });
-
+  console.log("filter path: " + filterPath);
   useEffect(() => {
-    dispatch(resetFilter());
+    console.log("MOUNT!!!!");
+
+    console.log("find value: " + navFindValue);
+
+    console.log("filter path: " + filterPath);
 
     getAllProduct(`http://localhost:3001/productPage${filterPath}`).then(
       (res) => {
@@ -38,6 +47,8 @@ function ProductsMainPart(props) {
         setTotalProduct(res.totalProducts);
       }
     );
+
+    dispatch(resetFilter());
   }, []);
 
   useEffect(() => {

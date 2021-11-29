@@ -5,6 +5,12 @@ import { Brands } from "./BrandData";
 import UserForm from "./UserForm";
 import "./Navbar.css";
 import "./NavbarResponsive.css";
+import {
+  addNavFindFilter,
+  deleteNavFindFilter,
+} from "../../features/productArrangeSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 Modal.setAppElement("#root");
 
@@ -13,6 +19,10 @@ function Navbar() {
   const [navbarMobile, setNavbarMobile] = useState(false);
   const [inputSearch, setInputSearch] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
+  // console.log(history);
 
   // change navbar background when scroll
   const changeNavbar = () => {
@@ -24,6 +34,44 @@ function Navbar() {
   };
 
   window.addEventListener("scroll", changeNavbar);
+
+  function handleSearchValue(e) {
+    const value = e.target.value;
+    setSearchValue(value);
+    console.log(value);
+  }
+
+  function handleSearchKeyUp(e) {
+    if (e.keyCode === 13) {
+      console.log(searchValue + "enter");
+
+      dispatch(deleteNavFindFilter());
+
+      dispatch(
+        addNavFindFilter({
+          navFind: `${searchValue}&name[options]=i`,
+        })
+      );
+
+      setSearchValue("");
+      history.push("/product");
+    }
+  }
+
+  function handleSearchByClick() {
+    console.log(searchValue + "enter");
+
+    dispatch(deleteNavFindFilter());
+
+    dispatch(
+      addNavFindFilter({
+        navFind: `${searchValue}&name[options]=i`,
+      })
+    );
+
+    setSearchValue("");
+    history.push("/product");
+  }
 
   return (
     <>
@@ -68,6 +116,7 @@ function Navbar() {
                       <img
                         className="navbar__product-item__img"
                         src={item.logo}
+                        alt="brand-logo"
                       />
                       <h4>{item.title}</h4>
                     </Link>
@@ -102,8 +151,13 @@ function Navbar() {
               className="far fa-search header__btn-search"
               onClick={() => {
                 setInputSearch(!inputSearch);
+
+                if (inputSearch === true && searchValue !== "") {
+                  handleSearchByClick();
+                }
               }}
             ></i>
+            {/* INPUT */}
             <input
               className={
                 inputSearch
@@ -112,10 +166,14 @@ function Navbar() {
               }
               type="text"
               placeholder="Search something..."
+              value={searchValue}
+              onChange={handleSearchValue}
+              onKeyUp={handleSearchKeyUp}
             />
+            {/* --------------------------------- */}
           </div>
           <Link to="/cart">
-            <i className="far fa-shopping-cart cart-btn" ></i>
+            <i className="far fa-shopping-cart cart-btn"></i>
           </Link>
           <div className="header__btn-login">
             <i className="far fa-user" onClick={() => setModalIsOpen(true)} />
