@@ -46,7 +46,7 @@ const CartTable = () => {
                 <tr className={style.trHead}>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Discount</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -74,7 +74,7 @@ const CartTable = () => {
                                 </div>
                             </th>
                             <th className={style.amount}>{item.price}</th>
-                            <th className={style.quantity}>{item.quantity}</th>
+                            <th className={style.discount}>{item.discount} %</th>
                             <th className={style.amount}>{item.total}</th>
                         </tr>
                     );

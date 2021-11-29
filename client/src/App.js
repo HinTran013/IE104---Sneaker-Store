@@ -28,8 +28,8 @@ function App() {
           <Route path="/cart" component={CartPage} />
           <Route path="/contact" component={ContactUs} />
         </Switch>
+        <Footer />
       </Router>
-      <Footer />
     </React.Fragment>
   );
 }

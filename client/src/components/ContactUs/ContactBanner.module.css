@@ -25,7 +25,8 @@
 
     background-color: rgba(0, 0, 0, 0.4);
 }
-.contactBanner h1, .contactBanner a {
+.contactBanner h1, 
+.contactPath {
     position: relative;
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
     text-transform: capitalize;
@@ -39,6 +40,7 @@
     margin-bottom: 1rem;
 }
 
+.contactPath,
 .contactPath a{
     color: white;
     font-size: 2rem;
@@ -46,12 +48,16 @@
 
     text-decoration: none;
 }
+.contactPath a:hover {
+    color: red;
+}
+
 
 @media (max-width: 415px) {
     .contactBanner h1 {
         font-size: 4rem;
     }
-    .contactBanner a {
+    .contactPath {
         font-size: 1.7rem;
     }
 }

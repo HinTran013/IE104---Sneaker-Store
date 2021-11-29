@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import style from "./ContactSection.module.css"
 import ContactDetail from './ContactDetail'
@@ -25,7 +26,7 @@ const ContactSection = () =>
             </div>
 
             <div className={style.divImg}>
-                <a href=""><img src={googlemap} alt="A demo map" /></a>
+                <Link to=""><img src={googlemap} alt="A demo map" /></Link>
             </div>
 
             <div>

@@ -20,9 +20,10 @@
 .divContact h1 {
     font-size: 4rem;
     line-height: 4rem;
+    font-weight: 500;
 
     margin-top: 10px;
-    margin-bottom: 35px
+    margin-bottom: 30px
 }
 
 .divForm {
@@ -32,9 +33,10 @@
 .divForm h1 {
     font-size: 4rem;
     line-height: 4rem;
+    font-weight: 500;
 
     margin-top: 10px;
-    margin-bottom: 35px
+    margin-bottom: 30px
 }
 
 .divImg {
