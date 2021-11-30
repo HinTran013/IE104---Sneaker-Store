@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DealStyle from "./SliderDealOfTheWeek.module.css";
 import Data from "./SliderOfTheWeekData";
+import Toast from "../ToastMessage/ToastMessage";
 
 const SliderDealOfTheWeek = () => {
   const [contentState, setContentState] = useState({
@@ -87,9 +88,9 @@ const SliderDealOfTheWeek = () => {
               {contentState.description}
             </p>
 
-            <a className={`${DealStyle.dealBtn}`} key={Math.random()}>
+            <button className={`${DealStyle.dealBtn}`} key={Math.random()}>
               Shop now
-            </a>
+            </button>
           </div>
 
           <div className={`${DealStyle.sideImageContainer}`}>

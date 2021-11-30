@@ -102,6 +102,7 @@
   transition: 0.3s;
   margin-top: 30px;
   animation: small-to-big 1s ease-in-out;
+  border: none;
 }
 
 .dealBtn:hover {
