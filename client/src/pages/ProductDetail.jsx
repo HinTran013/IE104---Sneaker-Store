@@ -1,6 +1,7 @@
 import React from "react";
 import BackGroundImg from '../components/ProductDetail/BackGroundImg'
 import DetailInfo from '../components/ProductDetail/DetailInfo'
+import CmtAndRating from "../components/ProductDetail/CmtAndRating";
 import SuggestProducts from '../components/ProductDetail/SuggestProducts'
 
 
@@ -11,9 +12,8 @@ function ProductDetail(props) {
      return (
           <>
                <BackGroundImg />
-
                <DetailInfo id={id}/>
-
+               <CmtAndRating />
                <SuggestProducts />
           </>
      )

@@ -1,0 +1,46 @@
+.outerContainer {
+     width: 1200px;
+     max-width: 100%;
+     margin: 0 auto;
+     padding: 30px 10px;
+}
+
+.titleText {
+     font-size: 2.2rem;
+     font-weight: 400;
+     margin-bottom: 20px;
+}
+
+.ratingSection {
+     display: flex;
+}
+
+.ratingInfo {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+
+.ratingTotalPoint {
+     font-size: 80px !important;
+     line-height: 80px !important;
+}
+
+.ratingTotalText {
+     font-size: 20px;
+}
+
+.ratingChart {
+     flex: 2;
+     width: 300px;
+}
+
+.commentSection {
+     margin-top: 20px;
+     padding: 0 60px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+}

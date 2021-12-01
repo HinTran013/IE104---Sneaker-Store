@@ -12,7 +12,7 @@ const CartTable = () => {
 
     const getCartListLocal = () => {
         const sessionStorage = window.sessionStorage;
-        const cart = JSON.parse(sessionStorage.getItem('cart'));
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         setCartList(cart);
     }
 
@@ -37,7 +37,7 @@ const CartTable = () => {
         else {
             getCartListLocal();
         }
-    }, []);
+    }, [customer]);
 
     return (
         <table className={style.cartTable}>
