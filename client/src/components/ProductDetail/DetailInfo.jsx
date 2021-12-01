@@ -1,15 +1,36 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { OneProduct } from './ProductData'        //temp imgs
 import style from './DetailInfo.module.css'
 import { getOneProduct } from '../../api/productAPI'
 import { selectCustomer } from '../../features/customerSlice'
-import { createCart, addToCart, getCurrent } from '../../api/cartAPI'
-import { getFavourites, createFavouriteList, addFavourite } from '../../api/favouriteAPI'
+import ToastMessage from "../ToastMessage/ToastMessage";
+
+import { 
+     createCart, 
+     addToCart, 
+     getCurrent
+} from '../../api/cartAPI'
+
+import {
+     getFavourites,
+     createFavouriteList,
+     addFavourite,
+     removeFavourite,
+} from "../../api/favouriteAPI";
+
+import {
+     selectFavouriteList,
+     addFavouriteToRedux,
+     removeFavouriteFromRedux,
+} from "../../features/favouriteSlice";
 
 function DetailInfo({ id }) {
 
-     const customer = useSelector(selectCustomer)      //get current logged in customer
+     const customer = useSelector(selectCustomer)                     //get current logged in customer
+     const favouriteList = useSelector(selectFavouriteList) || [];    //get current favourite list
+
+     const dispatch = useDispatch();
 
      const [color, setColor] = useState(0)
      const [sizeChoose, setSizeChoose] = useState('')
@@ -25,7 +46,7 @@ function DetailInfo({ id }) {
 
      const handleAddToCart = () => {
           if (sizeChoose === '') {
-               alert('Please choose size');
+               ToastMessage('error', 'Please choose a size!');
                return;
           }
 
@@ -43,9 +64,9 @@ function DetailInfo({ id }) {
                          }
                     })
                     .catch(err => {
-                         // TODO: HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+                         // HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+                         ToastMessage('error', 'Something went wrong!');
                          console.log(err)
-
                     })
           }
           else {
@@ -65,6 +86,7 @@ function DetailInfo({ id }) {
                price: product.price
           }
           ]))
+          ToastMessage('success', 'Added to cart successfully!');
      }
 
      const addToCartDatabase = () => {
@@ -78,44 +100,53 @@ function DetailInfo({ id }) {
                product.color
           )
           .then(res => {
-               // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
-               alert('Added to cart successfully!')
-
+               // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
+               ToastMessage('success', 'Added to cart successfully!');
           })
           .catch(err => {
                console.log(err)
-               // TODO: HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
-               alert('Add to cart fail!')
-
+               // HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
+               ToastMessage('error', 'Add to cart failed!');
           })
      }
 
      const handleAddToFavorite = () => {
           if (customer) {
-               getFavourites(customer.id)
-                    .then(res => {
-                         // exist current favourite list in database
-                         if (res.length > 0) {
-                              addFavourite(customer.id, product._id).then(res => {
-                                   // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-
-                              })
-                         }
-                         else {
-                              createFavouriteList(customer.id)
-                                   .then(res => {
-                                        addFavourite(customer.id, product._id)
-                                        // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-
-                                   })
-                         }
-                    })
+               if (favouriteList.length > 0) {
+                    addFavourite(customer.id, product._id).then((res) => {
+                         dispatch(addFavouriteToRedux(product._id));
+                         // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+                         ToastMessage('success', 'Favourite added successfully!');
+                    });
+               } else {
+                    createFavouriteList(customer.id).then((res) => {
+                         // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+                         addFavourite(customer.id, product._id);
+                         ToastMessage('success', 'Favourite added successfully!');
+                    });
+               }
+          } else {
+               // HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
+               ToastMessage('error', 'Please login to use this feature!');
           }
-          else {
-               // TODO: HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
-               console.log('Please login to use this feature')
+     };
+
+     const hanleRemoveFromFavorite = () => {
+          if (customer) {
+               removeFavourite(customer.id, product._id).then((res) => {
+                    // TODO: HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
+                    dispatch(removeFavouriteFromRedux(product._id));
+                    ToastMessage('success', 'Favourite removed successfully!');
+               });
           }
-     }
+     };
+
+     const isFavourite = () => {
+          if (favouriteList.includes(product._id)) {
+               return true;
+          }
+          return false;
+     };
 
      useEffect(() => {
           getOneProduct(id)
@@ -180,7 +211,18 @@ function DetailInfo({ id }) {
                               </div>
 
                               <button className={style.btnAddToCart} onClick={handleAddToCart}>Add to cart</button>
-                              <button className={style.btnFavourite} onClick={handleAddToFavorite}>Favourite</button>
+                              <button 
+                                   className={isFavourite() ? style.btnFavouriteActive : style.btnFavourite} 
+                                   onClick={() => {
+                                        // add if not favourite, remove if favourite
+                                        if (isFavourite()) {
+                                             hanleRemoveFromFavorite();
+                                        } else {
+                                             handleAddToFavorite();
+                                        }
+                                   }}>
+                                   {isFavourite() ? 'Remove from favourite' : 'Add to favourite'}
+                              </button>
                          </div>
                     </div>
                </div>
