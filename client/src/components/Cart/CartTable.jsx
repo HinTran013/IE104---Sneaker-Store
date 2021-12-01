@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { selectCustomer } from '../../features/customerSlice'
 import style from "./CartTable.module.css"
 import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
-import { CartItem } from "./CartTableData.js"
 import { getCurrent } from '../../api/cartAPI'
 
 const CartTable = () => {
@@ -46,7 +45,7 @@ const CartTable = () => {
                 <tr className={style.trHead}>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Quantity</th>
+                    <th>SalePercent</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -54,28 +53,28 @@ const CartTable = () => {
             <tbody className={style.trProduct}>
 
 
-                {CartItem.map((item) => {
+                {cartList.map((item) => {
                     return (
                         <tr>
                             <th>
                                 <div className={style.mainInfo}>
-                                    <img src={item.thumbnail} alt="" />
+                                    <img src={sneaker} alt="" />
                                     <div className={style.nameProduct}>
                                         <p>{item.name}</p>
                                         <div className={style.propsProduct}>
-                                            <p>{item.detailColor}</p>
-                                            <p>{item.detailSize}</p>
+                                            <p>{item.color}</p>
+                                            <p>{item.size}</p>
                                         </div>
                                         <div className={style.propsProduct}>
-                                            <p className={style.newTotal}>Total ({item.quantity}): {item.total}</p>
+                                            <p className={style.newTotal}>Total {item.salePercent}</p>
                                         </div>
 
                                     </div>
                                 </div>
                             </th>
                             <th className={style.amount}>{item.price}</th>
-                            <th className={style.quantity}>{item.quantity}</th>
-                            <th className={style.amount}>{item.total}</th>
+                            <th className={style.quantity}>{item.salePercent}</th>
+                            <th className={style.amount}>{item.price - (item.price * item.salePercent * 0.01)}</th>
                         </tr>
                     );
                 })}
