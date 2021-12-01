@@ -1,7 +1,51 @@
 import React from "react";
 import Style from "./TopFilter.module.css";
+import {
+  deleteSortingFilter,
+  addSortingFilter,
+} from "../../features/productArrangeSlice";
+import { useDispatch } from "react-redux";
+import Data from "./SideBarData";
 
 function TopFilter({ total, showingAmount }) {
+  const [isClicked, setIsClicked] = React.useState(0);
+  const dispatch = useDispatch();
+
+  function deleteSorting(sorting) {
+    dispatch(deleteSortingFilter());
+  }
+
+  function addSorting(sortingFilter) {
+    dispatch(
+      addSortingFilter({
+        sorting: sortingFilter,
+      })
+    );
+  }
+
+  function handleClick(e) {
+    let sorting = e.target.value;
+
+    switch (sorting) {
+      case "Date, new to old":
+        sorting = "-_id";
+        break;
+      case "Date, old to new":
+        sorting = "_id";
+        break;
+      case "Price, low to high":
+        sorting = "price";
+        break;
+      case "Price, high to low":
+        sorting = "-price";
+        break;
+      default:
+    }
+
+    deleteSorting(sorting);
+    addSorting(sorting);
+  }
+
   return (
     <>
       <div className={`${Style.filterContainer}`}>
@@ -9,22 +53,23 @@ function TopFilter({ total, showingAmount }) {
           Showing {showingAmount.startProduct} - {showingAmount.endProduct} of{" "}
           {total} results
         </div>
-        <select name="" id="" className={`${Style.selection}`}>
-          <option value="" className={`${Style.singleOption}`}>
-            Date, new to old
-          </option>
-          <option value="" className={`${Style.singleOption}`}>
-            Date, old to new
-          </option>
-          <option value="" className={`${Style.singleOption}`}>
-            Best Selling
-          </option>
-          <option value="" className={`${Style.singleOption}`}>
-            Price, low to high
-          </option>
-          <option value="" className={`${Style.singleOption}`}>
-            Price, high to low
-          </option>
+        <select
+          onChange={handleClick}
+          name=""
+          id=""
+          className={`${Style.selection}`}
+        >
+          {Data.options.map((item, index) => {
+            return (
+              <option
+                value={item}
+                className={`${Style.singleOption}`}
+                key={index}
+              >
+                {item}
+              </option>
+            );
+          })}
         </select>
       </div>
     </>

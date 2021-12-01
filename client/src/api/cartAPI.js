@@ -27,7 +27,8 @@ export const addToCart = async (
      brand,
      price,
      size,
-     color
+     color,
+     salePercent
 ) => {
      await Axios.post(API_URL + '/addtocart', {
           customerID: customerID, 
@@ -36,7 +37,8 @@ export const addToCart = async (
           brand: brand,
           price: price,
           size: size,
-          color: color 
+          color: color,
+          salePercent: salePercent
      })
      .then(res => {
           console.log(res.data)

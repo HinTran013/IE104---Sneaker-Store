@@ -1,5 +1,5 @@
+import "react-toastify/dist/ReactToastify.css";
 import "./styles/App.css";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
 
 import React from "react";
+import { ToastContainer, Bounce } from "react-toastify";
 
 function App() {
   return (
@@ -30,6 +31,21 @@ function App() {
         </Switch>
         <Footer />
       </Router>
+      <Footer />
+
+      {/* Toast Message for all over the web app */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Bounce}
+      />
     </React.Fragment>
   );
 }

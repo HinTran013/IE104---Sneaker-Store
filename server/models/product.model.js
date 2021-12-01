@@ -10,6 +10,7 @@ const productSchema = new mongoose.Schema({
   rating: Number,
   color: String,
   size: [String],
+  tags: [String],
 });
 
 const Product = mongoose.model("Product", productSchema);

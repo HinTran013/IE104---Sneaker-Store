@@ -2,12 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 // "http://localhost:3001/productPage?page=0";
 const initialStateValue = {
+  sorting: "-_id",
   brand: "",
   price: "",
   color: "",
   size: "",
-  tags: "",
-  filterPath: ``,
+  tag: "",
+  navFind: "",
+  filterPath: `&sort=-_id`,
 };
 
 export const ProductArrangeSlice = createSlice({
@@ -19,8 +21,9 @@ export const ProductArrangeSlice = createSlice({
       state.value.price = "";
       state.value.color = "";
       state.value.size = "";
-      state.value.tags = "";
-      state.value.filterPath = "";
+      state.value.tag = "";
+      state.value.navFind = "";
+      state.value.filterPath = "&sort=-_id";
     },
 
     addBrandFilter: (state, action) => {
@@ -76,16 +79,43 @@ export const ProductArrangeSlice = createSlice({
       state.value.size = "";
     },
 
-    addTagsFilter: (state, action) => {
-      // state.productArrange += `&${action.payload}`;
-      state.value.filterPath += `&tags=${action.payload.tags}`;
+    addTagFilter: (state, action) => {
+      state.value.tag = action.payload.tag;
+      state.value.filterPath += `${action.payload.tag}`;
     },
 
-    deleteTagsFilter: (state, action) => {
+    deleteTagFilter: (state, action) => {
       state.value.filterPath = state.value.filterPath.replace(
-        `&tags=${state.value.tags}`,
+        `${state.value.tag}`,
         ""
       );
+      state.value.tag = "";
+    },
+
+    addSortingFilter: (state, action) => {
+      state.value.sorting = action.payload.sorting;
+      state.value.filterPath += `&sort=${action.payload.sorting}`;
+    },
+
+    deleteSortingFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&sort=${state.value.sorting}`,
+        ""
+      );
+      state.value.brand = "";
+    },
+
+    addNavFindFilter: (state, action) => {
+      state.value.navFind = action.payload.navFind;
+      state.value.filterPath += `&name[regex]=${action.payload.navFind}`;
+    },
+
+    deleteNavFindFilter: (state, action) => {
+      state.value.filterPath = state.value.filterPath.replace(
+        `&name[regex]=${state.value.navFind}`,
+        ""
+      );
+      state.value.navFind = "";
     },
   },
 });
@@ -96,12 +126,16 @@ export const {
   addPriceFilter,
   addColorFilter,
   addSizeFilter,
-  addTagsFilter,
+  addTagFilter,
+  addSortingFilter,
+  addNavFindFilter,
   deleteBrandFilter,
   deletePriceFilter,
   deleteColorFilter,
   deleteSizeFilter,
-  deleteTagsFilter,
+  deleteTagFilter,
+  deleteSortingFilter,
+  deleteNavFindFilter,
 } = ProductArrangeSlice.actions;
 
 export default ProductArrangeSlice.reducer;

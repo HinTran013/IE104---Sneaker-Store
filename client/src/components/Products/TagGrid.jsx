@@ -1,12 +1,39 @@
 import React, { useState } from "react";
 import Style from "./TagGrid.module.css";
 import SideBarData from "./SideBarData";
+import { useDispatch } from "react-redux";
+import {
+  addTagFilter,
+  deleteTagFilter,
+} from "../../features/productArrangeSlice";
 
 function TagGrid() {
   const [isClicked, setTagClickState] = useState(false);
+  const dispatch = useDispatch();
 
-  const setClick = (index) => {
-    setTagClickState(index);
+  function deleteTag(filterTag) {
+    dispatch(deleteTagFilter());
+  }
+
+  function addTag(filterTag) {
+    dispatch(
+      addTagFilter({
+        tag: filterTag,
+      })
+    );
+  }
+
+  const setClick = (index, filterTag) => {
+    filterTag = `&tags[in]=${filterTag}`;
+
+    if (index === isClicked) {
+      setTagClickState(-1);
+      deleteTag(filterTag);
+    } else {
+      setTagClickState(index);
+      deleteTag(filterTag);
+      addTag(filterTag);
+    }
   };
 
   return (
@@ -16,7 +43,7 @@ function TagGrid() {
           return (
             <li
               onClick={() => {
-                setClick(index);
+                setClick(index, item);
               }}
               className={
                 index === isClicked

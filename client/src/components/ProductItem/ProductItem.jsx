@@ -5,17 +5,21 @@ import style from "./ProductItem.module.css";
 import Nike1 from "../../assets/images/sneaker-transparent/nike-1.png"; //temp image
 import { selectCustomer } from "../../features/customerSlice";
 import { createCart, addToCart, getCurrent } from "../../api/cartAPI";
+import ToastMessage from "../ToastMessage/ToastMessage";
+
 import {
   getFavourites,
   createFavouriteList,
   addFavourite,
   removeFavourite,
 } from "../../api/favouriteAPI";
+
 import {
   selectFavouriteList,
   addFavouriteToRedux,
   removeFavouriteFromRedux,
 } from "../../features/favouriteSlice";
+
 
 function ProductItem({ data }) {
   const customer = useSelector(selectCustomer); //get current logged in customer
@@ -31,7 +35,7 @@ function ProductItem({ data }) {
 
   const handleAddToCart = () => {
     if (sizeChoose === "") {
-      alert("Please choose size");
+      ToastMessage('error', 'Please choose a size!');
       return;
     }
 
@@ -48,7 +52,8 @@ function ProductItem({ data }) {
           }
         })
         .catch((err) => {
-          // TODO: HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+          // HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
+          ToastMessage('error', 'Something went wrong!');
           console.log(err);
         });
     } else {
@@ -70,9 +75,11 @@ function ProductItem({ data }) {
           brand: data.brand,
           color: data.color,
           price: data.price,
+          salePercent: data.salePercent,
         },
       ])
     );
+    ToastMessage('success', 'Added to cart successfully!');
   };
 
   const addToCartDatabase = () => {
@@ -83,16 +90,17 @@ function ProductItem({ data }) {
       data.brand,
       data.price,
       sizeChoose,
-      data.color
+      data.color,
+      data.salePercent
     )
       .then((res) => {
-        // TODO: HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
-        alert("Added to cart successfully!");
+        // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
+        ToastMessage('success', 'Added to cart successfully!');
       })
       .catch((err) => {
         console.log(err);
-        // TODO: HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
-        alert("Add to cart fail!");
+        // HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
+        ToastMessage('error', 'Add to cart failed!');        
       });
   };
 
@@ -101,17 +109,19 @@ function ProductItem({ data }) {
       if (favouriteList.length > 0) {
         addFavourite(customer.id, data._id).then((res) => {
           dispatch(addFavouriteToRedux(data._id));
-          // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+          // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+          ToastMessage('success', 'Favourite added successfully!');
         });
       } else {
         createFavouriteList(customer.id).then((res) => {
-          // TODO: HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+          // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
           addFavourite(customer.id, data._id);
+          ToastMessage('success', 'Favourite added successfully!');
         });
       }
     } else {
-      // TODO: HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
-      console.log("Please login to use this feature");
+      // HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
+      ToastMessage('error', 'Please login to use this feature!');
     }
   };
 
@@ -120,6 +130,7 @@ function ProductItem({ data }) {
       removeFavourite(customer.id, data._id).then((res) => {
         // TODO: HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
         dispatch(removeFavouriteFromRedux(data._id));
+        ToastMessage('success', 'Favourite removed successfully!');
       });
     }
   };
@@ -168,7 +179,7 @@ function ProductItem({ data }) {
           }}
         >
           {isFavourite() ? (
-            <i className="fas fa-heart"></i>
+            <i className="fas fa-heart" style={{ color: 'red' }}></i>
           ) : (
             <i className="far fa-heart"></i>
           )}
