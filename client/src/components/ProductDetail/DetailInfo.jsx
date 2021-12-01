@@ -97,7 +97,8 @@ function DetailInfo({ id }) {
                product.brand,
                product.price,
                product.size[sizeChoose],
-               product.color
+               product.color,
+               product.salePercent,
           )
           .then(res => {
                // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE

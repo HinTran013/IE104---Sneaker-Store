@@ -38,6 +38,7 @@ exports.addToCart = async (req, res) => {
      const price = req.body.price;
      const size = req.body.size;
      const color = req.body.color;
+     const salePercent = req.body.salePercent;
 
      const product = {
           id: id,
@@ -45,7 +46,8 @@ exports.addToCart = async (req, res) => {
           brand: brand,
           price: price,
           size: size,
-          color: color
+          color: color,
+          salePercent: salePercent
      }
 
      try {
