@@ -8,7 +8,7 @@ const ContactBanner = () =>
     return (
         <div className={style.contactBanner}>
             <h1 className={style.contactTitle}>CONTACT US</h1>
-            <h2 className={style.contactPath}><a href="">HOME/CONTACT</a></h2>
+            <h2 className={style.contactPath}><Link to="/">HOME</Link> / <Link to="/contact">CONTACT</Link></h2>
         </div>
     )
 }

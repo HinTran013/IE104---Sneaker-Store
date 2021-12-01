@@ -5,27 +5,29 @@ import style from "./ContactForm.module.css"
 const ContactForm = () =>
 {
     return (
-        <section className={style.sectionForm}>
-            <div className={style.inputInfo}>
-                <input className={style.inputText}
+        <form action="">
+            <section className={style.sectionForm}>
+                <div className={style.inputInfo}>
+                    <input className={style.inputText}
                         placeholder="Your full name" />
-                <input className={style.inputText}
+                    <input className={style.inputText}
                         placeholder="Your Email" />
-            </div>
+                </div>
 
-            <div className={style.inputSubject}>
-                <input className={style.inputText}
+                <div className={style.inputSubject}>
+                    <input className={style.inputText}
                         placeholder="Subject" />
-                
-                <textarea className={style.inputText}
-                        placeholder="Some messages"
-                        rows="15"/>
-            </div>
 
-            <div className={style.divBtn }>
+                    <textarea className={style.inputText}
+                        placeholder="Some messages"
+                        rows="15" />
+                </div>
+
+                <div className={style.divBtn}>
                     <a href="">Send us</a>
-            </div>
-        </section>
+                </div>
+            </section>
+        </form>  
     )
 }
 

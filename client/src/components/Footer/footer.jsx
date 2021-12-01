@@ -8,6 +8,7 @@ import footerCSS from "./footerStyle.module.css"
 import instagram from "../../assets/images/footerSrc/instagram.png";
 import twitter from "../../assets/images/footerSrc/twitter.png";
 import facebook from "../../assets/images/footerSrc/facebook.png";
+import { Link } from 'react-router-dom';
 
 export class Footer extends Component
 {
@@ -18,39 +19,39 @@ export class Footer extends Component
                 <div className={`${footerCSS.colInfo}`}>
                     <div className={`${footerCSS.colUpper}`}>
                         <ul>
-                            <li><a href="#">FIND A STORE</a></li>
-                            <li><a href="#">BECOME A MEMBER</a></li>
-                            <li><a href="#">SIGNUP FOR EMAIL</a></li>
-                            <li><a href="#">SEND US FEEDBACK</a></li>
+                            <li><Link to="">FIND A STORE</Link></li>
+                            <li><Link to="">BECOME A MEMBER</Link></li>
+                            <li><Link to="">SIGNUP FOR EMAIL</Link></li>
+                            <li><Link to="/contact">SEND US FEEDBACK</Link></li>
                         </ul>
                     </div>
 
                     <div className={footerCSS.col}>
                         <ul>
-                            <li><a href="#"></a>GET HELP</li>
-                            <li><a href="#">Order status</a></li>
-                            <li><a href="#">Delivery</a></li>
-                            <li><a href="#">Return</a></li>
-                            <li><a href="#">Payment options</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><Link to="">GET HELP</Link></li>
+                            <li><Link to="">Order status</Link></li>
+                            <li><Link to="">Delivery</Link></li>
+                            <li><Link to="">Return</Link></li>
+                            <li><Link to="">Payment options</Link></li>
+                            <li><Link to="">Contact us</Link></li>
                         </ul>
                     </div>
                     <div className={footerCSS.col}>
                         <ul>
-                            <li><a href="#"></a>ABOUT US</li>
-                            <li><a href="#">News</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Investors</a></li>
-                            <li><a href="#">Sustainability</a></li>
+                            <li><Link to="/about-us">ABOUT US</Link></li>
+                            <li><Link to="">News</Link></li>
+                            <li><Link to="">Careers</Link></li>
+                            <li><Link to="">Investors</Link></li>
+                            <li><Link to="">Sustainability</Link></li>
                         </ul>
                     </div>
                     <div className={footerCSS.col}>
                         <ul>
-                            <li><a href="#"></a>POLICY</li>
-                            <li><a href="#">Return policy</a></li>
-                            <li><a href="#">Check orders</a></li>
-                            <li><a href="#">Payment policy</a></li>
-                            <li><a href="#">Ordering guide</a></li>
+                            <li><Link to="">POLICY</Link></li>
+                            <li><Link to="">Return policy</Link></li>
+                            <li><Link to="">Check orders</Link></li>
+                            <li><Link to="">Payment policy</Link></li>
+                            <li><Link to="">Ordering guide</Link></li>
                         </ul>
                     </div>
                 </div>
@@ -59,19 +60,19 @@ export class Footer extends Component
                     <div className={footerCSS.row}>
                         <ul className={footerCSS.icon}>
                             <li>
-                                <a href="#">
+                                <Link to="">
                                     <img src={instagram} alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to="">
                                     <img src={facebook} alt="" />
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to="">
                                     <img src={twitter} alt="" />
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

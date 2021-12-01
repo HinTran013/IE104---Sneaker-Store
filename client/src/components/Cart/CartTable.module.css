@@ -21,7 +21,7 @@
 }
 .trProduct th:first-child {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
 
     color: #1D3178;
 }
@@ -69,11 +69,11 @@
 }
 
 .trProduct .amount,
-.trProduct .quantity {
+.trProduct .discount {
     font-size: 1.5rem;
     font-weight: 500;
 }
-.trProduct .quantity {
+.trProduct .discount {
     font-weight: 600;
     color: gray;
 }
@@ -145,7 +145,7 @@
     }
 
     .trProduct .amount,
-    .trProduct .quantity {
+    .trProduct .discount {
         display: none;
     }
 

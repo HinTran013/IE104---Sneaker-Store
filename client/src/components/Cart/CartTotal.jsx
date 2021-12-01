@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 import style from "./CartTotal.module.css"
 import checked from "../../assets/icons/checked.png"
@@ -23,7 +24,7 @@ const CartTotal = () =>
                     <p>Shipping and taxes calculated at checkout</p>
                 </div>
                 <div className={style.divBtn }>
-                    <a href="">Procced to check out</a>
+                    <Link to="">Procced to check out</Link>
                 </div>
             </div>
         </div>

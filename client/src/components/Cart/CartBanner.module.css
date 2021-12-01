@@ -25,7 +25,8 @@
 
     background-color: rgba(0, 0, 0, 0.05);
 }
-.cartBanner h1, .cartBanner a {
+.cartBanner h1, 
+.cartPath {
     position: relative;
     text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
     text-transform: capitalize;
@@ -39,19 +40,23 @@
     margin-bottom: 1rem;
 }
 
-.cartPath a{
+.cartPath,
+.cartPath a {
     color: white;
     font-size: 2rem;
     font-weight: 400;
 
     text-decoration: none;
 }
+.cartPath a:hover {
+    color: red;
+}
 
 @media (max-width: 415px) {
     .cartBanner h1 {
         font-size: 4rem;
     }
-    .cartBanner a {
+    .cartPath {
         font-size: 1.7rem;
     }
 }
