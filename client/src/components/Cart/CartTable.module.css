@@ -21,7 +21,7 @@
 }
 .trProduct th:first-child {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 90%;
 
     color: #1D3178;
 }
@@ -34,6 +34,7 @@
 }
 .trProduct img {
     width: 120px;
+    height: 120px;
     
     padding: 1rem;
 
@@ -52,6 +53,7 @@
     color: #A1A8C1;
     font-size: 1.5rem;
     font-weight: 400;
+    line-height: 0.9;
 
     text-align: left;
 }

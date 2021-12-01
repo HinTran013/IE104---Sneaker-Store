@@ -31,8 +31,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-      <Footer />
-
+   
       {/* Toast Message for all over the web app */}
       <ToastContainer
         position="top-right"

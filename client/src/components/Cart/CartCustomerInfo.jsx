@@ -1,11 +1,11 @@
 import React, { Component, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { selectCustomer } from '../../features/customerSlice'
-import style from "./CartCustomerInfo.module.css"
+import styleCartInfo from "./CartCustomerInfo.module.css"
 
 const CartCustomerInfo = () =>
 {
-    const customer = useSelector(selectCustomer)
+    const customerInfo = useSelector(selectCustomer)
 
     const [customerName, setCustomerName] = useState('')
     const [customerEmail, setCustomerEmail] = useState('')
@@ -13,50 +13,50 @@ const CartCustomerInfo = () =>
     const [customerPhone, setCustomerPhone] = useState('')
 
     useEffect(() => {
-        if (customer) {
-            setCustomerName(customer.name)
-            setCustomerEmail(customer.email)
-            setCustomerAddress(customer.address)
-            setCustomerPhone(customer.phone)
+        if (customerInfo) {
+            setCustomerName(customerInfo.name)
+            setCustomerEmail(customerInfo.email)
+            setCustomerAddress(customerInfo.address)
+            setCustomerPhone(customerInfo.phone)
         }
-    }, [customer]);
+    }, [customerInfo]);
 
     return (
-        <div className={style.cartInfoDiv}>
-            <h1 className={style.titleInfo}>Customer Information</h1>
+        <div className={styleCartInfo.cartInfoDiv}>
+            <h1 className={styleCartInfo.titleInfo}>Customer Information</h1>
 
-            <div className={style.divSectionCal}>
-                <div className={style.divInput}>
-                    <div className={style.divInfo}>
+            <div className={styleCartInfo.divSectionCal}>
+                <div className={styleCartInfo.divInput}>
+                    <div className={styleCartInfo.divInfo}>
                         <input 
-                            className={style.input} 
+                            className={styleCartInfo.input} 
                             type="text" 
                             placeholder="Name"
                             value={customerName}
                             onChange={(e) => setCustomerName(e.target.value)}
                         />
                     </div>
-                    <div className={style.divInfo}>
+                    <div className={styleCartInfo.divInfo}>
                         <input
-                            className={style.input}
+                            className={styleCartInfo.input}
                             type="text" 
                             placeholder="Email"
                             value={customerEmail}
                             onChange={(e) => setCustomerEmail(e.target.value)}
                         />
                     </div>
-                    <div className={style.divInfo}>
+                    <div className={styleCartInfo.divInfo}>
                         <input 
-                            className={style.input} 
+                            className={styleCartInfo.input} 
                             type="text" 
                             placeholder="Address" 
                             value={customerAddress}
                             onChange={(e) => setCustomerAddress(e.target.value)}
                         />
                     </div>
-                    <div className={style.divInfo}>
+                    <div className={styleCartInfo.divInfo}>
                         <input 
-                            className={style.input} 
+                            className={styleCartInfo.input} 
                             type="text" 
                             placeholder="Phone Number" 
                             value={customerPhone}
