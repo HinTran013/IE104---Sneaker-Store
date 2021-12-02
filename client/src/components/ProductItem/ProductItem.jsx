@@ -106,19 +106,11 @@ function ProductItem({ data }) {
 
   const handleAddToFavorite = () => {
     if (customer) {
-      if (favouriteList.length > 0) {
-        addFavourite(customer.id, data._id).then((res) => {
-          dispatch(addFavouriteToRedux(data._id));
-          // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-          ToastMessage('success', 'Favourite added successfully!');
-        });
-      } else {
-        createFavouriteList(customer.id).then((res) => {
-          // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-          addFavourite(customer.id, data._id);
-          ToastMessage('success', 'Favourite added successfully!');
-        });
-      }
+      addFavourite(customer.id, data._id).then((res) => {
+        dispatch(addFavouriteToRedux(data._id));
+        // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
+        ToastMessage('success', 'Favourite added successfully!');
+      });
     } else {
       // HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
       ToastMessage('error', 'Please login to use this feature!');
@@ -128,7 +120,7 @@ function ProductItem({ data }) {
   const hanleRemoveFromFavorite = () => {
     if (customer) {
       removeFavourite(customer.id, data._id).then((res) => {
-        // TODO: HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
+        // HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
         dispatch(removeFavouriteFromRedux(data._id));
         ToastMessage('success', 'Favourite removed successfully!');
       });

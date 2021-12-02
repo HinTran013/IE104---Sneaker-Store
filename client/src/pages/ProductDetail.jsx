@@ -13,7 +13,7 @@ function ProductDetail(props) {
           <>
                <BackGroundImg />
                <DetailInfo id={id}/>
-               <CmtAndRating />
+               <CmtAndRating id={id}/>
                <SuggestProducts />
           </>
      )

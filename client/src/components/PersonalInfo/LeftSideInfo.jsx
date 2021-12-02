@@ -1,0 +1,24 @@
+import React from "react";
+import empty from '../../assets/images/empty.jpg';
+import style from './LeftSideInfo.module.css';
+
+function LeftSideInfo() {
+    return(
+        <div className={style.container}>
+            <div style={{display:'inline-block'}}>
+                <div className={style.image}><img style={{background: 'white', borderRadius: '50%', border: '2px solid white'}} className={style.image} src={empty} alt="" width='64px'/></div>
+                <div className={style.username}>Xin chao, Full Name</div>
+            </div>
+            <div style={{display:'inline-block', margin: '20px 0 0 20px'}}>
+                <i className={`${style.symbol} fas fa-user`}></i>
+                <div className={style.title}>Account Information</div>
+            </div>
+            <div style={{display:'inline-block', margin: '20px 0 0 14px'}}>
+                <i className={`${style.symbol} fas fa-shopping-cart`}></i>
+                <div className={style.title}>Billing History</div>
+            </div>
+        </div>
+    );
+}
+
+export default LeftSideInfo;
