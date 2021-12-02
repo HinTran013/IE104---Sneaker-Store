@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import {
   resetFilter,
   deleteNavFindFilter,
+  addBrandFilter,
 } from "../../features/productArrangeSlice";
 
 function ProductsMainPart(props) {
@@ -32,14 +33,7 @@ function ProductsMainPart(props) {
     startProduct: 1,
     endProduct: 12,
   });
-  console.log("filter path: " + filterPath);
   useEffect(() => {
-    console.log("MOUNT!!!!");
-
-    console.log("find value: " + navFindValue);
-
-    console.log("filter path: " + filterPath);
-
     getAllProduct(`http://localhost:3001/productPage${filterPath}`).then(
       (res) => {
         setProductList(res.products);
@@ -52,6 +46,8 @@ function ProductsMainPart(props) {
   }, []);
 
   useEffect(() => {
+    if (!props.findParam) dispatch(resetFilter());
+    getBrandFilterParam();
     getAllProduct(
       `http://localhost:3001/productPage?page=${pageNumber}${filterPath}`
     ).then((res) => {
@@ -59,7 +55,59 @@ function ProductsMainPart(props) {
       setTotalPage(res.totalPage);
       setTotalProduct(res.totalProducts);
     });
-  }, [pageNumber, filterPath]);
+    console.log("filter path rerender: " + filterPath);
+    console.log("path: " + props.path + ", param: " + props.findParam);
+  }, [pageNumber, filterPath, props.path, props.findParam]);
+
+  function getBrandFilterParam() {
+    console.log(" brand path: " + props.path);
+    switch (props.path) {
+      case "/product/Nike":
+        console.log("Nike!!!!!");
+        dispatch(
+          addBrandFilter({
+            brand: "Nike",
+          })
+        );
+        break;
+      case "/product/Adidas":
+        dispatch(
+          addBrandFilter({
+            brand: "Adidas",
+          })
+        );
+        break;
+      case "/product/Puma":
+        dispatch(
+          addBrandFilter({
+            brand: "Puma",
+          })
+        );
+        break;
+      case "/product/Jordan":
+        dispatch(
+          addBrandFilter({
+            brand: "Jordan",
+          })
+        );
+        break;
+      case "/product/NewBalance":
+        dispatch(
+          addBrandFilter({
+            brand: "New Balance",
+          })
+        );
+        break;
+      case "/product/Converse":
+        dispatch(
+          addBrandFilter({
+            brand: "Converse",
+          })
+        );
+        break;
+      default:
+    }
+  }
 
   function changePage(number) {
     setPageNumber(number);

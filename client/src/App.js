@@ -24,6 +24,17 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route exact path="/product" component={ProductPage} />
+          <Route
+            exact
+            path="/product/find/:findString"
+            component={ProductPage}
+          />
+          <Route exact path="/product/Nike" component={ProductPage} />
+          <Route exact path="/product/Adidas" component={ProductPage} />
+          <Route exact path="/product/Puma" component={ProductPage} />
+          <Route exact path="/product/Jordan" component={ProductPage} />
+          <Route exact path="/product/NewBalance" component={ProductPage} />
+          <Route exact path="/product/Converse" component={ProductPage} />
           <Route exact path="/product/:id" component={ProductDetail} />
           <Route path="/about-us" component={AboutUsPage} />
           <Route path="/blog" component={Page404} />

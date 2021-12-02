@@ -5,7 +5,7 @@ import ProductsMainPart from "../components/Products/ProductsMainPart";
 import FloatingFilter from "../components/Products/FloatingFilter";
 import SideBar from "../components/Products/SideBar";
 
-const ProductPage = () => {
+const ProductPage = (props) => {
   // check when to show mobile sidebar
   const [showMobileSideBar, setShowMobileSideBar] = React.useState(false);
   // check if user scroll to bottom of the page to hide floating filter
@@ -36,6 +36,8 @@ const ProductPage = () => {
 
       {/* Show products and side bar */}
       <ProductsMainPart
+        path={props.match.path}
+        findParam={props.match.params.findString}
         showMobileSideBar={showMobileSideBar}
         toggleMobileSideBar={toggleMobileSideBar}
       />
