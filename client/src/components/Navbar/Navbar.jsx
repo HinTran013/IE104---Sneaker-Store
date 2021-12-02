@@ -10,6 +10,7 @@ import ModalAccount from './ModalAccount'
 import {
   addNavFindFilter,
   deleteNavFindFilter,
+  resetFilter,
 } from "../../features/productArrangeSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -43,14 +44,12 @@ function Navbar() {
   function handleSearchValue(e) {
     const value = e.target.value;
     setSearchValue(value);
-    console.log(value);
   }
 
   function handleSearchKeyUp(e) {
     if (e.keyCode === 13) {
-      console.log(searchValue + "enter");
-
       dispatch(deleteNavFindFilter());
+      dispatch(resetFilter());
 
       dispatch(
         addNavFindFilter({
@@ -58,15 +57,17 @@ function Navbar() {
         })
       );
 
+      if (searchValue !== "") {
+        history.push("/product/find/" + searchValue);
+      }
+
       setSearchValue("");
-      history.push("/product");
     }
   }
 
   function handleSearchByClick() {
-    console.log(searchValue + "enter");
-
     dispatch(deleteNavFindFilter());
+    dispatch(resetFilter());
 
     dispatch(
       addNavFindFilter({
@@ -74,8 +75,11 @@ function Navbar() {
       })
     );
 
+    if (searchValue !== "") {
+      history.push("/product/find/" + searchValue);
+    }
+
     setSearchValue("");
-    history.push("/product");
   }
 
   return (

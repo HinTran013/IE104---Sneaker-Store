@@ -7,7 +7,6 @@ import {
   addPriceFilter,
   deletePriceFilter,
 } from "../../features/productArrangeSlice";
-import { useSelector } from "react-redux";
 
 //pass listChild as an array
 function SubMenu({ title, listChild }) {
