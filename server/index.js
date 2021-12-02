@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const commentRoutes = require("./routes/comment.route.js");
 const favouriteRoutes = require("./routes/favourite.route.js");
 const cartRoutes = require("./routes/cart.route.js");
 const customerRoutes = require("./routes/customer.route.js");
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.use("/comment", commentRoutes);
 app.use("/favourite", favouriteRoutes);
 app.use("/cart", cartRoutes);
 app.use("/customer", customerRoutes);
