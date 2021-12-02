@@ -13,6 +13,7 @@ import styleSection from "./CartSection.module.css"
 
 import checked from "../../assets/icons/checked.png"
 import emptycart from "../../assets/images/cart/emptycart.png"
+import cross from "../../assets/images/cart/cross.png"
 
 
 const CartSection = () => {
@@ -116,6 +117,7 @@ const CartSection = () => {
                                         <th className={styleCartTable.amount}>{item.price}</th>
                                         <th className={styleCartTable.discount}>{item.salePercent}</th>
                                         <th className={styleCartTable.amount}>{item.price - (item.price * item.salePercent * 0.01)}</th>
+                                        <th className={styleCartTable.delete}><img id={styleCartTable.deleteBtn} src={cross} /></th>
                                     </tr>
                                 );
                             })}

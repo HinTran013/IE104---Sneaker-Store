@@ -5,6 +5,7 @@
 
     margin: 100px 0;
     
+    display: none;
 }
 .emptyCart img {
     max-width: 100%;
@@ -49,8 +50,7 @@
 
 .cartSection {
     display: flex;
-    display: none;
-
+    
     justify-content: center;
 
     margin: 85px 10px;

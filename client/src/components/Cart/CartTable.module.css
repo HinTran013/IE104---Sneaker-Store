@@ -21,9 +21,11 @@
 }
 .trProduct th:first-child {
     display: grid;
-    grid-template-columns: 95%;
+    grid-template-columns: 100%;
 
     color: #1D3178;
+
+    padding-right: 15px;
 }
 .trProduct th {
     margin-left: 1.5rem;
@@ -31,6 +33,16 @@
     padding-bottom: 2rem;
 
     border-bottom: rgba(68, 66, 66, 0.4) solid 2px;
+}
+.trProduct #deleteBtn {
+    width: 24px;
+    box-sizing: content-box;
+
+    padding: 5px;
+    box-shadow: none;
+}
+#deleteBtn:hover {
+    cursor: pointer;
 }
 .trProduct img {
     width: 120px;
