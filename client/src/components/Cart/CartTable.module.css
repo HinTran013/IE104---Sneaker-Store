@@ -21,9 +21,11 @@
 }
 .trProduct th:first-child {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 100%;
 
     color: #1D3178;
+
+    padding-right: 15px;
 }
 .trProduct th {
     margin-left: 1.5rem;
@@ -32,8 +34,19 @@
 
     border-bottom: rgba(68, 66, 66, 0.4) solid 2px;
 }
+.trProduct #deleteBtn {
+    width: 24px;
+    box-sizing: content-box;
+
+    padding: 5px;
+    box-shadow: none;
+}
+#deleteBtn:hover {
+    cursor: pointer;
+}
 .trProduct img {
     width: 120px;
+    max-height: 100px;
     
     padding: 1rem;
 
@@ -52,6 +65,7 @@
     color: #A1A8C1;
     font-size: 1.5rem;
     font-weight: 400;
+    line-height: 0.9;
 
     text-align: left;
 }

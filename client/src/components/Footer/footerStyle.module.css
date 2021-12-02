@@ -74,10 +74,10 @@ footer.container a:hover {
     word-spacing: 0.07rem;
     letter-spacing: 0.08rem;
 
-    line-height: 2.75rem;
+    line-height: 2rem;
 }
 .colUpper ul li {
-    padding-top: 10px;
+    padding-top: 15px;
 
     padding-left: 50px;
 }
