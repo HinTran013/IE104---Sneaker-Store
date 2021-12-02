@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { selectCustomer } from '../../features/customerSlice'
 import styleCartTable from "./CartTable.module.css"
 import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
-import { getCurrent } from '../../api/cartAPI'
+import { getCurrent, removeCartItem, checkout, createCart, addToCart } from '../../api/cartAPI'
 import { Link } from 'react-router-dom'
 
 import styleCartTotal from "./CartTotal.module.css"
@@ -15,18 +15,39 @@ import checked from "../../assets/icons/checked.png"
 import emptycart from "../../assets/images/cart/emptycart.png"
 import cross from "../../assets/images/cart/cross.png"
 
+import ToastMessage from '../ToastMessage/ToastMessage'
+
 
 const CartSection = () => {
 
     //CartTable
-    const customer = useSelector(selectCustomer)      //get current logged in customer
+    const customer = useSelector(selectCustomer)                    //get current logged in customer
 
     const [cartList, setCartList] = useState([]);
+    
+    const [customerName, setCustomerName] = useState('')
+    const [customerEmail, setCustomerEmail] = useState('')
+    const [customerAddress, setCustomerAddress] = useState('')
+    const [customerPhone, setCustomerPhone] = useState('')
+
+    const [subTotalPrice, setSubTotalPrice] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
 
     const getCartListLocal = () => {
         const sessionStorage = window.sessionStorage;
-        const cart = JSON.parse(sessionStorage.getItem('cart'));
+        const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
         setCartList(cart);
+
+        // calculate bill's price
+        let subTotal = 0;
+        let total = 0;
+        cart.forEach(product => {
+            subTotal += product.price
+            total += product.price - (product.price * product.salePercent / 100)
+        })
+
+        setSubTotalPrice(subTotal)
+        setTotalPrice(total)
     }
 
     const getCartListDatabase = () => {
@@ -34,42 +55,98 @@ const CartSection = () => {
             // exist current cart in database
             if (res) {
                 setCartList(res.products);
+
+                // calculate bill's price
+                let subTotal = 0;
+                let total = 0;
+                res.products.forEach(product => {
+                    subTotal += product.price
+                    total += product.price - (product.price * product.salePercent / 100)
+                })
+
+                setSubTotalPrice(subTotal)
+                setTotalPrice(total)
             }
             else {
                 // TODO: HANDLE GET CART LIST EMPTY HERE
                 console.log('Empty cart!')
-
+                setCartList([])
+                setSubTotalPrice(0)
+                setTotalPrice(0)
             }
         })
     }
 
+    const handleRemoveItem = async (productID) => {
+        // if user logged in, remove item from database
+        // else remove item from local storage
+        if (customer) {
+            await removeCartItem(customer.id, productID).then(res => {
+                ToastMessage('success', 'Remove item successfully!')
+            })
+            getCartListDatabase()
+        }
+        else {
+            const newCart = cartList.filter(item => item.id !== productID);
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            getCartListLocal()
+        }
+    }
+
+    const handleCheckout = async () => {
+        if (customerName === '' || customerEmail === '' || customerAddress === '' || customerPhone === '') {
+            ToastMessage('error', 'Please fill all information!')
+            return
+        }
+
+        // if user logged in, checkout from database
+        // else create a new bill in database with customer is anonymous
+        if (customer) {
+            await checkout(customer.id, totalPrice).then(res => {
+                ToastMessage('success', 'Checkout successfully!')
+                getCartListDatabase()
+            })
+        }
+        else {
+            createCart('anonymous').then((res) => {
+                cartList.map(item => {
+                    addToCart(
+                        'anonymous',
+                        item.id,
+                        item.name,
+                        item.brand,
+                        item.price,
+                        item.size,
+                        item.color,
+                        item.salePercent
+                    )
+                })
+            });
+            checkout('anonymous', totalPrice).then(res => {
+                ToastMessage('success', 'Checkout successfully!')
+
+                // clear cart in local storage
+                sessionStorage.setItem('cart', JSON.stringify([]));
+                getCartListLocal()
+            })
+        }
+    }
 
     //CartCustomerInfo
     useEffect(() => {
         if (customer) {
             getCartListDatabase();
+
+            // auto fill customer info
+            setCustomerName(customer.name)
+            setCustomerEmail(customer.email)
+            setCustomerAddress(customer.address)
+            setCustomerPhone(customer.phone)
         }
         else {
             getCartListLocal();
         }
-    }, []);
-
-    const customerInfo = useSelector(selectCustomer)
-
-    const [customerName, setCustomerName] = useState('')
-    const [customerEmail, setCustomerEmail] = useState('')
-    const [customerAddress, setCustomerAddress] = useState('')
-    const [customerPhone, setCustomerPhone] = useState('')
-
-    useEffect(() => {
-        if (customerInfo) {
-            setCustomerName(customerInfo.name)
-            setCustomerEmail(customerInfo.email)
-            setCustomerAddress(customerInfo.address)
-            setCustomerPhone(customerInfo.phone)
-        }
-    }, [customerInfo]);
-
+    }, [customer]);
 
     return (
         <>
@@ -108,7 +185,7 @@ const CartSection = () => {
                                                         <p>{item.size}</p>
                                                     </div>
                                                     <div className={styleCartTable.propsProduct}>
-                                                        <p className={styleCartTable.newTotal}>Total: {item.salePercent} VND</p>
+                                                        <p className={styleCartTable.newTotal}>SubTotal: {item.price} USD</p>
                                                     </div>
 
                                                 </div>
@@ -117,7 +194,7 @@ const CartSection = () => {
                                         <th className={styleCartTable.amount}>{item.price}</th>
                                         <th className={styleCartTable.discount}>{item.salePercent}</th>
                                         <th className={styleCartTable.amount}>{item.price - (item.price * item.salePercent * 0.01)}</th>
-                                        <th className={styleCartTable.delete}><img id={styleCartTable.deleteBtn} src={cross} /></th>
+                                        <th className={styleCartTable.delete}><img id={styleCartTable.deleteBtn} src={cross} onClick={() => { handleRemoveItem(item.id) }} /></th>
                                     </tr>
                                 );
                             })}
@@ -180,18 +257,19 @@ const CartSection = () => {
                         <div className={styleCartTotal.divTotal}>
                             <div className={styleCartTotal.totals}>
                                 <p>Subtotals: </p>
-                                <p>200.000 VND</p>
+                                <p>{subTotalPrice} USD</p>
                             </div>
                             <div className={styleCartTotal.totals}>
                                 <p>Totals: </p>
-                                <p>200.000 VND</p>
+                                <p>{totalPrice} USD</p>
                             </div>
                             <div className={styleCartTotal.checked}>
                                 <img src={checked} alt="" />
                                 <p>Shipping and taxes calculated at checkout</p>
                             </div>
-                            <div className={styleCartTotal.divBtn}>
-                                <Link to="">Procced to check out</Link>
+                            <div className={styleCartTotal.divBtn} onClick={handleCheckout}>
+                                {/* <Link to="">Procced to check out</Link> */}
+                                Procced to check out
                             </div>
                         </div>
                     </div>

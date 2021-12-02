@@ -46,3 +46,27 @@ export const addToCart = async (
           console.log(err)
      });
 };
+
+export const removeCartItem = async (customerID, productID) => {
+     await Axios.post(API_URL + '/removeone', {
+          customerID: customerID,
+          productID: productID
+     })
+          .then(res => {
+               console.log(res.data)
+          }).catch(err => {
+               console.log(err)
+          });
+};
+
+export const checkout = async (customerID, total) => {
+     await Axios.post(API_URL + '/checkout', {
+          customerID: customerID,
+          total: total
+     })
+          .then(res => {
+               console.log(res.data)
+          }).catch(err => {
+               console.log(err)
+          });
+};

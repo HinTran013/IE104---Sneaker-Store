@@ -18,7 +18,8 @@ exports.createCart = async (req, res) => {
      const cart = new Cart({
           customerID: customerID,
           status: 'pending',
-          products: []
+          products: [],
+          total: 0
      });
 
      try {
@@ -56,6 +57,40 @@ exports.addToCart = async (req, res) => {
                { $push: { 'products': product } },
           )
           res.send("Add product to cart successfully!");
+     }
+     catch (err) {
+          res.status(404).json({ message: err.message });
+     }
+};
+
+exports.removeCartItem = async (req, res) => {
+     const customerID = req.body.customerID;
+     const productID = req.body.productID;
+
+     try {
+          await Cart.updateOne(
+               { customerID: customerID, status: 'pending' },
+               { $pull: { 'products': { id: productID }} },
+          )
+          res.send("Removed successfully!");
+     }
+     catch (err) {
+          res.status(404).json({ message: err.message });
+     }
+};
+
+exports.checkout = async (req, res) => {
+     const customerID = req.body.customerID;
+     const total = req.body.total;
+
+     try {
+          await Cart.updateOne(
+               { customerID: customerID, status: 'pending' },
+               { 
+                    $set: { 'status': 'done', 'total': total },
+               },
+          )
+          res.send("Checkout successfully!");
      }
      catch (err) {
           res.status(404).json({ message: err.message });
