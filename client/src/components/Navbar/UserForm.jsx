@@ -8,6 +8,8 @@ import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../
 import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
 import { initFavouriteList } from "../../features/favouriteSlice";
+import ToastMessage from "../ToastMessage/ToastMessage";
+import { createFavouriteList } from "../../api/favouriteAPI";
 
 function UserForm() {
   const [loginDisplay, setLoginDisplay] = useState("block");
@@ -38,15 +40,15 @@ function UserForm() {
           address: customer.address
         }));
 
-        // TODO: HANDLE UI UPDATE WHEN LOGIN SUCCESS HERE
-        
+        // HANDLE UI UPDATE WHEN LOGIN SUCCESS HERE
+        ToastMessage('success', 'Logged in successfully!')
 
         // get favourite list of logged in user and dispatch to redux
         dispatchFavouriteList(customer._id);
       }
       else {
-        // TODO: HANDLE LOGIN FAIL HERE
-
+        // HANDLE LOGIN FAIL HERE
+        ToastMessage('error', 'Login failed!')
       }
     });
   }
@@ -57,16 +59,24 @@ function UserForm() {
     getCustomerByEmail(emailSignup)
       .then(customer => {
         if (customer) {
-          console.log('Customer already exists');
+          ToastMessage('error', 'Customer already exists!')
         } 
         else {
           createCustomerAccount(emailSignup, passwordSignup)
             .then(res => {
+              ToastMessage('success', 'Sign up successfully!')
               console.log(res)
+
+              // find customer has just created by email
+              getCustomerByEmail(emailSignup).then(customer => {
+                // create favourite list for new customer
+                createFavouriteList(customer._id)
+              });
           });
         }
       })
       .catch(err => {
+        ToastMessage('error', 'Something went wrong!')
         console.log(err);
       });
   }
@@ -133,7 +143,7 @@ function UserForm() {
             >
               Forget your password?{" "}
             </a>
-            <input type="submit" className="btn" value="SIGN UP" onClick={(e) => handleLogin(e)}></input>
+            <input type="submit" className="btn" value="SIGN IN" onClick={(e) => handleLogin(e)}></input>
             <div className="register_form_change">
               <span>Don't have an account? </span>
               <a
