@@ -264,3 +264,10 @@
     transform: rotateX(0deg);
   }
 }
+
+.image {
+  margin: 0 12px;
+}
+.image:hover {
+  cursor: pointer;
+}

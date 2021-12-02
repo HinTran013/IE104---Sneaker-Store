@@ -5,6 +5,8 @@ import { Brands } from "./BrandData";
 import UserForm from "./UserForm";
 import "./Navbar.css";
 import "./NavbarResponsive.css";
+import ModalAccount from './ModalAccount'
+
 import {
   addNavFindFilter,
   deleteNavFindFilter,
@@ -20,6 +22,9 @@ function Navbar() {
   const [inputSearch, setInputSearch] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+
+  const isLoggedIn = false
+
   const dispatch = useDispatch();
   const history = useHistory();
   // console.log(history);
@@ -176,7 +181,7 @@ function Navbar() {
             <i className="far fa-shopping-cart cart-btn"></i>
           </Link>
           <div className="header__btn-login">
-            <i className="far fa-user" onClick={() => setModalIsOpen(true)} />
+            {isLoggedIn ? <ModalAccount /> : <i className='far fa-user' onClick={() => setModalIsOpen(true)} />}
             <Modal
               className="ModalReact__Content"
               overlayClassName="ModalReact__Overlay"
