@@ -403,8 +403,8 @@ function CmtAndRating({ id }) {
                <div className={style.yourCommentSection}>
                     <h3 className={style.yourCommentTitle}>Your Comment</h3>
                     <div className={style.yourCommentbtn}>
-                              {yourComment && <button className={style.delCommentButton} onClick={handleDeleteComment}>Delete your comment</button>}
-                         <button className={style.yourCommentButton} onClick={handleOpenModal}>{yourComment ? 'Edit your comment' : 'Leave a comment'}</button>
+                              {yourComment && <button className={style.delCommentButton} onClick={handleDeleteComment}>Delete comment</button>}
+                         <button className={style.yourCommentButton} onClick={handleOpenModal}>{yourComment ? 'Edit comment' : 'Leave a comment'}</button>
                     </div>
                     {openModal && 
                          <div className={style.yourCommentModal} onClick={handleOpenModal}>
