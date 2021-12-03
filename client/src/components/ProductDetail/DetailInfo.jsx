@@ -36,7 +36,7 @@ function DetailInfo({ id }) {
 
      const [color, setColor] = useState(0)
      const [sizeChoose, setSizeChoose] = useState('')
-     const [product, setProduct] = useState({ size: [] })
+     const [product, setProduct] = useState({ size: [], images: [] })
 
      const changeColor = (index) => {
           setColor(index)
@@ -182,12 +182,12 @@ function DetailInfo({ id }) {
                <div className={style.infoContainer}>
                     <div className={style.imgWrapper}>
                          <div className={style.mainImg}>
-                              <img src={OneProduct.src[color].img} />
+                              <img src={product.images[color]} />
                          </div>
 
                          <div className={style.colorThumb}>
                               {
-                                   OneProduct.src.map((item, index) => (
+                                   product.images.map((item, index) => (
                                         <div
                                              className={index === color ? `${style.colorItem} ${style.colorActive}` : style.colorItem}
                                              key={index}
@@ -195,7 +195,7 @@ function DetailInfo({ id }) {
                                                   changeColor(index)
                                              }
                                         >
-                                             <img src={item.img} />
+                                             <img src={item} />
                                         </div>
                                    ))
                               }
@@ -208,7 +208,6 @@ function DetailInfo({ id }) {
                          <div className={style.info}>
                               <h2 className={style.name}>{product.name}</h2>
                               <h4 className={style.brand}>{product.brand}</h4>
-                              <h4 className={style.rating}>Rating: {product.rating}</h4>
                               <p className={style.price}>$ {product.price}</p>
                               <p className={style.description}>{product.description}</p>
 

@@ -33,8 +33,6 @@ function Navbar() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  console.log(customerState);
-
   // change navbar background when scroll
   const changeNavbar = () => {
     if (window.scrollY >= 65) {

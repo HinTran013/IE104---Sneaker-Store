@@ -31,10 +31,12 @@
 }
 
 .imgBox {
-  width: 80%;
-  height: 200px;
+  width: 90%;
+  height: 210px;
   padding: 20px;
   transition: all 0.5s ease-in-out;
+  display: flex;
+  align-items: center;
 }
 
 .imgBox img {

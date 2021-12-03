@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import style from "./ProductItem.module.css";
-import Nike1 from "../../assets/images/sneaker-transparent/nike-1.png"; //temp image
+import Nike1 from "../../assets/images/sneaker-transparent/jordan-1.png"; //temp image
 import { selectCustomer } from "../../features/customerSlice";
 import { selectCartList, addCartItemToRedux } from "../../features/cartSlice";
 import { createCart, addToCart, getCurrent } from "../../api/cartAPI";
@@ -173,7 +173,7 @@ function ProductItem({ data }) {
       {showModal ? <ProductModal showModal={showModal} setShowModal={setShowModal} /> : null}
       <Link to={`/product/${data._id}`} className={style.card}>
         <div className={style.imgBox}>
-          <img src={Nike1} />
+          <img src={data.images || Nike1} />
         </div>
 
         <div className={style.popup}>
