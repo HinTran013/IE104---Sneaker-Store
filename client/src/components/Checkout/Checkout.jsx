@@ -9,7 +9,8 @@ const Checkout = ({ setShowModal }) =>
     
     const closeClick = () =>
     {
-        setShowModal(prev => !prev);
+        //setShowModal(prev => !prev);
+        console.log("tessssssssssssssst")
     }
 
 
