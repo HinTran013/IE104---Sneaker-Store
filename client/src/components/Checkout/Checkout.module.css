@@ -1,7 +1,19 @@
+.modal {
+    background: rgba(0, 0, 0 , 0.6);
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 .checkoutContainer {
     display: flex;
     justify-content: center;
-
 }
 
 .checkoutDiv {
@@ -15,6 +27,8 @@
 
     margin: 20px 0;
     padding: 60px;
+
+    background: #fff;
 }
 
 .checkoutDiv img {

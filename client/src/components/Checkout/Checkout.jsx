@@ -15,12 +15,14 @@ const Checkout = ({ setShowModal }) =>
 
 
     return (
-        <div className={style.checkoutContainer}>
-            <div className={style.checkoutDiv}>
-                <img src={check} alt="" />
-                <h3>CHECKOUT SUCCEEDED!</h3>
-                <div className={style.btnDiv}>
-                    <Link to="/" onClick={closeClick}>BACK TO HOME</Link>
+        <div className={style.modal}>
+            <div className={style.checkoutContainer}>
+                <div className={style.checkoutDiv}>
+                    <img src={check} alt="" />
+                    <h3>CHECKOUT SUCCEEDED!</h3>
+                    <div className={style.btnDiv}>
+                        <Link to="/" onClick={closeClick}>BACK TO HOME</Link>
+                    </div>
                 </div>
             </div>
         </div>
