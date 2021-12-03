@@ -9,10 +9,10 @@ import BlogPage from "./pages/BlogPage";
 import CartPage from "./pages/CartPage";
 import Page404 from "./pages/ErrorPage";
 import ContactUs from "./pages/ContactUs";
-
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
-
+import AccountInfoPage from "./pages/AccountInfoPage";
+import HistoryInfoPage from "./pages/HistoryInfoPage";
 import React from "react";
 import { ToastContainer, Bounce } from "react-toastify";
 
@@ -40,6 +40,8 @@ function App() {
           <Route path="/blog" component={Page404} />
           <Route path="/cart" component={CartPage} />
           <Route path="/contact" component={ContactUs} />
+          <Route path="/account" component={AccountInfoPage} />
+          <Route path="/history" component={HistoryInfoPage} />
         </Switch>
         <Footer />
       </Router>

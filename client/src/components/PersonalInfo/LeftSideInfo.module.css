@@ -1,27 +1,35 @@
 .container {
-    width: 400px;
-    padding-top: 50px;
+  width: 400px;
+  padding-top: 50px;
 }
 .image {
-    display: table-cell;
+  display: table-cell;
 }
 .username {
-    display: table-cell;
-    vertical-align: middle;
-    height: 64px;
-    font-size: 18px;
-    padding: 0 10px;
+  display: table-cell;
+  vertical-align: middle;
+  height: 64px;
+  font-size: 18px;
+  padding: 0 10px;
 }
 .symbol {
-    font-size: 24px;
-    display: table-cell;
+  font-size: 24px;
+  display: table-cell;
 }
 .title {
-    display: table-cell;
-    vertical-align: middle;
-    font-size: 18px;
-    padding-left: 20px;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 18px;
+  padding-left: 20px;
 }
 .container div:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+.isChosen {
+  font-weight: bolder;
+}
+@media (max-width: 900px) {
+  .container {
+    padding: 10px;
+  }
 }

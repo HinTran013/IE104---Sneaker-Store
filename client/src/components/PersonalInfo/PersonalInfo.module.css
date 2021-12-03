@@ -1,4 +1,13 @@
 .row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  padding: 100px 200px;
+  background: #f8f4f4;
+}
+@media (max-width: 900px) {
+  .row {
+    display: block;
+    font-size: 1rem;
+    padding: 80px 0 20px 30px;
+  }
 }
