@@ -16,10 +16,14 @@ export const cartSlice = createSlice({
 
           removeCartItemFromRedux: (state, action) => {
                state.cartList = state.cartList.filter(item => item !== action.payload);
+          },
+
+          clearCartList: (state) => {
+               state.cartList = [];
           }
      }
 });
 
-export const { initCartList, addCartItemToRedux, removeCartItemFromRedux } = cartSlice.actions;
+export const { initCartList, addCartItemToRedux, removeCartItemFromRedux, clearCartList } = cartSlice.actions;
 export const selectCartList = state => state.cartList.cartList;
 export default cartSlice.reducer;

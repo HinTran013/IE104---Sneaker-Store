@@ -88,6 +88,7 @@ function ProductItem({ data }) {
           price: data.price,
           salePercent: data.salePercent,
           quantity: 1,
+          image: data.images[0],
         },
       ])
     );
@@ -108,7 +109,8 @@ function ProductItem({ data }) {
         data.price,
         sizeChoose,
         data.color,
-        data.salePercent
+        data.salePercent,
+        data.images[0]
       )
         .then((res) => {
           // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE

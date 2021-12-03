@@ -94,7 +94,9 @@ function DetailInfo({ id }) {
                brand: product.brand,
                color: product.color,
                price: product.price,
+               salePercent: product.salePercent,
                quantity: 1,
+               image: product.images[0]
           }
           ]))
           ToastMessage('success', 'Added to cart successfully!');
@@ -115,6 +117,7 @@ function DetailInfo({ id }) {
                     product.size[sizeChoose],
                     product.color,
                     product.salePercent,
+                    product.images[0]
                )
                     .then(res => {
                          // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE

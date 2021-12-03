@@ -16,7 +16,7 @@ import emptycart from "../../assets/images/cart/emptycart.png"
 import cross from "../../assets/images/cart/cross.png"
 import plus from "../../assets/images/cart/plus.png"
 import minus from "../../assets/images/cart/minus.png"
-import { selectCartList, addCartItemToRedux, removeCartItemFromRedux } from "../../features/cartSlice";
+import { selectCartList, addCartItemToRedux, removeCartItemFromRedux, clearCartList } from "../../features/cartSlice";
 import ToastMessage from '../ToastMessage/ToastMessage'
 import Checkout from '../Checkout/Checkout'
 import { updateQuantity } from '../../api/cartAPI'
@@ -130,6 +130,7 @@ const CartSection = () => {
                 ToastMessage('success', 'Checkout successfully!')
                 getCartListDatabase()
                 openModal()
+                dispatch(clearCartList())
             })
         }
         else {
@@ -145,6 +146,7 @@ const CartSection = () => {
                         item.color,
                         item.salePercent,
                         item.quantity,
+                        item.image
                     )
                 })
 
@@ -156,6 +158,7 @@ const CartSection = () => {
                         sessionStorage.setItem('cart', JSON.stringify([]));
                         getCartListLocal()
                         openModal()
+                        dispatch(clearCartList())
                     })
                 }, 0)
             });
@@ -232,7 +235,7 @@ const CartSection = () => {
                                     <tr>
                                         <th>
                                             <div className={styleCartTable.mainInfo}>
-                                                <img id={styleCartTable.imgProduct} src={sneaker} alt="" />
+                                                <img id={styleCartTable.imgProduct} src={item.image} alt="" />
                                                 <div className={styleCartTable.nameProduct}>
                                                     <p>{item.name}</p>
                                                     <div className={styleCartTable.propsProduct}>
