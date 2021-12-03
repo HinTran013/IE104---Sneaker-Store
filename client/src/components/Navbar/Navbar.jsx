@@ -14,8 +14,9 @@ import {
   addBrandFilter,
   deleteBrandFilter,
 } from "../../features/productArrangeSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { selectCustomer } from "../../features/customerSlice";
 
 Modal.setAppElement("#root");
 
@@ -25,12 +26,14 @@ function Navbar() {
   const [inputSearch, setInputSearch] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
+  const customerState = useSelector(selectCustomer);
 
-  const isLoggedIn = false;
+  const isLoggedIn = customerState != null;
 
   const dispatch = useDispatch();
   const history = useHistory();
-  // console.log(history);
+
+  console.log(customerState);
 
   // change navbar background when scroll
   const changeNavbar = () => {
@@ -122,6 +125,10 @@ function Navbar() {
     dispatch(resetFilter());
 
     history.push("/product");
+  }
+
+  function handleOpenModal(state) {
+    setModalIsOpen(state);
   }
 
   return (
@@ -243,7 +250,7 @@ function Navbar() {
               // onAfterOpen={() => { document.body.style.overflow = 'hidden' }}
               // onAfterClose={() => { document.body.style.overflow = 'visible' }}
             >
-              <UserForm></UserForm>
+              <UserForm handleOpen={handleOpenModal}></UserForm>
               <a
                 href="javascript:void(0)"
                 className="close_btn"
