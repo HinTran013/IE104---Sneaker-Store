@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectCustomer } from '../../features/customerSlice'
 import styleCartTable from "./CartTable.module.css"
 import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
@@ -16,15 +16,17 @@ import emptycart from "../../assets/images/cart/emptycart.png"
 import cross from "../../assets/images/cart/cross.png"
 import plus from "../../assets/images/cart/plus.png"
 import minus from "../../assets/images/cart/minus.png"
-
+import { selectCartList, addCartItemToRedux, removeCartItemFromRedux } from "../../features/cartSlice";
 import ToastMessage from '../ToastMessage/ToastMessage'
 import Checkout from '../Checkout/Checkout'
+import { updateQuantity } from '../../api/cartAPI'
 
 
 const CartSection = () => {
 
     //CartTable
-    const customer = useSelector(selectCustomer)                    //get current logged in customer
+    const customer = useSelector(selectCustomer)                           //get current logged in customer
+    const cartListRedux = useSelector(selectCartList) || [];               //get current cart list
 
     const [cartList, setCartList] = useState([]);
     
@@ -38,6 +40,8 @@ const CartSection = () => {
 
     const [showModal, setShowModal] = useState(false);
 
+    const dispatch = useDispatch();
+
     const getCartListLocal = () => {
         const sessionStorage = window.sessionStorage;
         const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
@@ -47,8 +51,8 @@ const CartSection = () => {
         let subTotal = 0;
         let total = 0;
         cart.forEach(product => {
-            subTotal += product.price
-            total += product.price - (product.price * product.salePercent / 100)
+            subTotal += product.price * product.quantity
+            total += (product.price - (product.price * product.salePercent / 100)) * product.quantity
         })
 
         setSubTotalPrice(subTotal)
@@ -65,8 +69,8 @@ const CartSection = () => {
                 let subTotal = 0;
                 let total = 0;
                 res.products.forEach(product => {
-                    subTotal += product.price
-                    total += product.price - (product.price * product.salePercent / 100)
+                    subTotal += product.price * product.quantity
+                    total += (product.price - (product.price * product.salePercent / 100)) * product.quantity
                 })
 
                 setSubTotalPrice(subTotal)
@@ -82,12 +86,27 @@ const CartSection = () => {
         })
     }
 
+    const calculatePrice = () => {
+        let subTotal = 0;
+        let total = 0;
+        cartList.forEach(product => {
+            subTotal += product.price * product.quantity
+            total += (product.price - (product.price * product.salePercent / 100)) * product.quantity
+        })
+
+        setSubTotalPrice(subTotal)
+        setTotalPrice(total)
+    }
+
     const handleRemoveItem = async (productID) => {
         // if user logged in, remove item from database
         // else remove item from local storage
         if (customer) {
             await removeCartItem(customer.id, productID).then(res => {
                 ToastMessage('success', 'Remove item successfully!')
+
+                // remove item from redux
+                dispatch(removeCartItemFromRedux(productID))
             })
             getCartListDatabase()
         }
@@ -110,6 +129,7 @@ const CartSection = () => {
             await checkout(customer.id, totalPrice).then(res => {
                 ToastMessage('success', 'Checkout successfully!')
                 getCartListDatabase()
+                openModal()
             })
         }
         else {
@@ -123,22 +143,44 @@ const CartSection = () => {
                         item.price,
                         item.size,
                         item.color,
-                        item.salePercent
+                        item.salePercent,
+                        item.quantity,
                     )
                 })
-            });
-            checkout('anonymous', totalPrice).then(res => {
-                ToastMessage('success', 'Checkout successfully!')
 
-                // clear cart in local storage
-                sessionStorage.setItem('cart', JSON.stringify([]));
-                getCartListLocal()
-            })
+                setTimeout(() => {
+                    checkout('anonymous', totalPrice).then(res => {
+                        ToastMessage('success', 'Checkout successfully!')
+
+                        // clear cart in local storage
+                        sessionStorage.setItem('cart', JSON.stringify([]));
+                        getCartListLocal()
+                        openModal()
+                    })
+                }, 0)
+            });
         }
     }
 
     const openModal = () => {
         setShowModal(prev => !prev);    
+    }
+
+    const handleUpdateQuantity = async (productID, quantity) => {
+        if (customer) {
+            await updateQuantity(customer.id, productID, quantity)
+        }
+        else {
+            const newCart = cartList.map(it => {
+                if (it.id === productID) {
+                    it.quantity = quantity
+                }
+                return it
+            })
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+            getCartListLocal()
+        }
+        calculatePrice()
     }
 
     //CartCustomerInfo
@@ -198,9 +240,25 @@ const CartSection = () => {
                                                         <p>{item.size}</p>
                                                     </div>
                                                     <div className={styleCartTable.quantityDiv}>
-                                                        <img src={minus} />
-                                                        <span>33</span>
-                                                        <img src={plus} />
+                                                        <img 
+                                                            src={minus} 
+                                                            onClick={() => {
+                                                                if (item.quantity <= 1) {
+                                                                    ToastMessage('error', 'Quantity cannot be less than 1')
+                                                                    return
+                                                                }
+                                                                item.quantity--;
+                                                                handleUpdateQuantity(item.id, item.quantity)
+                                                            }} 
+                                                        />
+                                                        <span>{item.quantity}</span>
+                                                        <img 
+                                                            src={plus}
+                                                            onClick={() => {
+                                                                item.quantity++;
+                                                                handleUpdateQuantity(item.id, item.quantity)
+                                                            }}    
+                                                        />
                                                     </div>
                                                     <div className={styleCartTable.propsProduct}>
                                                         <p className={styleCartTable.newTotal}>{item.price} USD</p>
@@ -212,16 +270,33 @@ const CartSection = () => {
                                         <th className={styleCartTable.amount}>{item.price}</th>
                                         <th className={styleCartTable.quantity}>
                                             <div className={styleCartTable.quantityDiv}>
-                                                <img src={minus}/>
-                                                <span>33</span>
-                                                <img src={plus}/>
+                                                <img
+                                                    src={minus}
+                                                    onClick={() => {
+                                                        if (item.quantity <= 1) {
+                                                            ToastMessage('error', 'Quantity cannot be less than 1')
+                                                            return
+                                                        }
+                                                        item.quantity--;
+                                                        handleUpdateQuantity(item.id, item.quantity)
+                                                    }}
+                                                />
+                                                <span>{item.quantity}</span>
+                                                <img
+                                                    src={plus}
+                                                    onClick={() => {
+                                                        item.quantity++;
+                                                        handleUpdateQuantity(item.id, item.quantity)
+                                                    }}
+                                                />
                                             </div>
                                         </th>
                                         <th className={styleCartTable.discount}>{item.salePercent}</th>
-                                        <th className={styleCartTable.amount}>{item.price - (item.price * item.salePercent * 0.01)}</th>
+                                        <th className={styleCartTable.amount}>{(item.price - (item.price * item.salePercent / 100)) * item.quantity}</th>
                                         <th className={styleCartTable.delete}><img id={styleCartTable.deleteBtn} src={cross} onClick={() => { handleRemoveItem(item.id) }} /></th>
                                     </tr>
                                 );
+                                //return <CartItem item={item} key={item.id} />
                             })}
                         </tbody>
                     </table>
@@ -297,8 +372,7 @@ const CartSection = () => {
                                 {
                                     () => 
                                     {
-                                        openModal();
-                                        handleCheckout();
+                                        handleCheckout()
                                     }
                                 }>
                                 {/* <Link to="">Procced to check out</Link> */}

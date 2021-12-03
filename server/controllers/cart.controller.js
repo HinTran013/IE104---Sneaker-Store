@@ -40,6 +40,7 @@ exports.addToCart = async (req, res) => {
      const size = req.body.size;
      const color = req.body.color;
      const salePercent = req.body.salePercent;
+     const quantity = req.body.quantity;
 
      const product = {
           id: id,
@@ -48,12 +49,13 @@ exports.addToCart = async (req, res) => {
           price: price,
           size: size,
           color: color,
-          salePercent: salePercent
+          salePercent: salePercent,
+          quantity: quantity
      }
 
      try {
           await Cart.updateOne(
-               { customerID: customerID },
+               { customerID: customerID, status: 'pending' },
                { $push: { 'products': product } },
           )
           res.send("Add product to cart successfully!");
@@ -91,6 +93,25 @@ exports.checkout = async (req, res) => {
                },
           )
           res.send("Checkout successfully!");
+     }
+     catch (err) {
+          res.status(404).json({ message: err.message });
+     }
+};
+
+exports.updateQuantity = async (req, res) => {
+     const customerID = req.body.customerID;
+     const productID = req.body.productID;
+     const quantity = req.body.quantity;
+
+     try {
+          await Cart.updateOne(
+               { customerID: customerID, status: 'pending', 'products.id': productID },
+               {
+                    $set: { 'products.$.quantity': quantity },
+               },
+          )
+          res.send("Update quantity successfully!");
      }
      catch (err) {
           res.status(404).json({ message: err.message });

@@ -1,6 +1,8 @@
 /* Tablet */
 @media (min-width: 740px) and (max-width: 1023px) {
-     
+     .header__navbar-item p {
+          font-size: 1.6rem;
+     }
 }
 
 /* Mobile */

@@ -9,9 +9,11 @@ import {
   getCustomerByEmail,
   createCustomerAccount,
 } from "../../api/customerAPI";
+import { getCurrent } from "../../api/cartAPI";
 import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
 import { initFavouriteList } from "../../features/favouriteSlice";
+import { initCartList } from "../../features/cartSlice";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { createFavouriteList } from "../../api/favouriteAPI";
 
@@ -50,6 +52,10 @@ function UserForm({ handleOpen }) {
 
         // get favourite list of logged in user and dispatch to redux
         dispatchFavouriteList(customer._id);
+
+        // get current cart of logged in user and dispatch to redux
+        dispatchCartList(customer._id);
+
         handleOpen(false);
       } else {
         // HANDLE LOGIN FAIL HERE
@@ -92,6 +98,20 @@ function UserForm({ handleOpen }) {
       }
     });
   };
+
+  const dispatchCartList = (customerID) => {
+    getCurrent(customerID).then(res => {
+      if (res) {
+        let list = [];
+
+        res.products.forEach(product => {
+          list.push(product.id);
+        });
+
+        dispatch(initCartList(list));
+      }
+    })
+  }
 
   function SetFormDisplay(form) {
     setLoginDisplay("none");
