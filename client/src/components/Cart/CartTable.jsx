@@ -5,6 +5,13 @@ import style from "./CartTable.module.css"
 import sneaker from "../../assets/images/ColoredSneaker.png"    //temp image
 import { getCurrent } from '../../api/cartAPI'
 
+// THIS IS NOT SUPPOSED TO BE USED !!
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+///////////////////////////////////////
+
 const CartTable = () => {
     const customer = useSelector(selectCustomer)      //get current logged in customer
 

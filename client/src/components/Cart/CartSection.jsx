@@ -14,6 +14,8 @@ import styleSection from "./CartSection.module.css"
 import checked from "../../assets/icons/checked.png"
 import emptycart from "../../assets/images/cart/emptycart.png"
 import cross from "../../assets/images/cart/cross.png"
+import plus from "../../assets/images/cart/plus.png"
+import minus from "../../assets/images/cart/minus.png"
 
 import ToastMessage from '../ToastMessage/ToastMessage'
 import Checkout from '../Checkout/Checkout'
@@ -176,6 +178,7 @@ const CartSection = () => {
                             <tr className={styleCartTable.trHead}>
                                 <th>Product</th>
                                 <th>Price</th>
+                                <th>Quantity</th>
                                 <th>Discount</th>
                                 <th>Total</th>
                             </tr>
@@ -187,21 +190,33 @@ const CartSection = () => {
                                     <tr>
                                         <th>
                                             <div className={styleCartTable.mainInfo}>
-                                                <img src={sneaker} alt="" />
+                                                <img id={styleCartTable.imgProduct} src={sneaker} alt="" />
                                                 <div className={styleCartTable.nameProduct}>
                                                     <p>{item.name}</p>
                                                     <div className={styleCartTable.propsProduct}>
                                                         <p>{item.color}</p>
                                                         <p>{item.size}</p>
                                                     </div>
+                                                    <div className={styleCartTable.quantityDiv}>
+                                                        <img src={minus} />
+                                                        <span>33</span>
+                                                        <img src={plus} />
+                                                    </div>
                                                     <div className={styleCartTable.propsProduct}>
-                                                        <p className={styleCartTable.newTotal}>SubTotal: {item.price} USD</p>
+                                                        <p className={styleCartTable.newTotal}>{item.price} USD</p>
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </th>
                                         <th className={styleCartTable.amount}>{item.price}</th>
+                                        <th className={styleCartTable.quantity}>
+                                            <div className={styleCartTable.quantityDiv}>
+                                                <img src={minus}/>
+                                                <span>33</span>
+                                                <img src={plus}/>
+                                            </div>
+                                        </th>
                                         <th className={styleCartTable.discount}>{item.salePercent}</th>
                                         <th className={styleCartTable.amount}>{item.price - (item.price * item.salePercent * 0.01)}</th>
                                         <th className={styleCartTable.delete}><img id={styleCartTable.deleteBtn} src={cross} onClick={() => { handleRemoveItem(item.id) }} /></th>
