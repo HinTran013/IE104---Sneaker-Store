@@ -9,6 +9,7 @@ import {
   getCustomerByEmail,
   createCustomerAccount,
 } from "../../api/customerAPI";
+import { getCurrent } from "../../api/cartAPI";
 import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
 import { initFavouriteList } from "../../features/favouriteSlice";
