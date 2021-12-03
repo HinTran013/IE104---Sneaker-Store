@@ -75,6 +75,8 @@ var data = {
 
 function CmtAndRating({ id }) {
 
+     console.log(data.datasets[0].data)
+
      const customer = useSelector(selectCustomer)
 
      const [openModal, setopenModal] = useState(false);

@@ -38,7 +38,8 @@ export const addToCart = async (
           price: price,
           size: size,
           color: color,
-          salePercent: salePercent
+          salePercent: salePercent,
+          quantity: 1
      })
      .then(res => {
           console.log(res.data)
@@ -63,6 +64,19 @@ export const checkout = async (customerID, total) => {
      await Axios.post(API_URL + '/checkout', {
           customerID: customerID,
           total: total
+     })
+          .then(res => {
+               console.log(res.data)
+          }).catch(err => {
+               console.log(err)
+          });
+};
+
+export const updateQuantity = async (customerID, productID, quantity) => {
+     await Axios.post(API_URL + '/updatequantity', {
+          customerID: customerID,
+          productID: productID,
+          quantity: quantity
      })
           .then(res => {
                console.log(res.data)

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import style from "./ProductItem.module.css";
 import Nike1 from "../../assets/images/sneaker-transparent/nike-1.png"; //temp image
 import { selectCustomer } from "../../features/customerSlice";
+import { selectCartList, addCartItemToRedux } from "../../features/cartSlice";
 import { createCart, addToCart, getCurrent } from "../../api/cartAPI";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import ProductModal from '../ProductModal/ProductModal';
@@ -23,8 +24,9 @@ import {
 
 
 function ProductItem({ data }) {
-  const customer = useSelector(selectCustomer); //get current logged in customer
-  const favouriteList = useSelector(selectFavouriteList) || []; //get current favourite list
+  const customer = useSelector(selectCustomer);                     //get current logged in customer
+  const favouriteList = useSelector(selectFavouriteList) || [];     //get current favourite list
+  const cartList = useSelector(selectCartList) || [];               //get current cart list
 
   const dispatch = useDispatch();
 
@@ -65,6 +67,14 @@ function ProductItem({ data }) {
   const addToCartLocal = () => {
     const sessionStorage = window.sessionStorage;
     const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === data._id) {
+        ToastMessage('error', 'This product is already in your cart!');
+        return;
+      }
+    }
+
     sessionStorage.setItem(
       "cart",
       JSON.stringify([
@@ -77,6 +87,7 @@ function ProductItem({ data }) {
           color: data.color,
           price: data.price,
           salePercent: data.salePercent,
+          quantity: 1,
         },
       ])
     );
@@ -84,25 +95,34 @@ function ProductItem({ data }) {
   };
 
   const addToCartDatabase = () => {
-    addToCart(
-      customer.id,
-      data._id,
-      data.name,
-      data.brand,
-      data.price,
-      sizeChoose,
-      data.color,
-      data.salePercent
-    )
-      .then((res) => {
-        // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
-        ToastMessage('success', 'Added to cart successfully!');
-      })
-      .catch((err) => {
-        console.log(err);
-        // HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
-        ToastMessage('error', 'Add to cart failed!');
-      });
+    if (isInCart()) {
+      ToastMessage('error', 'This product is already in your cart!');
+      return;
+    }
+    else {
+      addToCart(
+        customer.id,
+        data._id,
+        data.name,
+        data.brand,
+        data.price,
+        sizeChoose,
+        data.color,
+        data.salePercent
+      )
+        .then((res) => {
+          // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
+          ToastMessage('success', 'Added to cart successfully!');
+
+          // add to cart list in redux
+          dispatch(addCartItemToRedux(data._id));
+        })
+        .catch((err) => {
+          console.log(err);
+          // HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
+          ToastMessage('error', 'Add to cart failed!');
+        });
+    }
   };
 
   const handleAddToFavorite = () => {
@@ -130,6 +150,13 @@ function ProductItem({ data }) {
 
   const isFavourite = () => {
     if (favouriteList.includes(data._id)) {
+      return true;
+    }
+    return false;
+  };
+
+  const isInCart = () => {
+    if (cartList.includes(data._id)) {
       return true;
     }
     return false;
