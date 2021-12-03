@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Style from "./SubMenu.module.css";
 import { useDispatch } from "react-redux";
 import {
@@ -7,12 +7,29 @@ import {
   addPriceFilter,
   deletePriceFilter,
 } from "../../features/productArrangeSlice";
+import { useSelector } from "react-redux";
 
 //pass listChild as an array
 function SubMenu({ title, listChild }) {
   const dispatch = useDispatch();
   const [isDropped, setDropState] = useState(false);
   const [isSelected, setIsSelected] = useState();
+  let selectedBrand = useSelector((state) => state.productArrange.value.brand);
+
+  useEffect(() => {
+    if (selectedBrand === "") {
+      setIsSelected(-1);
+    }
+
+    if (selectedBrand !== "" && title === "Brand") {
+      for (let i = 0; i < listChild.length; i++) {
+        if (listChild[i].replace(" ", "") === selectedBrand) {
+          setIsSelected(i);
+          break;
+        }
+      }
+    }
+  }, [selectedBrand]);
 
   function drop() {
     setDropState(function (preValue) {

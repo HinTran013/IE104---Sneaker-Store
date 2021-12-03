@@ -5,12 +5,14 @@ import { Brands } from "./BrandData";
 import UserForm from "./UserForm";
 import "./Navbar.css";
 import "./NavbarResponsive.css";
-import ModalAccount from './ModalAccount'
+import ModalAccount from "./ModalAccount";
 
 import {
   addNavFindFilter,
   deleteNavFindFilter,
   resetFilter,
+  addBrandFilter,
+  deleteBrandFilter,
 } from "../../features/productArrangeSlice";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -24,7 +26,7 @@ function Navbar() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchValue, setSearchValue] = useState("");
 
-  const isLoggedIn = false
+  const isLoggedIn = false;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -82,6 +84,46 @@ function Navbar() {
     setSearchValue("");
   }
 
+  function handleNavBrand(navigationBrand) {
+    let FilterBrand = "";
+    switch (navigationBrand) {
+      case "/product/Nike":
+        FilterBrand = "Nike";
+        break;
+      case "/product/Adidas":
+        FilterBrand = "Adidas";
+        break;
+      case "/product/Puma":
+        FilterBrand = "Puma";
+        break;
+      case "/product/Jordan":
+        FilterBrand = "Jordan";
+        break;
+      case "/product/NewBalance":
+        FilterBrand = "NewBalance";
+        break;
+      case "/product/Converse":
+        FilterBrand = "Converse";
+        break;
+      default:
+    }
+
+    dispatch(resetFilter());
+    dispatch(
+      addBrandFilter({
+        brand: FilterBrand,
+      })
+    );
+
+    history.push(navigationBrand);
+  }
+
+  function navigationMainProduct() {
+    dispatch(resetFilter());
+
+    history.push("/product");
+  }
+
   return (
     <>
       <div
@@ -112,23 +154,26 @@ function Navbar() {
           </li>
 
           <li className="header__navbar-item" id="navbar__product">
-            <Link to="/product">
-              <p>Product</p>
-            </Link>
+            <p onClick={navigationMainProduct}>Product</p>
             <i className="fas fa-chevron-right navbar__product-icon"></i>
 
             <div className="navbar__product-dropdown">
               {Brands.map((item, index) => {
                 return (
                   <div className="navbar__product-container" key={index}>
-                    <Link className="navbar__product-item" to={item.path}>
+                    <li
+                      className="navbar__product-item"
+                      onClick={() => {
+                        handleNavBrand(item.path);
+                      }}
+                    >
                       <img
                         className="navbar__product-item__img"
                         src={item.logo}
                         alt="brand-logo"
                       />
                       <h4>{item.title}</h4>
-                    </Link>
+                    </li>
                   </div>
                 );
               })}
@@ -185,7 +230,11 @@ function Navbar() {
             <i className="far fa-shopping-cart cart-btn"></i>
           </Link>
           <div className="header__btn-login">
-            {isLoggedIn ? <ModalAccount /> : <i className='far fa-user' onClick={() => setModalIsOpen(true)} />}
+            {isLoggedIn ? (
+              <ModalAccount />
+            ) : (
+              <i className="far fa-user" onClick={() => setModalIsOpen(true)} />
+            )}
             <Modal
               className="ModalReact__Content"
               overlayClassName="ModalReact__Overlay"
