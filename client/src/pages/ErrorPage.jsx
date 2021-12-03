@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import Style from "../pageStyle/ErrorPage.module.css"
-
+import Checkout from "../components/Checkout/Checkout";
 function Page404() {
     return (
         <>
@@ -12,6 +12,7 @@ function Page404() {
             <h3 className={Style.errorTitle}>We are sorry, the page you’ve requested is not available</h3>
             <Link className={Style.buttonBack} to='/'>BACK TO HOME</Link>
         </div>
+        <Checkout />
         </>
     )
 }
