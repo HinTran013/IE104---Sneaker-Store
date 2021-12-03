@@ -16,6 +16,7 @@ import emptycart from "../../assets/images/cart/emptycart.png"
 import cross from "../../assets/images/cart/cross.png"
 
 import ToastMessage from '../ToastMessage/ToastMessage'
+import Checkout from '../Checkout/Checkout'
 
 
 const CartSection = () => {
@@ -32,6 +33,8 @@ const CartSection = () => {
 
     const [subTotalPrice, setSubTotalPrice] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
+
+    const [showModal, setShowModal] = useState(false);
 
     const getCartListLocal = () => {
         const sessionStorage = window.sessionStorage;
@@ -132,6 +135,10 @@ const CartSection = () => {
         }
     }
 
+    const openModal = () => {
+        setShowModal(prev => !prev);    
+    }
+
     //CartCustomerInfo
     useEffect(() => {
         if (customer) {
@@ -148,8 +155,11 @@ const CartSection = () => {
         }
     }, [customer]);
 
+    
+
     return (
         <>
+            {showModal ? <Checkout showModal={showModal} setShowModal={setShowModal}/> : null}
             <div className={styleSection.emptyCart}>
                 <img src={emptycart} alt="" />
                 <p>There is not any product in the cart yet!</p>
@@ -267,7 +277,15 @@ const CartSection = () => {
                                 <img src={checked} alt="" />
                                 <p>Shipping and taxes calculated at checkout</p>
                             </div>
-                            <div className={styleCartTotal.divBtn} onClick={handleCheckout}>
+                            <div className={styleCartTotal.divBtn}
+                                onClick=
+                                {
+                                    () => 
+                                    {
+                                        openModal();
+                                        handleCheckout();
+                                    }
+                                }>
                                 {/* <Link to="">Procced to check out</Link> */}
                                 Procced to check out
                             </div>

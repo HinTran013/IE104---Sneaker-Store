@@ -4,15 +4,13 @@ import style from "./Checkout.module.css"
 
 import check from "../../assets/images/cart/check.png"
 
-const Checkout = ({ setShowModal }) =>
+const Checkout = ({ showModal, setShowModal }) =>
 {
     
     const closeClick = () =>
     {
-        //setShowModal(prev => !prev);
-        console.log("tessssssssssssssst")
+        setShowModal(prev => !prev);
     }
-
 
     return (
         <div className={style.modal}>
