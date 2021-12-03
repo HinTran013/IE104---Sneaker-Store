@@ -4,90 +4,94 @@ import "./UserForm.css";
 import sneaker from "../../assets/icons/sneaker.png";
 import recover from "../../assets/icons/recover.png";
 import register from "../../assets/icons/register.jpg";
-import { getCustomerLogin, getCustomerByEmail, createCustomerAccount } from "../../api/customerAPI";
+import {
+  getCustomerLogin,
+  getCustomerByEmail,
+  createCustomerAccount,
+} from "../../api/customerAPI";
 import { getFavourites } from "../../api/favouriteAPI";
 import { login } from "../../features/customerSlice";
 import { initFavouriteList } from "../../features/favouriteSlice";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { createFavouriteList } from "../../api/favouriteAPI";
 
-function UserForm() {
+function UserForm({ handleOpen }) {
   const [loginDisplay, setLoginDisplay] = useState("block");
   const [registerDisplay, setRegisterDisplay] = useState("none");
   const [recoverDisplay, setRecoverDisplay] = useState("none");
 
-  const [emailLogin, setEmailLogin] = useState('');
-  const [passwordLogin, setPasswordLogin] = useState('');
-  
-  const [emailSignup, setEmailSignup] = useState('');
-  const [passwordSignup, setPasswordSignup] = useState('');
+  const [emailLogin, setEmailLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+
+  const [emailSignup, setEmailSignup] = useState("");
+  const [passwordSignup, setPasswordSignup] = useState("");
 
   const dispatch = useDispatch();
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    getCustomerLogin(emailLogin, passwordLogin).then(customer => {
+    getCustomerLogin(emailLogin, passwordLogin).then((customer) => {
       if (customer) {
-
         // Dispatch customer's data to redux
-        dispatch(login({
-          id: customer._id,
-          email: customer.email,
-          name: customer.name,
-          gender: customer.gender,
-          phone: customer.phone,
-          address: customer.address
-        }));
+        dispatch(
+          login({
+            id: customer._id,
+            email: customer.email,
+            name: customer.name,
+            gender: customer.gender,
+            phone: customer.phone,
+            address: customer.address,
+          })
+        );
 
         // HANDLE UI UPDATE WHEN LOGIN SUCCESS HERE
-        ToastMessage('success', 'Logged in successfully!')
+        ToastMessage("success", "Logged in successfully!");
 
         // get favourite list of logged in user and dispatch to redux
         dispatchFavouriteList(customer._id);
-      }
-      else {
+        handleOpen(false);
+      } else {
         // HANDLE LOGIN FAIL HERE
-        ToastMessage('error', 'Login failed!')
+        ToastMessage("error", "Login failed!");
       }
     });
-  }
+  };
 
   const handleSignup = (e) => {
     e.preventDefault();
 
     getCustomerByEmail(emailSignup)
-      .then(customer => {
+      .then((customer) => {
         if (customer) {
-          ToastMessage('error', 'Customer already exists!')
-        } 
-        else {
-          createCustomerAccount(emailSignup, passwordSignup)
-            .then(res => {
-              ToastMessage('success', 'Sign up successfully!')
-              console.log(res)
+          ToastMessage("error", "Customer already exists!");
+        } else {
+          createCustomerAccount(emailSignup, passwordSignup).then((res) => {
+            ToastMessage("success", "Sign up successfully!");
+            console.log(res);
 
-              // find customer has just created by email
-              getCustomerByEmail(emailSignup).then(customer => {
-                // create favourite list for new customer
-                createFavouriteList(customer._id)
-              });
+            // find customer has just created by email
+            getCustomerByEmail(emailSignup).then((customer) => {
+              // create favourite list for new customer
+              createFavouriteList(customer._id);
+            });
           });
+          SetFormDisplay("Login");
         }
       })
-      .catch(err => {
-        ToastMessage('error', 'Something went wrong!')
+      .catch((err) => {
+        ToastMessage("error", "Something went wrong!");
         console.log(err);
       });
-  }
+  };
 
   const dispatchFavouriteList = (customerID) => {
-    getFavourites(customerID).then(res => {
+    getFavourites(customerID).then((res) => {
       if (res) {
         dispatch(initFavouriteList(res.productIDs));
       }
-    })
-  }
+    });
+  };
 
   function SetFormDisplay(form) {
     setLoginDisplay("none");
@@ -143,7 +147,12 @@ function UserForm() {
             >
               Forget your password?{" "}
             </a>
-            <input type="submit" className="btn" value="SIGN IN" onClick={(e) => handleLogin(e)}></input>
+            <input
+              type="submit"
+              className="btn"
+              value="SIGN IN"
+              onClick={(e) => handleLogin(e)}
+            ></input>
             <div className="register_form_change">
               <span>Don't have an account? </span>
               <a
@@ -185,7 +194,12 @@ function UserForm() {
               value={passwordSignup}
               onChange={(e) => setPasswordSignup(e.target.value)}
             ></input>
-            <input type="submit" className="btn" value="REGISTER" onClick={(e) => handleSignup(e)}></input>
+            <input
+              type="submit"
+              className="btn"
+              value="REGISTER"
+              onClick={(e) => handleSignup(e)}
+            ></input>
             <div className="sign_up_form_change">
               <a
                 href="javascript:void(0)"
