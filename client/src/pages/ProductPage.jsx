@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import backgroundImageTop from "../assets/images/productDetail/detail-product-bg.jpg";
 import BackgroundWithPath from "../components/Products/BackgroundWithPath";
 import ProductsMainPart from "../components/Products/ProductsMainPart";
 import FloatingFilter from "../components/Products/FloatingFilter";
 import SideBar from "../components/Products/SideBar";
+import { resetFilter } from "../features/productArrangeSlice";
+import { useDispatch } from "react-redux";
 
 const ProductPage = (props) => {
+  const dispatch = useDispatch();
+
   // check when to show mobile sidebar
   const [showMobileSideBar, setShowMobileSideBar] = React.useState(false);
   // check if user scroll to bottom of the page to hide floating filter
