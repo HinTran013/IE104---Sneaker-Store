@@ -118,7 +118,6 @@ exports.updateQuantity = async (req, res) => {
 };
 
 exports.getHistory = async (req, res) => {
-  const customerID = req.query.id;
   console.log(req.query.id);
   try {
     const carts = await Cart.find({
