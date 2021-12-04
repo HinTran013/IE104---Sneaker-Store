@@ -7,7 +7,7 @@ import { selectCustomer } from "../../features/customerSlice";
 import { selectCartList, addCartItemToRedux } from "../../features/cartSlice";
 import { createCart, addToCart, getCurrent } from "../../api/cartAPI";
 import ToastMessage from "../ToastMessage/ToastMessage";
-import ProductModal from '../ProductModal/ProductModal';
+import ProductModal from "../ProductModal/ProductModal";
 
 import {
   getFavourites,
@@ -22,11 +22,10 @@ import {
   removeFavouriteFromRedux,
 } from "../../features/favouriteSlice";
 
-
 function ProductItem({ data }) {
-  const customer = useSelector(selectCustomer);                     //get current logged in customer
-  const favouriteList = useSelector(selectFavouriteList) || [];     //get current favourite list
-  const cartList = useSelector(selectCartList) || [];               //get current cart list
+  const customer = useSelector(selectCustomer); //get current logged in customer
+  const favouriteList = useSelector(selectFavouriteList) || []; //get current favourite list
+  const cartList = useSelector(selectCartList) || []; //get current cart list
 
   const dispatch = useDispatch();
 
@@ -38,7 +37,7 @@ function ProductItem({ data }) {
 
   const handleAddToCart = () => {
     if (sizeChoose === "") {
-      ToastMessage('error', 'Please choose a size!');
+      ToastMessage("error", "Please choose a size!");
       return;
     }
 
@@ -56,7 +55,7 @@ function ProductItem({ data }) {
         })
         .catch((err) => {
           // HANDLE GET ADD PRODUCT TO DATABASE FAILED HERE
-          ToastMessage('error', 'Something went wrong!');
+          ToastMessage("error", "Something went wrong!");
           console.log(err);
         });
     } else {
@@ -70,7 +69,7 @@ function ProductItem({ data }) {
 
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].id === data._id) {
-        ToastMessage('error', 'This product is already in your cart!');
+        ToastMessage("error", "This product is already in your cart!");
         return;
       }
     }
@@ -92,15 +91,14 @@ function ProductItem({ data }) {
         },
       ])
     );
-    ToastMessage('success', 'Added to cart successfully!');
+    ToastMessage("success", "Added to cart successfully!");
   };
 
   const addToCartDatabase = () => {
     if (isInCart()) {
-      ToastMessage('error', 'This product is already in your cart!');
+      ToastMessage("error", "This product is already in your cart!");
       return;
-    }
-    else {
+    } else {
       addToCart(
         customer.id,
         data._id,
@@ -114,7 +112,7 @@ function ProductItem({ data }) {
       )
         .then((res) => {
           // HANDLE UPDATE UI WHEN ADD TO CART SUCCESSFULLY HERE
-          ToastMessage('success', 'Added to cart successfully!');
+          ToastMessage("success", "Added to cart successfully!");
 
           // add to cart list in redux
           dispatch(addCartItemToRedux(data._id));
@@ -122,7 +120,7 @@ function ProductItem({ data }) {
         .catch((err) => {
           console.log(err);
           // HANDLE UPDATE UI WHEN ADD TO CART FAIL HERE
-          ToastMessage('error', 'Add to cart failed!');
+          ToastMessage("error", "Add to cart failed!");
         });
     }
   };
@@ -132,11 +130,11 @@ function ProductItem({ data }) {
       addFavourite(customer.id, data._id).then((res) => {
         dispatch(addFavouriteToRedux(data._id));
         // HANDLE UPDATE UI WHEN ADD FAVOURITE SUCCESSFULLY HERE
-        ToastMessage('success', 'Favourite added successfully!');
+        ToastMessage("success", "Favourite added successfully!");
       });
     } else {
       // HANDLE NOTIFY WHEN USER NOT LOGGED IN HERE
-      ToastMessage('error', 'Please login to use this feature!');
+      ToastMessage("error", "Please login to use this feature!");
     }
   };
 
@@ -145,7 +143,7 @@ function ProductItem({ data }) {
       removeFavourite(customer.id, data._id).then((res) => {
         // HANDLE UPDATE UI WHEN REMOVE FAVOURITE SUCCESSFULLY HERE
         dispatch(removeFavouriteFromRedux(data._id));
-        ToastMessage('success', 'Favourite removed successfully!');
+        ToastMessage("success", "Favourite removed successfully!");
       });
     }
   };
@@ -167,25 +165,32 @@ function ProductItem({ data }) {
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    setShowModal(prev => !prev);
-  }
+    setShowModal((prev) => !prev);
+  };
 
   return (
     <>
-      {showModal ? <ProductModal showModal={showModal} setShowModal={setShowModal} /> : null}
+      {showModal ? (
+        <ProductModal
+          data={data}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      ) : null}
       <Link to={`/product/${data._id}`} className={style.card}>
         <div className={style.imgBox}>
           <img src={data.images || Nike1} />
         </div>
 
         <div className={style.popup}>
-          <div className={`${style.btn} ${style.btn1}`}
-              onClick={(e) =>
-              {
-                e.preventDefault();
-                e.stopPropagation();
-                openModal();
-              }}>
+          <div
+            className={`${style.btn} ${style.btn1}`}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              openModal();
+            }}
+          >
             <i className="fas fa-ellipsis-h"></i>
           </div>
 
@@ -215,7 +220,7 @@ function ProductItem({ data }) {
             }}
           >
             {isFavourite() ? (
-              <i className="fas fa-heart" style={{ color: 'red' }}></i>
+              <i className="fas fa-heart" style={{ color: "red" }}></i>
             ) : (
               <i className="far fa-heart"></i>
             )}
