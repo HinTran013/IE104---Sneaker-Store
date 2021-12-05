@@ -9,6 +9,13 @@
 .productsGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 30px 40px 0;
+}
+
+@media (max-width: 740px) {
+  .productsGrid {
+    justify-content: space-around;
+  }
 }
