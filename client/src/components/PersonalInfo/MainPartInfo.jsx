@@ -11,6 +11,7 @@ import ToastMessage from "../ToastMessage/ToastMessage";
 function MainPartInfo() {
   const dispatch = useDispatch();
   const customerState = useSelector(selectCustomer);
+  console.log(customerState);
 
   // const [selectedDate, setSelectedDate] = useState(null);
   const [inputName, setInputName] = useState(customerState.name);
@@ -113,7 +114,7 @@ function MainPartInfo() {
               name="gender"
               value="true"
               onChange={handleGender}
-              checked={inputGender === "true" ? true : null}
+              checked={inputGender === true ? true : null}
             />
             <label> Male </label>
             <input
@@ -122,7 +123,7 @@ function MainPartInfo() {
               name="gender"
               value="false"
               onChange={handleGender}
-              checked={inputGender === "false" ? true : null}
+              checked={inputGender === false ? true : null}
             />
             <label> Female </label>
           </td>
