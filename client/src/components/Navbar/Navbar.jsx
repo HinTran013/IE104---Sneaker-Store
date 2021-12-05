@@ -186,6 +186,12 @@ function Navbar() {
           </li>
 
           <li className="header__navbar-item">
+            <Link to="/contact">
+              <p>Contact us</p>
+            </Link>
+          </li>
+
+          <li className="header__navbar-item">
             <Link to="/about-us">
               <p>About us</p>
             </Link>

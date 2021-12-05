@@ -13,10 +13,14 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/footer";
 import AccountInfoPage from "./pages/AccountInfoPage";
 import HistoryInfoPage from "./pages/HistoryInfoPage";
+import { useSelector } from "react-redux";
+import { selectCustomer } from "./features/customerSlice";
 import React from "react";
 import { ToastContainer, Bounce } from "react-toastify";
 
 function App() {
+  const customerState = useSelector(selectCustomer);
+
   return (
     <React.Fragment>
       <Router>
@@ -40,8 +44,14 @@ function App() {
           <Route path="/blog" component={Page404} />
           <Route path="/cart" component={CartPage} />
           <Route path="/contact" component={ContactUs} />
-          <Route path="/account" component={AccountInfoPage} />
-          <Route path="/history" component={HistoryInfoPage} />
+          <Route
+            path="/account"
+            component={customerState !== null ? AccountInfoPage : Page404}
+          />
+          <Route
+            path="/history"
+            component={customerState !== null ? HistoryInfoPage : Page404}
+          />
         </Switch>
         <Footer />
       </Router>
