@@ -6,9 +6,11 @@
 .container {
   background: white;
   border-radius: 10px;
-  padding: 50px;
+  padding: 30px;
   font-size: 18px;
   width: 100%;
+
+  box-sizing: border-box;
 }
 
 hr {
@@ -52,18 +54,23 @@ input {
   font-size: 16px;
 }
 .inputBox {
-  width: 300px;
+  width: 100%;
 }
 .date {
-  width: 150px;
+  width: 95%;
   text-align: center;
 }
 .date:hover {
   cursor: pointer;
 }
+
 @media (max-width: 900px) {
   .container {
     display: relative;
-    width: 500px;
+    width: 100%;
+    align-self: center;
+
+    padding-left: 20px;
+    padding-right: 10px;
   }
 }
