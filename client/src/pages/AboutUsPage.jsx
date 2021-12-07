@@ -5,6 +5,10 @@ import style from "../pageStyle/AboutUsPage.module.css"
 import ServiceSection from "../components/ServiceSection/ServiceSection";
 import backgroundImage from "../assets/images/empty.jpg"
 
+import tuyen from "../assets/images/aboutus/tuyen.jpg"
+import sang from "../assets/images/aboutus/sang.jpg"
+import hien from "../assets/images/aboutus/hien.jpg"
+
 function AboutUsPage() {
     const background = {
         backgroundImage: `url(${backgroundImageTop})`,
@@ -41,28 +45,28 @@ function AboutUsPage() {
                 <div className={style.team_member}>
                     <div className={style.team_member_card}>
                         <div className={style.team_member_img}>
-                            <img src={backgroundImage} className={style.team_member_image}></img>
+                            <img src={sang} className={style.team_member_image}></img>
                         </div>
                         <div className={style.team_member_info}>
-                            <h2></h2>
+                            
                             <p className={style.team_name}>Lưu Ngọc Sáng</p>
                         </div>
                     </div>
                     <div className={style.team_member_card}>
                         <div className={style.team_member_img}>
-                            <img src={backgroundImage} className={style.team_member_image}></img>
+                            <img src={tuyen} className={style.team_member_image}></img>
                         </div>
                         <div className={style.team_member_info}>
-                            <h2></h2>
+                            
                             <p className={style.team_name}>Phạm Hớn Tuyền</p>
                         </div>
                     </div>
                     <div className={style.team_member_card}>
                         <div className={style.team_member_img}>
-                            <img src={backgroundImage} className={style.team_member_image}></img>
+                            <img src={hien} className={style.team_member_image}></img>
                         </div>
                         <div className={style.team_member_info}>
-                            <h2></h2>
+                            
                             <p className={style.team_name}>Trần Thanh Hiền</p>
                         </div>
                     </div>

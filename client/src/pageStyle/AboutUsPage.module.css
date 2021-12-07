@@ -9,7 +9,7 @@
     line-height: 1.6;
   }
 
-  .bgContainer h2,
+.bgContainer h2,
 .bgContainer p {
   text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.1);
   text-transform: capitalize;
@@ -83,35 +83,33 @@
   width: 90%;
 }
 
+
+
 .introduce_team {
   margin-top: 100px;
+  margin-bottom: 100px;
   text-align: center;
 }
 
 .title_team{
   margin-bottom: 30px;
   font-family: Barlow,sans-serif;
-  font-size: 50px;
+  font-size: 5rem;
   line-height: 50px;
   font-weight: 700;
   color: #222;
   margin-bottom: 30px;
 }
 .team_member{
-  height: 350px;
   padding: 0 28px;
-  margin: 28px 0;
+  margin-top: 28px;
   display: flex;
-  grid-gap: 28px;
   gap: 28px;
   align-items: center;
-  white-space: nowrap;
   justify-content: space-around;
 }
 .team_member_card{
   width: 26%;
-  height: 350px;
-  border-radius: 20px;
   text-decoration: none;
   position: relative;
   display: flex;
@@ -119,27 +117,30 @@
   justify-content: space-evenly;
   align-items: center;
   transition: all 0.5s ease-in-out;
+
+  margin-top: 10px;
 }
 .team_member_img{
   width: 80%;
-  height: 200px;
   padding: 20px;
 }
 
 .team_member_img img{
   max-width: 100%;
   object-fit: contain;
+
+  border-radius: 100%;
 }
 
 .team_name{
-  font-size: 2rem;
+  font-size: 2.2rem;
   line-height: 1.6rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 12px;
   color: #333;
 }
 
-.team_member::-webkit-scrollbar {
+/* .team_member::-webkit-scrollbar {
   height: 8px;
 }
 .team_member::-webkit-scrollbar-thumb {
@@ -149,7 +150,7 @@
 .team_member::-webkit-scrollbar-track {
   background-color: #e4e4e4;
   border-radius: 100px;
-}
+} */
 
 @media (max-width: 1100px){
   .team_member_card {
@@ -161,13 +162,23 @@
   .history{
     flex-wrap: wrap;
   }
-  .team_member{
+  /* .team_member{
     overflow-x: scroll;
     overflow-y: hidden;
     justify-content: stretch;
-  }
+  } */
   .team_member_card{
     width: 100%;
   }
+}
+
+@media (max-width: 674px) {
+    .team_member {
+      flex-direction: column;
+    }
+
+    .team_member_img {
+      width: 65%;
+    }
 }
 
