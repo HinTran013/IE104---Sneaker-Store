@@ -119,7 +119,7 @@ function Navbar() {
 
     history.push(navigationBrand);
     
-    setNavbarMobile(!navbarMobile)
+    setNavbarMobile(false)
   }
 
   function navigationMainProduct() {
@@ -127,7 +127,7 @@ function Navbar() {
 
     history.push("/product");
 
-    setNavbarMobile(!navbarMobile)
+    setNavbarMobile(false)
   }
 
   function handleOpenModal(state) {
@@ -143,7 +143,7 @@ function Navbar() {
       >
         <div
           className="mobile-menu-icon"
-          onClick={() => setNavbarMobile(!navbarMobile)}
+          onClick={() => setNavbarMobile(false)}
         >
           {navbarMobile ? (
             <i className="fas fa-times"></i>
@@ -163,7 +163,7 @@ function Navbar() {
         >
           <li className="header__navbar-item">
             <Link to="/">
-              <p onClick={() => setNavbarMobile(!navbarMobile)} >Home</p>
+              <p onClick={() => setNavbarMobile(false)} >Home</p>
             </Link>
           </li>
 
@@ -196,13 +196,13 @@ function Navbar() {
 
           <li className="header__navbar-item">
             <Link to="/contact">
-              <p onClick={() => setNavbarMobile(!navbarMobile)}>Contact</p>
+              <p onClick={() => setNavbarMobile(false)}>Contact</p>
             </Link>
           </li>
 
           <li className="header__navbar-item">
             <Link to="/about-us">
-              <p onClick={() => setNavbarMobile(!navbarMobile)}>About</p>
+              <p onClick={() => setNavbarMobile(false)}>About</p>
             </Link>
           </li>
         </ul>
