@@ -52,6 +52,7 @@ function App() {
             path="/history"
             component={customerState !== null ? HistoryInfoPage : Page404}
           />
+          <Route component={Page404} />
         </Switch>
         <Footer />
       </Router>

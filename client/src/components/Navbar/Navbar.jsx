@@ -149,7 +149,9 @@ function Navbar() {
         </div>
 
         <h3 className="header__logo">
-          <img className="header__logo-brand" src={logo} alt="brand logo" />
+          <Link to="/">
+            <img className="header__logo-brand" src={logo} alt="brand logo" />
+          </Link>
         </h3>
 
         <ul
@@ -197,12 +199,6 @@ function Navbar() {
           <li className="header__navbar-item">
             <Link to="/about-us">
               <p>About us</p>
-            </Link>
-          </li>
-
-          <li className="header__navbar-item">
-            <Link to="/blog">
-              <p>Blog</p>
             </Link>
           </li>
         </ul>

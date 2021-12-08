@@ -13,7 +13,7 @@ const data = [
     saleAmount: 23,
     alreadySold: 19,
     description:
-      "1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Nothing beats seeing your kicks in a perfectly clear sneaker case. Give your pairs the luxury it deserves with our range of sturdy and full stackable sneaker displate crates!",
   },
   {
     name: 1,
@@ -25,7 +25,7 @@ const data = [
     saleAmount: 30,
     alreadySold: 15,
     description:
-      "2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "The smoke basic colourways are taking the fashion scene BY STORM! Take your outfit to the next level with this carefully curated selection of Vans!",
   },
   {
     name: 2,
@@ -37,7 +37,7 @@ const data = [
     saleAmount: 24,
     alreadySold: 11,
     description:
-      "3 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Stay fresh this spring time with spring essentials! We've curated a list of our best gear right here - from Jordans to Dunks, FOG to SSS merch!",
   },
 ];
 

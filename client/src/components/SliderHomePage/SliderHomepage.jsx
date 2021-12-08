@@ -4,6 +4,7 @@ import SliderData from "./SliderHomePageData";
 import instagram from "../../assets/images/instagram.png";
 import twitter from "../../assets/images/twitter.png";
 import facebook from "../../assets/images/facebook.png";
+import { Link } from "react-router-dom";
 
 const SliderHomepage = () => {
   //set state for information of slider
@@ -39,9 +40,13 @@ const SliderHomepage = () => {
           <p key={Math.random()} className={SliderCSS.description}>
             {sliderInfo.description}
           </p>
-          <a className={SliderCSS.navigateBtn} href="#" key={Math.random()}>
+          <Link
+            className={SliderCSS.navigateBtn}
+            to="/product"
+            key={Math.random()}
+          >
             {sliderInfo.btnText}
-          </a>
+          </Link>
         </div>
 
         <div className={SliderCSS.imgBox}>

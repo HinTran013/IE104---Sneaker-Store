@@ -34,8 +34,8 @@ const ProductPage = (props) => {
       {/* Image on the top of page with page title */}
       <BackgroundWithPath
         img={backgroundImageTop}
-        pathText="Home/ Products"
-        title="Men's shoes"
+        pathText="Home / Product"
+        title="Our Shoes"
       />
 
       {/* Show products and side bar */}

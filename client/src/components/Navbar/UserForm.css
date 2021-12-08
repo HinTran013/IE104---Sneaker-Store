@@ -148,11 +148,11 @@ h6,
   background-color: #c50215;
 }
 
-a:hover {
+.login_form a:hover {
   color: #c50215;
 }
 
-a {
+.login_form a {
   text-decoration: none;
   color: #c5c4c4;
 }

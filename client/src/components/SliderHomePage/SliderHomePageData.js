@@ -5,30 +5,30 @@ import slider3Image from "../../assets/images/runningBlueSneaker-crop-right.png"
 const SliderData = [
   {
     name: "slider1",
-    aboveHeadText: "Women's Originals 1",
-    heading: "Fashion sneaker",
+    aboveHeadText: "Your Originals",
+    heading: "Basketball sneaker",
     description:
-      "slider 1 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "Nothing beats seeing your kicks in a perfectly clear sneaker case. Give your pairs the luxury it deserves with our range of sturdy and full stackable sneaker displate crates!",
     image: slider1Image,
-    btnText: "Slider 1",
+    btnText: "Shop now",
   },
   {
     name: "slider2",
-    aboveHeadText: "Women's Originals 2",
-    heading: "Basketball sneaker",
+    aboveHeadText: "Your Vans",
+    heading: "Fashioned sneaker",
     description:
-      "slider 2 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "The smoke basic colourways are taking the fashion scene BY STORM! Take your outfit to the next level with this carefully curated selection of Vans!",
     image: slider2Image,
-    btnText: "Slider 2",
+    btnText: "Shop now",
   },
   {
     name: "slider3",
-    aboveHeadText: "Women's Originals 3",
+    aboveHeadText: "Your Passion",
     heading: "Running sneaker",
     description:
-      "slider 3 - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "Stay fresh this spring time with spring essentials! We've curated a list of our best gear right here - from Jordans to Dunks, FOG to SSS merch!",
     image: slider3Image,
-    btnText: "Slider 3",
+    btnText: "Shop now",
   },
 ];
 
