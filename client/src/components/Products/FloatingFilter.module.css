@@ -13,13 +13,14 @@
   align-items: center;
   justify-content: center;
   display: none;
+  z-index: 10;
 }
 
 .floatingIcon {
   font-size: 2rem;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 990px) {
   .floatingContainer {
     display: flex;
   }

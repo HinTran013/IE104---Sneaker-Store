@@ -24,10 +24,3 @@
   margin-top: 10px;
   font-size: 2rem;
 }
-
-/* responsive */
-@media (max-width: 1024px) {
-  .bgContainer {
-    height: 40vh;
-  }
-}

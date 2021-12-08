@@ -179,7 +179,7 @@ function ProductItem({ data }) {
       ) : null}
       <Link to={`/product/${data._id}`} className={style.card}>
         <div className={style.imgBox}>
-          <img src={data.images || Nike1} />
+          <img src={data.images || Nike1} alt="product" />
         </div>
 
         <div className={style.popup}>
