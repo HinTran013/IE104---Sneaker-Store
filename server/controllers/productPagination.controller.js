@@ -35,7 +35,7 @@ exports.getProducts = async (req, res) => {
   const page = parseInt(req.query.page || "0");
 
   //get the number of products
-  const totalProducts = await Product.countDocuments({});
+  const totalProducts = await Product.countDocuments(JSON.parse(queryStr));
 
   //skip and limit to get pagination
   const products = await query.limit(PAGE_SIZE).skip(PAGE_SIZE * page);

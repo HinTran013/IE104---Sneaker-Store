@@ -39,7 +39,14 @@ function App() {
           <Route exact path="/product/Jordan" component={ProductPage} />
           <Route exact path="/product/NewBalance" component={ProductPage} />
           <Route exact path="/product/Converse" component={ProductPage} />
-          <Route exact path="/product/:id" component={ProductDetail} />
+          <Route
+            exact
+            path="/product/:id"
+            // component={ProductDetail}
+            component={(props) => (
+              <ProductDetail {...props} key={window.location.pathname} />
+            )}
+          />
           <Route path="/about-us" component={AboutUsPage} />
           <Route path="/blog" component={Page404} />
           <Route path="/cart" component={CartPage} />
