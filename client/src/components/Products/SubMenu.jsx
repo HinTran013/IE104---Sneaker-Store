@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 //pass listChild as an array
 function SubMenu({ title, listChild }) {
   const dispatch = useDispatch();
-  const [isDropped, setDropState] = useState(false);
+  const [isDropped, setDropState] = useState(true);
   const [isSelected, setIsSelected] = useState();
   let selectedBrand = useSelector((state) => state.productArrange.value.brand);
 

@@ -40,6 +40,11 @@
   font-size: 1.8rem;
 }
 
+.header__logo-brand {
+  width: 95px;
+  margin-top: 15px;
+}
+
 .header__navbar {
   display: flex;
   list-style-type: none;

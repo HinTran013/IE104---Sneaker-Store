@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
   color: white;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .bgContainer h2,
@@ -20,6 +20,7 @@
 }
 
 .bgContainer p {
+  margin-top: 10px;
   font-size: 2rem;
 }
 

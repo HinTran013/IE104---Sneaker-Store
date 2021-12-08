@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./UserForm.css";
-import sneaker from "../../assets/icons/sneaker.png";
+import sneaker from "../../assets/images/logo.png";
 import recover from "../../assets/icons/recover.png";
 import register from "../../assets/icons/register.jpg";
 import {
@@ -100,18 +100,18 @@ function UserForm({ handleOpen }) {
   };
 
   const dispatchCartList = (customerID) => {
-    getCurrent(customerID).then(res => {
+    getCurrent(customerID).then((res) => {
       if (res) {
         let list = [];
 
-        res.products.forEach(product => {
+        res.products.forEach((product) => {
           list.push(product.id);
         });
 
         dispatch(initCartList(list));
       }
-    })
-  }
+    });
+  };
 
   function SetFormDisplay(form) {
     setLoginDisplay("none");
@@ -138,7 +138,7 @@ function UserForm({ handleOpen }) {
           style={{ display: `${loginDisplay}` }}
         >
           <div className="logo_login_form logo">
-            <img src={sneaker}></img>
+            <img src={sneaker} alt="brand logo"></img>
           </div>
           <h2 className="greeting_login">Great to have you back!</h2>
           <form className="login_form">

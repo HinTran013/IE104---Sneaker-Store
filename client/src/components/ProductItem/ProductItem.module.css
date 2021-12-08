@@ -10,6 +10,7 @@
   justify-content: space-between;
   align-items: center;
   transition: all 0.5s ease-in-out;
+  padding-bottom: 30px;
 }
 
 .card:hover {
@@ -130,7 +131,7 @@
 }
 
 .sizeChoose {
-  color: red
+  color: red;
 }
 
 .shortDesc {

@@ -6,6 +6,7 @@ import UserForm from "./UserForm";
 import "./Navbar.css";
 import "./NavbarResponsive.css";
 import ModalAccount from "./ModalAccount";
+import logo from "../../assets/images/logo.png";
 
 import {
   addNavFindFilter,
@@ -147,7 +148,9 @@ function Navbar() {
           )}
         </div>
 
-        <h3 className="header__logo">Logo</h3>
+        <h3 className="header__logo">
+          <img className="header__logo-brand" src={logo} alt="brand logo" />
+        </h3>
 
         <ul
           className={navbarMobile ? "header__navbar-mobile" : "header__navbar"}

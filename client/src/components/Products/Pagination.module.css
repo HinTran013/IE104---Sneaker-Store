@@ -30,6 +30,7 @@
   padding: 15px 17px;
   background-color: #f4f4f4;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .arrowLeft {
