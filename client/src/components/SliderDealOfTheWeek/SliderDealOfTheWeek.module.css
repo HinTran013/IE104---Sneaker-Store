@@ -2,7 +2,6 @@
 .dealContainer {
   line-height: 1.6;
   padding: 40px 100px 0;
-  height: 100vh;
   position: relative;
 }
 
@@ -71,6 +70,8 @@
 /* Image */
 .sideImageContainer {
   padding-right: 5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .dealContainer .sideImageContainer img {
@@ -316,12 +317,16 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 375px) {
   .sideTextContainer {
     width: 100%;
   }
 
-  .dealContainer .sideImageContainer img {
-    padding-right: 90px;
+  .mobileArrowContainer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 37%;
+    width: 100%;
   }
 }
