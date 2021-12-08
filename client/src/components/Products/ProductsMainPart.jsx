@@ -30,6 +30,10 @@ function ProductsMainPart(props) {
   });
 
   useEffect(() => {
+    if (showingAmount.startProduct > totalProduct) {
+      setPageNumber(0);
+    }
+
     getAllProduct(
       `http://localhost:3001/productPage?page=${pageNumber}${filterPath}`
     ).then((res) => {
@@ -46,6 +50,7 @@ function ProductsMainPart(props) {
       //   });
       // }
     });
+    console.log("page number: ", pageNumber);
     console.log("filter path rerender: " + filterPath);
     console.log("path: " + props.path + ", param: " + props.findParam);
   }, [filterPath, pageNumber]);
