@@ -118,12 +118,16 @@ function Navbar() {
     );
 
     history.push(navigationBrand);
+    
+    setNavbarMobile(!navbarMobile)
   }
 
   function navigationMainProduct() {
     dispatch(resetFilter());
 
     history.push("/product");
+
+    setNavbarMobile(!navbarMobile)
   }
 
   function handleOpenModal(state) {
@@ -159,7 +163,7 @@ function Navbar() {
         >
           <li className="header__navbar-item">
             <Link to="/">
-              <p>Home</p>
+              <p onClick={() => setNavbarMobile(!navbarMobile)} >Home</p>
             </Link>
           </li>
 
@@ -167,7 +171,7 @@ function Navbar() {
             <p onClick={navigationMainProduct}>Product</p>
             <i className="fas fa-chevron-right navbar__product-icon"></i>
 
-            <div className="navbar__product-dropdown">
+            <div className="navbar__product-dropdown invisible">
               {Brands.map((item, index) => {
                 return (
                   <div className="navbar__product-container" key={index}>
@@ -192,13 +196,13 @@ function Navbar() {
 
           <li className="header__navbar-item">
             <Link to="/contact">
-              <p>Contact us</p>
+              <p onClick={() => setNavbarMobile(!navbarMobile)}>Contact</p>
             </Link>
           </li>
 
           <li className="header__navbar-item">
             <Link to="/about-us">
-              <p>About us</p>
+              <p onClick={() => setNavbarMobile(!navbarMobile)}>About</p>
             </Link>
           </li>
         </ul>
