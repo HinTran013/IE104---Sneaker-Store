@@ -23,6 +23,13 @@ app.use("/customer", customerRoutes);
 app.use("/product", productRoutes);
 app.use("/productPage", productPaginationRoutes);
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 const CONNECT_URL =
   "mongodb+srv://johnnyluu:johnnyluu123@cluster0.29gji.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 3001;
