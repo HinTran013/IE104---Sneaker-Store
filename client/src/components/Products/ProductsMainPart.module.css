@@ -3,6 +3,12 @@
   display: flex;
 }
 
+.productsShowContainer {
+  width: 100%;
+  min-height: 50vh;
+  position: relative;
+}
+
 .sideBarContainer {
 }
 

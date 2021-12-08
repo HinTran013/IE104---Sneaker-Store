@@ -50,8 +50,8 @@ function TopFilter({ total, showingAmount }) {
     <>
       <div className={`${Style.filterContainer}`}>
         <div className={`${Style.showingAmount}`}>
-          Showing {showingAmount.startProduct} - {showingAmount.endProduct} of{" "}
-          {total} results
+          Showing {total > 1 ? showingAmount.startProduct : "0"} -{" "}
+          {total < 12 ? total : showingAmount.endProduct} of {total} results
         </div>
         <select
           onChange={handleClick}

@@ -26,7 +26,7 @@ exports.getSuggestProducts = async (req, res) => {
       brand: req.query.brand,
     })
       .sort({ _id: -1 })
-      .limit(8);
+      .limit(4);
 
     res.json({
       products: products,

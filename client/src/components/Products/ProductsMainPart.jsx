@@ -22,7 +22,7 @@ function ProductsMainPart(props) {
 
   const [pageNumber, setPageNumber] = React.useState(0);
   const [totalPage, setTotalPage] = React.useState(0);
-  const [totalProduct, setTotalProduct] = React.useState(0);
+  const [totalProduct, setTotalProduct] = React.useState();
   const [productList, setProductList] = React.useState([]);
   const [showingAmount, setShowingAmount] = React.useState({
     startProduct: 1,
@@ -36,6 +36,15 @@ function ProductsMainPart(props) {
       setProductList(res.products);
       setTotalPage(res.totalPage);
       setTotalProduct(res.totalProducts);
+
+      // if (totalProduct < 12) {
+      //   const initTotal = totalProduct;
+
+      //   setShowingAmount({
+      //     startProduct: 1,
+      //     endProduct: initTotal,
+      //   });
+      // }
     });
     console.log("filter path rerender: " + filterPath);
     console.log("path: " + props.path + ", param: " + props.findParam);
@@ -114,8 +123,6 @@ function ProductsMainPart(props) {
               setNextShowingAmount={setNextShowingAmount}
             />
           </div>
-
-          <div className={`${Style.paginationContainer}`}></div>
         </div>
       </div>
     </>

@@ -22,7 +22,7 @@ import {
   removeFavouriteFromRedux,
 } from "../../features/favouriteSlice";
 
-function ProductItem({ data }) {
+function ProductItem({ data, marginRight }) {
   const customer = useSelector(selectCustomer); //get current logged in customer
   const favouriteList = useSelector(selectFavouriteList) || []; //get current favourite list
   const cartList = useSelector(selectCartList) || []; //get current cart list
@@ -30,6 +30,10 @@ function ProductItem({ data }) {
   const dispatch = useDispatch();
 
   const [sizeChoose, setSizeChoose] = useState("");
+
+  const rightMargin = {
+    marginRight: marginRight,
+  };
 
   const handleSizeChange = (size) => {
     setSizeChoose(size);
@@ -177,7 +181,11 @@ function ProductItem({ data }) {
           setShowModal={setShowModal}
         />
       ) : null}
-      <Link to={`/product/${data._id}`} className={style.card}>
+      <Link
+        to={`/product/${data._id}`}
+        style={rightMargin}
+        className={style.card}
+      >
         <div className={style.imgBox}>
           <img src={data.images || Nike1} />
         </div>
