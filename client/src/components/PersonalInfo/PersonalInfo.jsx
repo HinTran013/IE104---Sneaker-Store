@@ -9,8 +9,12 @@ function PersonalInfo({ bool }) {
 
   return (
     <div className={style.row}>
-      <LeftSideInfo account={account} setAccount={setAccount} />
-      {account ? <MainPartInfo /> : <HistoryPart />}
+      <div className={style.left}>
+        <LeftSideInfo account={account} setAccount={setAccount} />
+      </div>
+      <div className={style.info}>
+        {account ? <MainPartInfo /> : <HistoryPart />}
+      </div>
     </div>
   );
 }
