@@ -1,6 +1,9 @@
 .container {
   width: 100%;
   padding-top: 50px;
+
+  display: flex;
+  flex-direction: column;
 }
 .image {
   display: table-cell;
@@ -32,7 +35,7 @@
 @media (max-width: 900px) {
   .container {
     padding: 10px;
-    display: flex;
+    
   }
 }
 
