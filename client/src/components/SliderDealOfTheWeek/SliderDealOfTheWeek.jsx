@@ -89,7 +89,7 @@ const SliderDealOfTheWeek = () => {
             </p>
 
             <Link
-              to="/product/61a99031db9f026ae3e077dc"
+              to="/product"
               className={`${DealStyle.dealBtn}`}
               key={Math.random()}
             >
