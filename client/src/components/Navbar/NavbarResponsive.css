@@ -129,4 +129,10 @@
      .search-on-scroll {
           display: none;
      }
+
+     .ModalReact__Content {
+          width: 100%;
+          height: 100%;
+          inset: 0;
+     }
 }

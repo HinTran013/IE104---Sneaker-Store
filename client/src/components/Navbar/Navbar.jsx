@@ -143,7 +143,7 @@ function Navbar() {
       >
         <div
           className="mobile-menu-icon"
-          onClick={() => setNavbarMobile(false)}
+          onClick={() => setNavbarMobile(!navbarMobile)}
         >
           {navbarMobile ? (
             <i className="fas fa-times"></i>
